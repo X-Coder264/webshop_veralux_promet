@@ -1,0 +1,129 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
+
+class CartController extends Controller
+{
+    public function index()
+    {
+        // show the cart and make sure that the products added to the cookie still exists in the DB
+        // if they were deleted in the meantime, update and return the updated cookie
+        $products_with_quantity = unserialize(Cookie::get('cart_product_IDs'));
+        $DatabaseDeletedProduct = false;
+        if ($products_with_quantity !== false) {
+            $product_IDs = collect($products_with_quantity)->pluck('product_id');
+            $product_ids_ordered = implode(',', $product_IDs->toArray());
+            $products = Product::whereIn('id', $product_IDs)->orderByRaw(DB::raw("FIELD(id, $product_ids_ordered)"))->get();
+            $count = count($products_with_quantity);
+            if ($products->count() !== 0) {
+                for ($i = 0, $x = 0; $i < $count; $i++) {
+                    if ($products[$x]->id == $products_with_quantity[$i]['product_id']) {
+                        $products[$x]->quantity = $products_with_quantity[$i]['quantity'];
+                        $x++;
+                    } else {
+                        unset($products_with_quantity[$i]);
+                        $DatabaseDeletedProduct = true;
+                        Cache::decrement(Cookie::get('unique_id') . '.number_of_products_in_cart');
+                    }
+                }
+            }
+        } else {
+            $products = new Collection();
+        }
+
+        if ($DatabaseDeletedProduct) {
+            $products_with_quantity  = array_values($products_with_quantity);
+            return response()->view('cart', compact('products'))->cookie('cart_product_IDs', serialize($products_with_quantity), 0);
+        }
+
+        return view('cart', compact('products'));
+    }
+    
+    public function store(Request $request, Product $product)
+    {
+        $rules = [
+            'quantity' => 'required|integer'
+        ];
+
+        $messages = [
+            'quantity.required' => "Unos količine je obavezan.",
+            'quantity.integer' => "Količina mora biti cijeli broj."
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $productIDs = Cookie::get('cart_product_IDs');
+        if (is_null($productIDs)) {
+            $value[0]['product_id'] = $product->id;
+            $value[0]['quantity'] = $request->input('quantity');
+            $visitor = Cookie::get('unique_id');
+            if (is_null($visitor)) {
+                return back()->withCookie(Cookie::forever('cart_product_IDs', serialize($value)))->withCookie(Cookie::forever('unique_id', uniqid('', true)));
+            }
+            Cache::increment($visitor . '.number_of_products_in_cart');
+            return back()->withCookie(Cookie::forever('cart_product_IDs', serialize($value)));
+        } else {
+            $products = unserialize($productIDs);
+            $value['product_id'] = $product->id;
+            $value['quantity'] = $request->input('quantity');
+            $products[] = $value;
+            Cache::increment(Cookie::get('unique_id') . '.number_of_products_in_cart');
+            return back()->withCookie(Cookie::forever('cart_product_IDs', serialize($products)));
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $quantities = $request->input('quantities');
+        $quantities = explode(",", $quantities);
+
+        $rules = [
+            'quantities' => 'array',
+            'quantities.*' => 'integer'
+        ];
+
+        $messages = [
+            'quantities.*.integer' => "Količine moraju biti cijeli broj."
+        ];
+
+        $validator = Validator::make(compact('quantities'), $rules, $messages);
+
+        if ($validator->fails()) {
+            return response()->json(['status' => 'error', 'errors' => $validator->getMessageBag()->toArray()]);
+        }
+
+        $products = unserialize(Cookie::get('cart_product_IDs'));
+        for ($i = 0; $i < count($products); $i++) {
+            $products[$i]["quantity"] = $quantities[$i];
+        }
+        return response("success")->withCookie(Cookie::forever('cart_product_IDs', serialize($products)));
+    }
+
+    public function destroy(Request $request)
+    {
+        $products_with_quantity = collect(unserialize(Cookie::get('cart_product_IDs')));
+        $products = $products_with_quantity->pluck('product_id');
+        if (($key = $products->search($request->input('product_id'))) !== false) {
+            unset($products_with_quantity[$key]);
+            $products_with_quantity  = array_values($products_with_quantity->toArray());
+        }
+        Cache::decrement(Cookie::get('unique_id') . '.number_of_products_in_cart');
+        if (count($products_with_quantity) === 0) {
+            return response(count($products_with_quantity))->cookie(Cookie::forget('cart_product_IDs'));
+        } else {
+            return response(count($products_with_quantity))->cookie('cart_product_IDs', serialize($products_with_quantity), 0);
+        }
+    }
+}
