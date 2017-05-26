@@ -1,11 +1,5 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-    Korisnički profil
-    @parent
-@stop
-
 {{-- Page content --}}
 @section('content')
     <section class="content-header">

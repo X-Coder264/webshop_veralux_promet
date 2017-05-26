@@ -45,14 +45,14 @@ class UsersController extends Controller
                 $actions = "";
                 if (! $user->trashed()) {
                     $actions .= '<a href='. route('admin.users.show', $user->slug) .'><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view user"></i></a>
-                            <a href='. route('admin.users.edit', $user->slug) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="update user"></i></a>';
+                                &nbsp;&nbsp;&nbsp;<a href='. route('admin.users.edit', $user->slug) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="update user"></i></a>';
                 }
 
                 if (Auth::user()->id != $user->id) {
                     if (! $user->trashed()) {
-                        $actions .= '<a href='. route('admin.confirm-delete/user', $user->slug) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete user"></i></a>';
+                        $actions .= '&nbsp;&nbsp;&nbsp;<a href='. route('admin.confirm-delete/user', $user->slug) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete user"></i></a>';
                     } else {
-                        $actions .= '<a href='. route('admin.restore/user', $user->id) .' <i class="livicon" data-name="user-restore" data-size="18" data-loop="true" data-c="#f36254" data-hc="#f36254" title="restore user"></i></a>';
+                        $actions .= '&nbsp;&nbsp;&nbsp;<a href='. route('admin.restore/user', $user->id) .' <i class="livicon" data-name="user-restore" data-size="18" data-loop="true" data-c="#f36254" data-hc="#f36254" title="restore user"></i></a>';
                     }
                 }
                 return $actions;

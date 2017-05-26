@@ -1,11 +1,5 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-    Editiraj proizvod
-    @parent
-@stop
-
 {{-- page level styles --}}
 @section('header_styles')
     <link rel="stylesheet" href="/css/themes/default.min.css" />
@@ -19,7 +13,7 @@
     <section class="content-header">
         <!--section starts-->
         <h1>
-            Editiraj proizvod
+            Uređivanje proizvoda
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -32,7 +26,7 @@
                 <a href="#">Proizvodi</a>
             </li>
             <li class="active">
-                Editiraj proizvod
+                Uredi proizvod
             </li>
         </ol>
     </section>
@@ -44,8 +38,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <i class="livicon" data-name="bell" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Editiraj proizvod
+                            Uredi proizvod
                         </h3>
                         <span class="pull-right clickable">
                                     <i class="glyphicon glyphicon-chevron-up"></i>
@@ -53,7 +46,7 @@
                     </div>
                     <div class="panel-body">
                         @if (count($errors) > 0)
-                            <div class="alert alert-danger">
+                            <div class="col-md-offset-2 col-md-10 alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -62,7 +55,7 @@
                             </div>
                         @endif
                         @if (session('success'))
-                            <div class="alert alert-success">
+                            <div class="col-md-offset-2 col-md-10 alert alert-success">
                                 {{ session('success') }}
                             </div>
                         @endif
@@ -72,20 +65,20 @@
 
                             <div class="form-group">
                                 <label for="select21" class="control-label">
-                                    Odaberite kategoriju proizvoda
+                                    Odaberite kategoriju proizvoda:
                                 </label>
                                 {!! $selectHTML !!}
                             </div>
 
                             <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">Naziv proizvoda</label>
+                                <label for="name" class="control-label">Naziv proizvoda:</label>
                                 <input id="name" name="name" type="text"
                                        placeholder="Naziv proizvoda" class="form-control required"
                                        value="{{$product->name}}" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="unit" class="col-sm-2 control-label">Mjerna jedinica proizvoda</label>
+                                <label for="unit" class="control-label">Mjerna jedinica proizvoda:</label>
                                 <select id="unit" class="form-control" name="unit">
                                     <option value="kom" @if($product->unit == 'kom') selected @endif>kom</option>
                                     <option value="m" @if($product->unit == 'm') selected @endif>m</option>
@@ -101,9 +94,8 @@
 
 
                             <div class="form-group">
-                                <label for="description" class="col-sm-2 control-label">Opis proizvoda</label>
-                                <textarea id="description" name="description" placeholder="Opis proizvoda"
-                                          class="form-control required" required>{{$product->description}}</textarea>
+                                <label for="description" class="control-label">Opis proizvoda:</label>
+                                <textarea id="description" name="description" class="form-control required" required>{{$product->description}}</textarea>
                             </div>
 
                             {{--<div class="form-group">
@@ -113,7 +105,7 @@
                             </div>--}}
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Editiraj proizvod</button>
+                                <button type="submit" class="btn btn-primary btn-block">Spremi izmjene</button>
                             </div>
 
                             <!--ends--> </form></div>

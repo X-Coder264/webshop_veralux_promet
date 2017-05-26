@@ -205,8 +205,8 @@ class ProductsController extends Controller
                 return $product->updated_at->format('d.m.Y. H:i:s') . " (" . $product->updated_at->diffForHumans() . ")";
             })
             ->add_column('actions', function(Product $product) {
-                $actions = '<a href='. route('admin.products.edit', ['product' => $product]) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Editiraj proizvod"></i></a>';
-                $actions .= '<a href='. route('admin.products.confirm-delete', $product->slug) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="Obriši proizvod"></i></a>';
+                $actions = '<a href='. route('admin.products.edit', ['product' => $product]) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Uredi proizvod"></i></a>';
+                $actions .= '&nbsp;&nbsp;&nbsp;<a href='. route('admin.products.confirm-delete', $product->slug) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="Obriši proizvod"></i></a>';
                 return $actions;
             })->rawColumns(['actions'])->make(true);
     }

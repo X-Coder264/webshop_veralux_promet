@@ -33,7 +33,7 @@
                 </div><br>
                 <form class="regForm" method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-info" role="alert">
                         <strong>Polja označena * su obavezna za ispunjavanje</strong>
                     </div>
                     <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
@@ -54,7 +54,7 @@
                             </span>
                         @endif
                     </div>
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-info" role="alert">
                         <strong>Lozinka mora sadržavati minimalno 6 znakova</strong>
                     </div>
                     <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">

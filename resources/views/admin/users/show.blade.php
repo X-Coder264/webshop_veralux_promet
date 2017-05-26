@@ -1,11 +1,5 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-    Korisnički profil
-    @parent
-@stop
-
 {{-- page level styles --}}
 @section('header_styles')
     <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet"/>
@@ -47,7 +41,7 @@
                     <li>
                         <a href="#tab2" data-toggle="tab">
                             <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                            Promjeni lozinku</a>
+                            Promijeni lozinku</a>
                     </li>
 
                 </ul>
@@ -55,12 +49,9 @@
                     <div id="tab1" class="tab-pane fade active in">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="panel">
+                                <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">
-                                            Profil korisnika - {{$user->name }} {{ $user->surname }}
-                                        </h3>
-
+                                        <h4 class="panel-title">Profil korisnika - {{$user->name }} {{ $user->surname }}</h4>
                                     </div>
                                     <div class="panel-body">
                                         <div class="col-md-12">
@@ -69,38 +60,38 @@
                                                     <table class="table table-bordered table-striped table-hover" id="users">
 
                                                         <tr>
-                                                            <td>Ime</td>
+                                                            <td>Ime i prezime:</td>
                                                             <td>
                                                                 <p class="user_name_max">{{ $user->name }}</p>
                                                             </td>
 
                                                         </tr>
                                                         <tr>
-                                                            <td>Email</td>
+                                                            <td>Email:</td>
                                                             <td>
                                                                 {{ $user->email }}
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Mjesto</td>
+                                                            <td>Mjesto:</td>
                                                             <td>
                                                                 {{ $user->city }}
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Adresa</td>
+                                                            <td>Adresa:</td>
                                                             <td>
                                                                 {{ $user->address }}
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Poštanski broj</td>
+                                                            <td>Poštanski broj:</td>
                                                             <td>
                                                                 {{ $user->postal }}
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Status</td>
+                                                            <td>Status:</td>
                                                             <td>
 
                                                                 @if($user->verified)
@@ -111,7 +102,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Registriran</td>
+                                                            <td>Registriran:</td>
                                                             <td>
                                                                 <?php \Carbon\Carbon::setLocale('hr'); ?>
                                                                 {{ $user->created_at->format('d.m.Y. H:i:s') }} ({{ $user->created_at->diffForHumans() }})
@@ -127,11 +118,9 @@
                         </div>
                         <section class="content paddingleft_right15">
                             <div class="row">
-                                <div class="panel panel-primary ">
+                                <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                                            Narudžbe korisnika <strong>{{$user->name }} {{ $user->surname }}</strong>
-                                        </h4>
+                                        <h4 class="panel-title">Narudžbe korisnika - {{$user->name }} {{ $user->surname }}</h4>
                                     </div>
                                     <br />
                                     <div class="panel-body">
@@ -157,44 +146,51 @@
                     <div id="tab2" class="tab-pane fade">
                         <div class="row">
                             <div class="col-md-12 pd-top">
-                                <form class="form-horizontal" id="change-password" method="POST" action="{{ route('admin.passwordreset', $user->id) }}">
-                                    {{csrf_field()}}
-                                    <div class="form-body">
-                                        <div class="form-group">
-                                            <label for="password" class="col-md-3 control-label">
-                                                Lozinka
-                                            </label>
-                                            <div class="col-md-9">
-                                                <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                                                            </span>
-                                                    <input type="password" name="password" id="password" placeholder="Lozinka" class="form-control" required>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <h4 class="panel-title">Izmijeni lozinku korisnika - {{$user->name }} {{ $user->surname }}</h4>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <form class="form-horizontal" id="change-password" method="POST" action="{{ route('admin.passwordreset', $user->id) }}">
+                                            {{csrf_field()}}
+                                            <div class="form-body">
+                                                <div class="form-group">
+                                                    <label for="password" class="col-md-3 control-label">
+                                                        Lozinka
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                                    </span>
+                                                            <input type="password" name="password" id="password" placeholder="Lozinka" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password-confirm" class="col-md-3 control-label">
+                                                        Ponovi lozinku
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                                    </span>
+                                                            <input type="password" name="password_confirmation" id="password-confirm" placeholder="Ponovi lozinku" class="form-control" required>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password-confirm" class="col-md-3 control-label">
-                                                Ponovi lozinku
-                                            </label>
-                                            <div class="col-md-9">
-                                                <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                                                            </span>
-                                                    <input type="password" name="password_confirmation" id="password-confirm" placeholder="Ponovi lozinku" class="form-control" required>
+                                            <div class="form-actions">
+                                                <div class="col-md-offset-3">
+                                                    <button type="submit" class="col-md-12 btn btn-primary" id="change-password">Postavi lozinu</button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                    <div class="form-actions">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button type="submit" class="btn btn-primary" id="change-password">Izmjeni lozinku
-                                            </button>
-                                            &nbsp
-                                            <input type="reset" class="btn btn-default hidden-xs" value="Resetiraj"></div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -220,6 +216,7 @@
                     "infoEmpty": "Nema dostupnih podataka",
                     "infoFiltered": "(filtrirano od ukupno _MAX_ zapisa)",
                     "search": "Traži",
+                    "processing": "Obrada...",
                     "paginate": {
                         "previous": "Prethodna",
                         "next": "Sljedeća"

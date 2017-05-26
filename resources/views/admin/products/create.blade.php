@@ -1,11 +1,5 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-    Dodaj proizvod
-    @parent
-@stop
-
 {{-- page level styles --}}
 @section('header_styles')
     <link rel="stylesheet" href="/css/themes/default.min.css" />
@@ -41,11 +35,10 @@
         <!--main content-->
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-info">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <i class="livicon" data-name="bell" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Dodajte novi proizvod
+                            Dodaj novi proizvod
                         </h3>
                                 <span class="pull-right clickable">
                                     <i class="glyphicon glyphicon-chevron-up"></i>
@@ -53,7 +46,7 @@
                     </div>
                     <div class="panel-body">
                         @if (count($errors) > 0)
-                            <div class="alert alert-danger">
+                            <div class="col-md-offset-2 col-md-10 alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -62,7 +55,7 @@
                             </div>
                         @endif
                         @if (session('success'))
-                            <div class="alert alert-success">
+                            <div class="col-md-offset-2 col-md-10 alert alert-success">
                                 {{ session('success') }}
                             </div>
                         @endif
@@ -70,32 +63,32 @@
                             {{ csrf_field() }}
                         <div class="form-group">
                             <label for="select21" class="control-label">
-                                Odaberite kategoriju proizvoda
+                                Odaberite kategoriju proizvoda:
                             </label>
                             {!! $selectHTML !!}
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Naziv proizvoda</label>
+                            <label for="name" class="control-label">Naziv proizvoda:</label>
                                 <input id="name" name="name" type="text"
                                        placeholder="Naziv proizvoda" class="form-control required"
                                        value="{!! old('name') !!}" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="unit" class="col-sm-2 control-label">Mjerna jedinica proizvoda</label>
+                            <label for="unit" class="control-label">Mjerna jedinica proizvoda:</label>
                             <select id="unit" class="form-control" name="unit">
                                 <option value="kom">kom</option>
                                 <option value="m">m</option>
                                 <option value="kg">kg</option>
                             </select>
                         </div>
-                            <div class="checkbox checkbox-primary">
-                                <input id="checkbox1" type="checkbox" name="highlighted">
-                                <label for="checkbox1">
-                                    Istaknuti proizvod
-                                </label>
-                            </div>
+                        <div class="checkbox checkbox-primary">
+                            <input id="checkbox1" type="checkbox" name="highlighted">
+                            <label for="checkbox1">
+                                Istaknuti proizvod
+                            </label>
+                        </div>
                         {{-- <div class="form-group">
                             <label for="price" class="col-sm-2 control-label">Price</label>
                                 <input id="price" name="price" placeholder="Price" type="number" step="0.5"
@@ -112,11 +105,9 @@
                                 <option value="USD">USD</option>
                             </select>
                         </div> --}}
-
                         <div class="form-group">
-                            <label for="description" class="col-sm-2 control-label">Opis proizvoda</label>
-                            <textarea id="description" name="description" placeholder="Opis proizvoda"
-                                   class="form-control required" required></textarea>
+                            <label for="description" class="control-label">Opis proizvoda:</label>
+                            <textarea id="description" name="description" class="form-control required" required></textarea>
                         </div>
 
                         <div class="form-group">
@@ -127,7 +118,7 @@
                         </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Dodajte proizvod</button>
+                                <button type="submit" class="btn btn-primary btn-block">Dodaj proizvod</button>
                             </div>
 
                         <!--ends--> </form></div>

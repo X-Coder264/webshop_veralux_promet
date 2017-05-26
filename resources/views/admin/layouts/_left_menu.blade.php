@@ -10,7 +10,7 @@
 
     <li {!! (Request::is('admin/users') || Request::is('admin/users/create') || Request::is('admin/user_profile') || Request::is('admin/users/*') || Request::is('admin/deleted_users') ? 'class="active"' : '') !!}>
         <a href="#">
-            <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+            <i class="livicon" data-name="users" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
             <span class="title">Korisnici</span>
             <span class="fa arrow"></span>
@@ -19,7 +19,7 @@
             <li {!! (Request::is('admin/users') ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ URL::to('admin/users') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    Korisnici
+                    Svi korisnici
                 </a>
             </li>
             <li {!! (Request::is('admin/users/create') ? 'class="active" id="active"' : '') !!}>
@@ -33,7 +33,7 @@
 
     <li {!! (Request::is('admin/products') || Request::is('admin/products/*')  ? 'class="active"' : '') !!}>
         <a href="#">
-            <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+            <i class="livicon" data-name="truck" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
             <span class="title">Proizvodi</span>
             <span class="fa arrow"></span>
@@ -56,7 +56,7 @@
 
     <li {!! (Request::is('admin/categories') || Request::is('admin/categories/*')  ? 'class="active"' : '') !!}>
         <a href="#">
-            <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+            <i class="livicon" data-name="list" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
             <span class="title">Kategorije</span>
             <span class="fa arrow"></span>

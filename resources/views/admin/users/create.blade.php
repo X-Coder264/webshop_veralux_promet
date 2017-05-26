@@ -1,11 +1,5 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-    Dodaj korisnika
-    @parent
-@stop
-
 {{-- page level styles --}}
 @section('header_styles')
     <!--page level css -->
@@ -13,7 +7,6 @@
     <link href="{{ asset('assets/css/wizard.css') }}" rel="stylesheet">
     <!--end of page level css-->
 @stop
-
 
 {{-- Page content --}}
 @section('content')
@@ -34,19 +27,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    @if (session('error'))
-                        <div class="alert alert-warning">
-                            {{ session('error') }}
-                        </div>
-                    @endif
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i>
                             Dodaj novog korisnika
                         </h3>
                                 <span class="pull-right clickable">
@@ -54,6 +36,16 @@
                                 </span>
                     </div>
                     <div class="panel-body">
+                        @if (session('success'))
+                            <div class="col-md-offset-2 col-md-10 alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="col-md-offset-2 col-md-10 alert alert-warning">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <!--main content-->
                         <form id="userForm" action="{{ route('admin.users.create') }}" method="POST" class="form-horizontal">
                             <!-- CSRF Token -->

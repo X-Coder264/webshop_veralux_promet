@@ -1,11 +1,5 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-    Veralux Admin Panel
-    @parent
-@stop
-
 @section('header_styles')
     <link rel="stylesheet" href="/css/themes/default.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap.css') }}" />
@@ -16,7 +10,7 @@
 @section('content')
 
     <section class="content-header">
-        <h1>Dobrodošli u Admin Panel</h1>
+        <h1>Popis svih proizovda</h1>
         <ol class="breadcrumb">
             <li class="active">
                 <a href="#">
@@ -72,6 +66,7 @@
                     "infoEmpty": "Nema dostupnih podataka",
                     "infoFiltered": "(filtrirano od ukupno _MAX_ zapisa)",
                     "search": "Traži",
+                    "processing": "Obrada...",
                     "paginate": {
                         "previous": "Prethodna",
                         "next": "Sljedeća"

@@ -1,11 +1,5 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-    Veran Admin Panel
-    @parent
-@stop
-
 @section('header_styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap.css') }}" />
     <link href="{{ asset('assets/css/tables.css') }}" rel="stylesheet" type="text/css" />
@@ -15,7 +9,7 @@
 @section('content')
 
     <section class="content-header">
-        <h1>Dobrodošli u Admin Panel</h1>
+        <h1>Veralux-promet | Admin panel</h1>
         <ol class="breadcrumb">
             <li class="active">
                 <a href="#">
@@ -70,6 +64,7 @@
                     "infoEmpty": "Nema dostupnih podataka",
                     "infoFiltered": "(filtrirano od ukupno _MAX_ zapisa)",
                     "search": "Traži",
+                    "processing": "Obrada...",
                     "paginate": {
                         "previous": "Prethodna",
                         "next": "Sljedeća"
@@ -85,9 +80,9 @@
                     { data: 'actions', name: 'actions', orderable: false, searchable: false }
                 ],
                 "order": [[ 2, "desc" ]],
-                "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "Sve narudžbe"] ],
+                "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "sve"] ],
                 "rowCallback": function ( row, data ) {
-                    if ( data.read_by_admin == 0 ){ $('td', row).css('background-color', '#DB5E47');}
+                    if ( data.read_by_admin == 0 ){ $('td', row).css('background-color', '#bbb');}
                 }
             });
 

@@ -74,16 +74,16 @@
 
                     <form method="POST" action="{{route('cart.store', $product->slug)}}">
                         <div class="row row-filter clearfix ">
-                            @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             <div class="col-sm-12">
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 @if($product_is_in_cart === false)
                                 <input style="font-size: 14px;" min="1" name="quantity" placeholder="Unesite količinu..." type="number" class="form-control input-lg" id="quantity" value="{{old('quantity')}}">
                             </div>

@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="/assets/css/style.min.css">
 
     <link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
 	
 	    {{-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries --}}
     <!--[if lt IE 9]>
@@ -165,7 +167,7 @@
     </div>
     <div class="footer-bottom">
         <div class="container">
-            <p class="pull-left">&copy; Antonio Pauletich {{date("Y")}}. Sva prava pridržana.</p>
+            <p class="pull-left">&copy; Pragma Once {{date("Y")}}. Sva prava pridržana.</p>
         </div>
     </div>
     {{--/.footer-bottom--}}

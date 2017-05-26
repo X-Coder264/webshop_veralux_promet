@@ -92,9 +92,9 @@
                 <i class="fa fa-shopping-cart colorWhite"></i>
                 <span class="cartRespons colorWhite"> ({{$number_of_products_in_cart}})</span>
             </a>
-            <a class="navbar-brand " href="/">
+            {{--}}<a class="navbar-brand " href="/">
                 <img height="70" src="/images/veralux.svg" alt="Veralux-promet">
-            </a>
+            </a>--}}
 
             {{-- this part for mobile --}}
             <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
@@ -111,7 +111,7 @@
             <ul class="nav navbar-nav">
                 <li {!! setActive('/') !!}><a href="/">Početna</a></li>
                 <li {!! setActive('shop*') !!}><a href="{{route('shop')}}">Kategorije proizvoda</a></li>
-                <li {!! setActive('/test') !!}><a href="#">Katalozi</a></li>
+                {{--<li {!! setActive('/test') !!}><a href="#">Katalozi</a></li>--}}
                 <li {!! setActive('support_form') !!}><a href="{{route('support_form')}}">Pošalji upit </a></li>
                 <li {!! setActive('about_us') !!}><a href="{{route('about_us')}}">O nama</a></li>
                 <li {!! setActive('contact_us') !!}><a href="{{route('contact_us')}}">Kontakt</a></li>

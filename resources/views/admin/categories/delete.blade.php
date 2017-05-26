@@ -1,11 +1,5 @@
 @extends('admin.layouts.default')
 
-{{-- Page title --}}
-@section('title')
-    Obriši kategoriju
-    @parent
-@stop
-
 {{-- page level styles --}}
 @section('header_styles')
     <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
@@ -38,10 +32,9 @@
         <!--main content-->
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-info">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <i class="livicon" data-name="bell" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                             Obriši kategoriju
                         </h3>
                                 <span class="pull-right clickable">

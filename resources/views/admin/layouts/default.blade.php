@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>
         @section('title')
-            | Veran Admin Panel
+            Veralux-promet d.o.o.
         @show
     </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -27,7 +27,9 @@
     <!-- end of global css -->
     <!--page level css-->
     @yield('header_styles')
-            <!--end of page level css-->
+    <!--end of page level css-->
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
 
 <body class="skin-josh">
 <header class="header">
@@ -54,31 +56,20 @@
                     </a>
                     <ul class="dropdown-menu">
                         <!-- Menu Body -->
-                        <li>
-                            <a href="{{ URL::to('/') }}">
-                                <i class="livicon" data-name="user" data-s="18"></i>
-                                Return to the shop
-                            </a>
+                        <li class="user-footer">
+                            <div>
+                                <a href="{{ URL::to('/') }}">
+                                    <i class="livicon" data-name="desktop" data-s="18"></i>&nbsp;&nbsp;Internet trgovina
+                                </a>
+                            </div>
                         </li>
-                       {{-- <li>
-                            <a href="{{ URL::to('/profile') }}">
-                                <i class="livicon" data-name="user" data-s="18"></i>
-                                My Profile
-                            </a>
                         </li>
-                        <li role="presentation"></li>
-                        <li>
-                            <a href="{{ URL::to('/settings') }}">
-                                <i class="livicon" data-name="gears" data-s="18"></i>
-                                Account Settings
-                            </a>
-                        </li>--}}
+                        <li class="divider" style="margin:0;"></li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div>
                                 <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="livicon" data-name="sign-out" data-s="18"></i>
-                                    Logout
+                                    <i class="livicon" data-name="sign-out" data-s="18"></i>&nbsp;&nbsp;Odjava
                                 </a>
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                             </div>

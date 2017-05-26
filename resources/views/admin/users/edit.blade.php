@@ -1,16 +1,9 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-    Uredi korisnika
-    @parent
-@stop
-
 {{-- page level styles --}}
 @section('header_styles')
     <link href="{{ asset('assets/css/awesome-bootstrap-checkbox.css') }}" rel="stylesheet"/>
 @stop
-
 
 {{-- Page content --}}
 @section('content')
@@ -31,25 +24,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    @if (session('error'))
-                        <div class="alert alert-warning">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-
                     @if ($user->trashed())
                         <div class="alert alert-warning">
                             Ovaj korisnik je deaktiviran što znači da ga ne možete uređivati.
                         </div>
                     @else
                         <div class="panel-heading">
-                            <h3 class="panel-title"> <i class="livicon" data-name="users" data-size="16" data-c="#fff" data-hc="#fff" data-loop="true"></i>
-                                Uredi korisnika <strong>{{ $user->name }} {{ $user->surname }}</strong>
+                            <h3 class="panel-title">
+                                Uredi korisnika - {{ $user->name }} {{ $user->surname }}
                             </h3>
                         <span class="pull-right clickable">
                             <i class="glyphicon glyphicon-chevron-up"></i>
@@ -58,8 +40,17 @@
                         <div class="panel-body">
                             <!--main content-->
                             <div class="row">
-
                                 <div class="col-md-12">
+                                    @if (session('success'))
+                                        <div class="col-md-offset-2 col-md-10 alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+                                    @if (session('error'))
+                                        <div class="col-md-offset-2 col-md-10 alert alert-warning">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
                                     <form id="wizard-validation" action="{{ route('admin.users.update', $user) }}"
                                           method="POST" class="form-horizontal">
                                         {{ method_field('PATCH') }}
@@ -149,7 +140,7 @@
                                         <br>
                                         @endif
                                         <div class="form-group">
-                                            <div class="col-md-12">
+                                            <div class="col-md-offset-2 col-md-10">
                                                 <button type="submit" class="btn btn-primary btn-block">
                                                     Spremi promjene
                                                 </button>

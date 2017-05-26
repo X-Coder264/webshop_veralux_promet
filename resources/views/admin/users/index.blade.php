@@ -1,11 +1,5 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-Lista korisnika
-@parent
-@stop
-
 {{-- page level styles --}}
 @section('header_styles')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap.css') }}" />
@@ -34,7 +28,7 @@ Lista korisnika
     <div class="row">
         <div class="panel panel-primary ">
             <div class="panel-heading">
-                <h4 class="panel-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                <h4 class="panel-title">
                     Tablica korisnika
                 </h4>
             </div>
@@ -77,6 +71,7 @@ Lista korisnika
                 "infoEmpty": "Nema dostupnih podataka",
                 "infoFiltered": "(filtrirano od ukupno _MAX_ zapisa)",
                 "search": "Traži",
+                "processing": "Obrada...",
                 "paginate": {
                     "previous": "Prethodna",
                     "next": "Sljedeća"

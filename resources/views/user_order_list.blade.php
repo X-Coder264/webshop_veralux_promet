@@ -22,7 +22,7 @@
                         <tr>
                             <th data-class="expand" data-sort-initial="true"><span
                                         title="table sorted by this column on load">ID narudžbe</span></th>
-                            <th data-hide="phone,tablet" data-sort-ignore="true">Broj naručenih artikla</th>
+                            <th data-class="default" data-sort-ignore="false">Broj naručenih artikla</th>
                             {{--<th data-hide="phone,tablet" data-sort-ignore="true">Narudžba PDF:</th>--}}
                             {{--<th data-hide="phone,tablet"><strong>Payment Method</strong></th>--}}
                             {{--<th data-hide="default"> Price</th>--}}
@@ -35,12 +35,10 @@
                         @foreach($orders as $order)
                             <tr>
                                 <td data-type="number" data-value="{{$order->id}}">#{{$order->id}}</td>
-                                <td>{{$order->orderProducts->count()}}
-                                    <small>artikl/artikla</small>
-                                </td>
+                                <td>{{$order->orderProducts->count()}} artikl/artikla </td>
                                 {{--<td><a target="_blank" href="{{'/users/' . \Auth::user()->slug . '/invoices/' . 'Invoice ' . $order->id .  '.pdf'}}">Narudžba {{$order->id}}</a></td>--}}
                                 <td data-type="date" data-value="{{$order->created_at->timestamp}}">{{$order->created_at}}</td>
-                                <td><a href="{{route('user.order.show', $order)}}" class="btn btn-primary btn-sm">Pogledajte narudžbu</a></td>
+                                <td><a href="{{route('user.order.show', $order)}}" class="btn btn-primary btn-md">Pogledajte narudžbu</a></td>
                                 {{--<td data-value="3"><span class="label label-success">Done</span></td>--}}
                             </tr>
                         @endforeach
