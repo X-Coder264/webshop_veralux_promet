@@ -3,16 +3,23 @@
 @section('content')
 <div class="container main-container headerOffset">
     <div class="row">
-        @if (session('warning'))
-            <div class="alert alert-warning">
-                {{ session('warning') }}
-            </div>
-        @endif
         <div class="panel panel-default col-xs-12 col-sm-8 col-sm-offset-2 col-md-7 col-md-offset-3 col-lg-6 col-lg-offset-3">
             <div class="panel-body">
                 <div class="text-center">
                     <img style="margin-bottom:10px" height="150" alt="Veralux-promet d.o.o." src="/images/veralux-promet.svg">
                 </div>
+                @if (session('success'))
+                    <br>
+                    <div class="alert alert-info">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('warning'))
+                    <br>
+                    <div class="alert alert-info">
+                        {{ session('warning') }}
+                    </div>
+                @endif
                 <form class="logForm" method="POST" action="{{ url('/login') }}">
                     {{ csrf_field() }}
                     <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
@@ -44,7 +51,7 @@
                     </button><br>
                     <div class="form-group">
                         <p><a href="{{ url('/password/reset') }}">Zaboravili ste lozinku?</a></p>
-                        <p><a href="{{ url('/register') }}">Nemate korisniči račun?</a></p>
+                        <p><a href="{{ url('/email-verification-resend') }}">Ponovno slanje aktivacijske poveznice</a></p>
                     </div>
                 </form>
             </div>
