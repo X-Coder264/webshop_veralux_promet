@@ -2,12 +2,9 @@
 
 {{-- page level styles --}}
 @section('header_styles')
-    <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/vendors/x-editable/css/bootstrap-editable.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/user_profile.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap.css') }}" />
     <link href="{{ asset('assets/css/tables.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
 @stop
 
 {{-- Page content --}}
@@ -148,12 +145,12 @@
                             <div class="col-md-12 pd-top">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">
+                                        <div class="panel-title">
                                             <h4 class="panel-title">Izmijeni lozinku korisnika - {{$user->name }} {{ $user->surname }}</h4>
-                                        </h3>
+                                        </div>
                                     </div>
                                     <div class="panel-body">
-                                        <form class="form-horizontal" id="change-password" method="POST" action="{{ route('admin.passwordreset', $user->id) }}">
+                                        <form class="form-horizontal" id="change-password" method="POST" action="{{ route('admin.passwordreset', $user->slug) }}">
                                             {{csrf_field()}}
                                             <div class="form-body">
                                                 <div class="form-group">
@@ -185,7 +182,7 @@
                                             </div>
                                             <div class="form-actions">
                                                 <div class="col-md-offset-3">
-                                                    <button type="submit" class="col-md-12 btn btn-primary" id="change-password">Postavi lozinu</button>
+                                                    <button type="submit" class="col-md-12 btn btn-primary" id="change-password-button">Postavi lozinku</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -204,7 +201,7 @@
 @section('footer_scripts')
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('assets/js/sweetalert2.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('/js/sweetalert.min.js') }}" ></script>
 
     <script>
         $(function() {
@@ -240,7 +237,6 @@
 
     </script>
 
-    <script  src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("form#change-password").submit(function( event ) {
@@ -266,7 +262,7 @@
                             swal({
                                 type: 'success',
                                 title: 'Uspjeh!',
-                                text: 'Lozinka je uspješno promjenjena!'
+                                text: 'Lozinka je uspješno promijenjena!'
                             });
                         }
                         else
@@ -278,7 +274,7 @@
                                 });
 
                             });
-                            swal("Lozinka nije promjenjena! Popravite sljedeće pogreške:", failStart, "error");
+                            swal("Lozinka nije promijenjena! Popravite sljedeće pogreške:", failStart, "error");
                         }
                     }
                 });

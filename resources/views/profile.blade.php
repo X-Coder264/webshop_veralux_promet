@@ -11,23 +11,12 @@
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Ime</label>
+                            <label for="name" class="col-md-4 control-label">Ime i prezime</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" disabled>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }} {{ $user->surname }}" disabled>
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group{{ $errors->has('surname') ? ' has-error' : '' }}">
-                            <label for="surname" class="col-md-4 control-label">Prezime</label>
-                            <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control" name="surname" value="{{ $user->surname }}" disabled>
-                                @if ($errors->has('surname'))
-                                    <span class="help-block">
-                                <strong>{{ $errors->first('surname') }}</strong>
                             </span>
                                 @endif
                             </div>
@@ -43,6 +32,7 @@
                                 @endif
                             </div>
                         </div>
+                        @if($user->company != '' && $user->company_id != '')
                         <div class="form-group{{ $errors->has('company') ? ' has-error' : '' }}">
                             <label for="company" class="col-md-4 control-label">Naziv tvrtke</label>
                             <div class="col-md-6">
@@ -65,10 +55,11 @@
                                 @endif
                             </div>
                         </div>
+                        @endif
                         <div class="form-group{{ $errors->has('post') ? ' has-error' : '' }}">
                             <label for="post" class="col-md-4 control-label">Poštanski broj</label>
                             <div class="col-md-6">
-                                <input id="post" type="text" class="form-control" name="post" value="{{ $user->post }}" required>
+                                <input id="post" type="text" class="form-control" name="post" value="{{ $user->postal }}" required>
                                 @if ($errors->has('post'))
                                     <span class="help-block">
                                 <strong>{{ $errors->first('post') }}</strong>
@@ -79,7 +70,7 @@
                         <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
                             <label for="place" class="col-md-4 control-label">Mjesto</label>
                             <div class="col-md-6">
-                                <input id="place" type="text" class="form-control" name="place" value="{{ $user->place }}" required>
+                                <input id="place" type="text" class="form-control" name="place" value="{{ $user->city }}" required>
                                 @if ($errors->has('place'))
                                     <span class="help-block">
                                 <strong>{{ $errors->first('place') }}</strong>

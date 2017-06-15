@@ -135,10 +135,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'], ['rounds' => 15]),
-            'postal' => isset($data['post']) ? $data['post'] : "",
-            'city' => isset($data['place']) ? $data['place'] : "",
-            'address' => isset($data['address']) ? $data['address'] : "",
-            'phone' => isset($data['phone']) ? $data['phone'] : "",
+            'postal' => $data['post'],
+            'city' => $data['place'],
+            'address' => $data['address'],
+            'phone' => $data['phone'],
             'company' => isset($data['company']) ? $data['company'] : "",
             'company_id' => isset($data['company_id']) ? $data['company_id'] : "",
         ]);
@@ -169,7 +169,7 @@ class RegisterController extends Controller
         }
 
         UserVerification::generate($user);
-        UserVerification::send($user, 'Aktivacija Vašeg računa');
+        UserVerification::send($user, 'Aktivacija korisničkog računa', 'info@veraluxpromet.hr', 'Veralux-promet d.o.o.');
 
         return redirect($this->redirectPath())->with('warning', 'Poslana je aktivacijska poveznica na ' . $user->email . '. Kliknite na dobivenu poveznicu kako biste aktivirali Vaš korisnički račun.');
     }
@@ -188,7 +188,7 @@ class RegisterController extends Controller
         }
 
         try {
-            $user = UserVerification::process($request->input('email'), $token, $this->userTable());
+            UserVerification::process($request->input('email'), $token, $this->userTable());
         } catch (UserNotFoundException $e) {
             return redirect($this->redirectIfVerificationFails());
         } catch (UserIsVerifiedException $e) {
@@ -197,6 +197,6 @@ class RegisterController extends Controller
             return redirect($this->redirectIfVerificationFails());
         }
 
-        return redirect($this->redirectAfterVerification())->with('success', 'Vaš korisnički račun uspješno je aktiviran. Sada se možete prijaviti u sustav.');
+        return redirect($this->redirectAfterVerification())->with('success', 'Vaš korisnički račun uspješno je aktiviran. Prijavite se u sustav.');
     }
 }

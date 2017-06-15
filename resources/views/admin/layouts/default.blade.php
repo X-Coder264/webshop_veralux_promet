@@ -63,7 +63,6 @@
                                 </a>
                             </div>
                         </li>
-                        </li>
                         <li class="divider" style="margin:0;"></li>
                         <!-- Menu Footer-->
                         <li class="user-footer">

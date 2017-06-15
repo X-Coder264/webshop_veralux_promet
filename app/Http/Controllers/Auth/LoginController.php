@@ -61,7 +61,7 @@ class LoginController extends Controller
         $user = User::where('email', $request->input('email'))->first(['verified', 'verification_token']);
 
         if ($user !== null && ! $user->isVerified()) {
-            return back()->with('warning', 'Vaš korisnički račun nije aktiviran. Aktivacijska poveznica Vam je bila poslana na ' . $request->input('email') . '. Molimo aktivirajte Vaš korisnički račun pomoću dobivene aktivacijske poveznice.');
+            return back()->with('warning', 'Vaš korisnički račun nije aktiviran. Aktivacijska poveznica bila Vam je poslana na ' . $request->input('email') . '. Molimo aktivirajte Vaš korisnički račun pomoću dobivene aktivacijske poveznice.');
         }
 
         if ($this->attemptLogin($request)) {

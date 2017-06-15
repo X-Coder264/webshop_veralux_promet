@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
 
         User::create([
             'name' => 'Veralux',
-            'email' => 'info@veralux-promet.hr',
+            'email' => 'info@veraluxpromet.hr',
             'password' => Hash::make('123456', ['rounds' => 15]),
             'verified' => 1,
             'admin' => 1
