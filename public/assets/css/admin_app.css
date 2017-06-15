@@ -2274,3 +2274,18 @@ Customized Bootstrap Buttons
 .active > a > .fa.plus-minus:before {
     content: "\f068";
 }
+
+.category_button {
+	border: none;
+    border-radius: 0;
+    background-color: transparent;
+    color: #EF6F6C;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+.category_button:hover {
+	background-color: transparent;
+	color: #EF6F6C;
+	text-decoration: underline;
+}

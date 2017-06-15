@@ -125,7 +125,7 @@ class CategoryController extends Controller
         $html = '';
         if ($category->category_parent_id === 0) {
             if ($j === 1) {
-                $html .= '<br><br>';
+                $html .= '<br>';
             }
             $html .= '<button class="btn btn-danger category_button" type="submit" name="category" value="' . $category->id . '">Obriši kategoriju - ' . $category->name . '</button><br>';
             $j = 1;

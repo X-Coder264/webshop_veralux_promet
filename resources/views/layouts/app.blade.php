@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-    <title>Veralux-promet d.o.o.</title>
+    <title>Veralux-Promet d.o.o.</title>
 	
     {{-- Fav and touch icons --}}
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=qAqK76n9y9">
@@ -14,8 +14,8 @@
     <link rel="manifest" href="/manifest.json?v=qAqK76n9y9">
     <link rel="mask-icon" href="/safari-pinned-tab.svg?v=qAqK76n9y9">
     <link rel="shortcut icon" href="/favicon.ico?v=qAqK76n9y9">
-    <meta name="apple-mobile-web-app-title" content="Veralux-promet d.o.o.">
-    <meta name="application-name" content="Veralux-promet d.o.o.">
+    <meta name="apple-mobile-web-app-title" content="Veralux-Promet d.o.o.">
+    <meta name="application-name" content="Veralux-Promet d.o.o.">
     <meta name="theme-color" content="#ffffff">
 
     <!-- CSRF Token -->
@@ -48,7 +48,7 @@
 
     {{-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent --}}
     <script type="text/javascript">
-        window.cookieconsent_options = {"message":"Koristimo kolačiće za pružanje boljeg korisničkog iskustva, te funkcionalnosti sustava kupovine. Korištenjem internet stranice Veralux-promet d.o.o. slažete se s korištenjem kolačića. Za nastavak pregleda i korištenje internet stranice kliknite na gumb \"Slažem se\".","dismiss":"Slažem se","learnMore":"Pročitajte više!","link":"http://ec.europa.eu/ipg/basics/legal/cookies/index_en.htm","theme":"dark-bottom"};
+        window.cookieconsent_options = {"message":"Koristimo kolačiće za pružanje boljeg korisničkog iskustva, te funkcionalnosti sustava kupovine. Korištenjem internet stranice Veralux-Promet d.o.o. slažete se s korištenjem kolačića. Za nastavak pregleda i korištenje internet stranice kliknite na gumb \"Slažem se\".","dismiss":"Slažem se","learnMore":"Pročitajte više!","link":"http://ec.europa.eu/ipg/basics/legal/cookies/index_en.htm","theme":"dark-bottom"};
     </script>
 
     <script type="text/javascript" src="/assets/js/cookieconsent.min.js"></script>
@@ -178,7 +178,7 @@
 
 <script type="text/javascript" src="/assets/js/jquery/jquery-1.12.4.min.js"></script>
 
-<script>
+<!--<script>
     $(document).ready(function() {
         var viewpointHeight=$(window).height();
         var contentHeight=$(".main-container").height();
@@ -201,7 +201,7 @@
             $(".footer-js").removeAttr('style');
         }
     });
-</script>
+</script>-->
 
 <script src="/js/sweetalert.min.js"></script>
 <script>

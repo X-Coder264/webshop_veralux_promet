@@ -181,7 +181,7 @@
                 {{--/.item--}}
             </div>
             @else
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-info" role="alert">
                 <strong>U ovoj kategoriji trenutno nema proizvoda.</strong>
             </div>
             @endif

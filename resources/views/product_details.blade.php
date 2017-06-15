@@ -52,11 +52,11 @@
                     <div class="product-view-thumb-wrapper has-carousel-v hasWhiteImg">
                         <div class="product-view-thumb-nav prev"></div>
                         <ul id="bx-pager" class="product-view-thumb ">
-                            <li><a class="thumb-item-link" data-slide-index="0" href=""><img
+                            <li style="height: auto"><a class="thumb-item-link" data-slide-index="0" href=""><img
                                             src="/product_images/{{ $product->slug }}/{{ $product->main_image }}" alt="img"/></a></li>
                             <?php $i = 1; ?>
                             @foreach($product->images as $image)
-                                <li><a class="thumb-item-link" data-slide-index="{{$i++}}" href=""><img
+                                <li style="height: auto"><a class="thumb-item-link" data-slide-index="{{$i++}}" href=""><img
                                                 src="/product_images/{{ $product->slug }}/{{ $image->path }}" alt="img"/></a></li>
                             @endforeach
                         </ul>

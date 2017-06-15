@@ -88,7 +88,7 @@
         <!--/row-->
         <div style="clear:both"></div>
     @else
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-info" role="alert">
             <strong>Vaša košarica trenutno je prazna.</strong>
         </div>
     @endif

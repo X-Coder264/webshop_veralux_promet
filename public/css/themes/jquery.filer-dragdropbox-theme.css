@@ -73,11 +73,10 @@
     white-space: nowrap;
     font-size: 12px;
     font-weight: bold;
-    color: #8d9496;
+    color: #fff;
     border-radius: 3px;
     border: 1px solid #c6c6c6;
     vertical-align: middle;
-    *background-color: #fff;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.05);
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
@@ -86,11 +85,12 @@
 
 .jFiler-input-choose-btn:hover,
 .jFiler-input-choose-btn:active {
-    color: inherit;
+    color: #fff;
+	background-color: #555;
 }
 
 .jFiler-input-choose-btn:active {
-    background-color: #f5f5f5;
+    background-color: #555;
 }
 
 /* gray */

@@ -85,7 +85,7 @@ class ProductsController extends Controller
                 $image_file->save($path . $name);
             } catch (NotWritableException $e) {
                 $product->delete();
-                return back()->with(['error' => "Dogodila se greška. Molimo pokušajte kasnije."]);
+                return back()->with(['error' => "Došlo je do pogreške. Molimo pokušajte kasnije."]);
             }
 
             if ($key == 0) {
@@ -140,7 +140,7 @@ class ProductsController extends Controller
 
         $product->update($data);
 
-        return back()->with('success', "Proizvod je uspješno editiran.");
+        return back()->with('success', "Proizvod je uspješno uređen.");
     }
 
     /**

@@ -19,7 +19,7 @@
             <li>
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
-                    Admin CP
+                    Admin Panel
                 </a>
             </li>
             <li>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="panel-body">
                         @if (count($errors) > 0)
-                            <div class="col-md-offset-2 col-md-10 alert alert-danger">
+                            <div class="col-md-12 alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -55,7 +55,7 @@
                             </div>
                         @endif
                         @if (session('success'))
-                            <div class="col-md-offset-2 col-md-10 alert alert-success">
+                            <div class="col-md-12 alert alert-success">
                                 {{ session('success') }}
                             </div>
                         @endif

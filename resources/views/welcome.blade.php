@@ -15,10 +15,19 @@
             </span>
             <div class="slider slider-v1" data-cycle-swipe=true data-cycle-prev=".prevControl" data-cycle-next=".nextControl" data-cycle-loader="wait">
                 <div class="slider-item slider-item-img1">
-                    <img src="images/slider/slider6.jpg" class="img-responsive parallaximg sliderImg" alt="img">
+                    <img src="images/slider/slider1.jpg" class="img-responsive parallaximg sliderImg" alt="img">
+                </div>
+                <div class="slider-item slider-item-img1">
+                    <img src="images/slider/slider2.jpg" class="img-responsive parallaximg sliderImg" alt="img">
+                </div>
+                <div class="slider-item slider-item-img1">
+                    <img src="images/slider/slider3.jpg" class="img-responsive parallaximg sliderImg" alt="img">
                 </div>
                 <div class="slider-item slider-item-img1">
                     <img src="images/slider/slider5.jpg" class="img-responsive parallaximg sliderImg" alt="img">
+                </div>
+                <div class="slider-item slider-item-img1">
+                    <img src="images/slider/slider4.jpg" class="img-responsive parallaximg sliderImg" alt="img">
                 </div>
                 {{--/.slider-item--}}
             </div>
@@ -91,6 +100,7 @@
                     <li style="margin-right: 5px;"><a href="http://www.elettrocanali.it/" target="_blank"><img src="images/brand/elettrocanali-logo.png" alt="elettrocanali-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.esse-ci.com/" target="_blank"><img src="images/brand/esseci-logo.png" alt="esseci-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.eti.ba/proizvodi-i-usluge" target="_blank"><img src="images/brand/eti-logo.png" alt="eti-logo"></a></li>
+                    <li style="margin-right: 5px;"><a href="https://www.hager.com/" target="_blank"><img src="images/brand/hager-logo.png" alt "hager-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.haupa.com/" target="_blank"><img src="images/brand/haupa-logo.png" alt="haupa-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.indel.pl/" target="_blank"><img src="images/brand/indel-logo.png" alt="indel-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://ir-luks.com/" target="_blank"><img src="images/brand/ir_luks-logo.png" alt="ir-luks-logo"></a></li>
