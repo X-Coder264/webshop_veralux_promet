@@ -248,8 +248,8 @@ class CategoryController extends Controller
             if (count($category->childrenCategories)) {
                 $list_items[] = '<a href="#">';
             } else {
-                $route = route('ProductCategory', $category->slug);
-                $list_items[] = '<a '.setActive('category/' . $category->slug . '/products').' href="'. $route . '">';
+                $route = route('ProductCategory', $category->slug, false);
+                $list_items[] = '<a '.setActive(substr($route, 1)).' href="'. $route . '">';
             }
 
             $list_items[] = $category->name;
