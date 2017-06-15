@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style type="text/css" rel="stylesheet" media="all">
         /* Media Queries */
         @media only screen and (max-width: 500px) {
@@ -53,7 +53,7 @@ $style = [
                  text-align: center; text-decoration: none; -webkit-text-size-adjust: none;',
     'button--orange' => 'background-color: #DB5E47;',
 ];
-$actionUrl=route('email-verification.check', $user->verification_token) . '?email=' . urlencode($user->email);
+$actionUrl = route('email-verification.check', $user->verification_token) . '?email=' . urlencode($user->email);
 ?>
 <?php $fontFamily = 'font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif;'; ?>
 <body style="{{ $style['body'] }}">
