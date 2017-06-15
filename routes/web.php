@@ -31,7 +31,9 @@ Route::get('about_us', function() {
     return view('about_us');
 })->name('about_us');
 
-Route::get('profile', 'ProfileController@index')->name('user.settings');
+Route::get('profile', 'ProfileController@index')->name('user.settings')->middleware('auth');
+Route::put('{user}/update', 'UsersController@update')->name('user.update')->middleware('auth');
+Route::post('{user}/passwordupdate', 'UsersController@passwordreset')->name('user.password.update')->middleware('auth');
 
 Route::post('subscribe', 'NewsletterController@store')->name('newsletter.subscribe');
 
@@ -40,7 +42,7 @@ Route::get('shop', 'CategoryController@index')->name("shop");
 
 Route::get('shop/products', 'CategoryController@index')->name('shop.products');
 Route::get('shop/products/{product}', 'ProductsController@show')->name("product.show");
-Route::get('category/{category}/products', 'CategoryController@show')->name("ProductCategory");
+Route::get('shop/{category}/products', 'CategoryController@show')->name("ProductCategory");
 Route::get('products/highlighted', 'HomeController@highlighted_products')->name("highlighted_products");
 Route::get('products/search', 'ProductsController@search')->name('products.search');
 
@@ -50,8 +52,8 @@ Route::delete('/products/deleteFromCart', 'CartController@destroy')->name("cart.
 
 Route::get('cart', 'CartController@index')->name("cart.show");
 Route::get('order', 'OrderController@store')->name("order.store")->middleware('auth');
-Route::get('orders', 'OrderController@index')->name("user.orders.show");
-Route::get('order/{order}', 'OrderController@show')->name("user.order.show");
+Route::get('orders', 'OrderController@index')->name("user.orders.show")->middleware('auth');
+Route::get('order/{order}', 'OrderController@show')->name("user.order.show")->middleware('auth');
 
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin'] ], function () {

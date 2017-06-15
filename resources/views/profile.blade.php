@@ -7,13 +7,23 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Korisnički profil</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('/profile/' . $user->id) }}" id="edit_profile">
+                    @if (session('success'))
+                        <div class="col-md-offset-2 col-md-10 alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="col-md-offset-2 col-md-10 alert alert-warning">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    <form class="form-horizontal" method="POST" action="{{ route('user.update', $user->slug) }}" id="edit_profile">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Ime i prezime</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }} {{ $user->surname }}" disabled>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }} {{ $user->surname }}" readonly>
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -24,7 +34,7 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-mail</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}" disabled>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}" readonly>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>
@@ -36,7 +46,7 @@
                         <div class="form-group{{ $errors->has('company') ? ' has-error' : '' }}">
                             <label for="company" class="col-md-4 control-label">Naziv tvrtke</label>
                             <div class="col-md-6">
-                                <input id="company" type="text" class="form-control" name="company" value="{{ $user->company }}" disabled>
+                                <input id="company" type="text" class="form-control" name="company" value="{{ $user->company }}">
                                 @if ($errors->has('company'))
                                     <span class="help-block">
                                 <strong>{{ $errors->first('company') }}</strong>
@@ -47,7 +57,7 @@
                         <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }}">
                             <label for="company_id" class="col-md-4 control-label">OIB tvrtke</label>
                             <div class="col-md-6">
-                                <input id="company_id" type="text" class="form-control" name="company_id" value="{{ $user->company_id }}" disabled>
+                                <input id="company_id" type="text" class="form-control" name="company_id" value="{{ $user->company_id }}">
                                 @if ($errors->has('company_id'))
                                     <span class="help-block">
                                 <strong>{{ $errors->first('company_id') }}</strong>
@@ -56,24 +66,24 @@
                             </div>
                         </div>
                         @endif
-                        <div class="form-group{{ $errors->has('post') ? ' has-error' : '' }}">
-                            <label for="post" class="col-md-4 control-label">Poštanski broj</label>
+                        <div class="form-group{{ $errors->has('postal') ? ' has-error' : '' }}">
+                            <label for="postal" class="col-md-4 control-label">Poštanski broj</label>
                             <div class="col-md-6">
-                                <input id="post" type="text" class="form-control" name="post" value="{{ $user->postal }}" required>
-                                @if ($errors->has('post'))
+                                <input id="postal" type="text" class="form-control" name="postal" value="{{ $user->postal }}" required>
+                                @if ($errors->has('postal'))
                                     <span class="help-block">
-                                <strong>{{ $errors->first('post') }}</strong>
+                                <strong>{{ $errors->first('postal') }}</strong>
                             </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
-                            <label for="place" class="col-md-4 control-label">Mjesto</label>
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <label for="city" class="col-md-4 control-label">Mjesto</label>
                             <div class="col-md-6">
-                                <input id="place" type="text" class="form-control" name="place" value="{{ $user->city }}" required>
-                                @if ($errors->has('place'))
+                                <input id="city" type="text" class="form-control" name="city" value="{{ $user->city }}" required>
+                                @if ($errors->has('city'))
                                     <span class="help-block">
-                                <strong>{{ $errors->first('place') }}</strong>
+                                <strong>{{ $errors->first('city') }}</strong>
                             </span>
                                 @endif
                             </div>

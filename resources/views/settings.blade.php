@@ -7,9 +7,18 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Promjena lozinke</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" id="edit-password" method="POST" action="{{ url('/settings/profile/change-password/' . \Auth::user()->id) }}">
+                    @if (session('success'))
+                        <div class="col-md-offset-2 col-md-10 alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="col-md-offset-2 col-md-10 alert alert-warning">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    <form class="form-horizontal" id="edit-password" method="POST" action="{{ route('user.password.update', Auth::user()->slug) }}">
                         {{ csrf_field() }}
-                        {{ method_field('PUT') }}
                         <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
                             <label for="old_password" class="col-md-4 control-label">Trenutna lozinka</label>
                             <div class="col-md-6">

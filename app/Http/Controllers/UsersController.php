@@ -7,13 +7,12 @@ use App\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Yajra\Datatables\Facades\Datatables;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -161,12 +160,15 @@ class UsersController extends Controller
             'postal'
         ]);
 
+        // check if the request is coming from the Admin CP route (if someone wants to add an admin)
+        $check = $request->session()->previousUrl() == route('admin.users.edit', $user->slug);
+
         // check if the user was updated
         if ($user->update($data)) {
             // the admin field is not fillable so an additional query is needed
-            if ($request->has('admin')) {
+            if ($request->has('admin') && $check) {
                 $user->admin = true;
-            } elseif(Auth::user()->id === $user->id) {
+            } elseif(Auth::user()->id === $user->id && $check) {
                 $user->admin = true;
             } elseif($user->id !== 1) {
                 $user->admin = false;
@@ -177,15 +179,15 @@ class UsersController extends Controller
             // Prepare the success message
             $success = "Promjene su uspješno spremljene.";
 
-            // Redirect to the user page
-            return Redirect::route('admin.users.edit', $user)->with('success', $success);
+            // Redirect back
+            return back()->with('success', $success);
         }
 
         // Prepare the error message
         $error = "Dogodila se pogreška";
 
-        // Redirect to the user page
-        return Redirect::route('admin.users.edit', $user)->withInput()->with('error', $error);
+        // Redirect back
+        return back()->withInput()->with('error', $error);
     }
 
     /**
@@ -288,6 +290,38 @@ class UsersController extends Controller
             $user->password = Hash::make($password, ['rounds' => 15]);
             if ($user->save()) {
                 return "success";
+            }
+        } else {
+            $validator = Validator::make($request->all(), [
+                'old_password' => 'required|min:6',
+                'password' => 'required|min:6|confirmed'
+            ], [
+                'old_password.required' => "Stara lozinka je obavezno polje.",
+                'old_password.min' => "Stara lozinka mora sadržavati minimalno 6 znakova.",
+                'password.required' => "Lozinka je obavezno polje.",
+                'password.min' => "Lozinka mora sadržavati minimalno 6 znakova.",
+                'password.confirmed' => "Lozinke se ne podudaraju.",
+            ]);
+
+            if ($validator->fails()) {
+                return back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            if (Hash::check($request->input('old_password'), $user->password)) {
+                $password = $request->input('password');
+                $user->password = Hash::make($password, ['rounds' => 15]);
+                if ($user->save()) {
+                    $success = "Lozinka je uspješno izmjenjena.";
+                    return back()->with('success', $success);
+                } else {
+                    $error = "Dogodila se pogreška, lozinka nije uspješno izmjenjena.";
+                    return back()->with('error', $error);
+                }
+            } else {
+                $error = "Vaša trenutna lozinka se ne podudara s našim zapisima.";
+                return back()->with('error', $error);
             }
         }
     }
