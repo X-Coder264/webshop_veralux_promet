@@ -2,7 +2,7 @@
 
 {{-- page level styles --}}
 @section('header_styles')
-    <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
 @stop
 
 {{-- Page content --}}
@@ -85,7 +85,7 @@
 
 {{-- page level scripts --}}
 @section('footer_scripts')
-    <script type="text/javascript" src="{{ asset('assets/js/sweetalert2.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('/js/sweetalert.min.js') }}" ></script>
 
 
     <script type="text/javascript">
@@ -113,11 +113,9 @@
                             swal({
                                 type: 'success',
                                 title: 'Uspjeh!',
-                                text: 'Kategorija je uspješno obrisana!',
-                                onClose: function(element)
-                                {
-                                    location.reload(true);
-                                }
+                                text: 'Kategorija je uspješno obrisana!'
+                            }, function(isConfirm){
+                                    location.reload(true)
                             });
                         }
                         else
