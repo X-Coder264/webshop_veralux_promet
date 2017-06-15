@@ -132,6 +132,27 @@ class ProductsController extends Controller
     {
         $data = $request->all();
 
+        $rules = [
+            'name' => 'required',
+            'description' => 'required',
+            'parent_subcategory' => 'required|integer',
+            'unit' => 'required',
+        ];
+
+        $messages = [
+            'name.required' => 'Naziv proizvoda je obavezan.',
+            'description.required' => 'Opis proizvoda je obavezan.',
+            'parent_subcategory.required' => 'Morate odabrati kategoriju u koju proizvod spada.',
+            'parent_subcategory.integer' => 'Niste ispravno odabrali kategoriju.',
+            'unit.required' => 'Mjerna jedinica proizvoda je obavezna.',
+        ];
+
+        $validator = Validator::make($data, $rules, $messages);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
         if ($request->has('highlighted') && $request->input('highlighted') == 'on') {
             $data['highlighted'] = true;
         } else {
