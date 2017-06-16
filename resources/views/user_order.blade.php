@@ -7,7 +7,7 @@
             <h1 class="section-title-inner"><span><i class="fa fa-list-alt"></i> Stanje narudžbe</span></h1>
             <div class="row userInfo">
                 <div class="col-lg-12">
-                    <h2 class="block-title-2"> Stanje narudžbe #{{$order->id}}</h2>
+                    <h2 class="block-title-2">Narudžba broj #{{$order->id}}</h2>
                 </div>
                 <div class="statusContent">
                     <div class="col-sm-12">
@@ -61,9 +61,9 @@
                 </div>
                 <div class="col-lg-12 clearfix">
                     <ul class="pager">
-                        <li class="previous pull-right"><a href="{{route('shop')}}"> <i class="fa fa-home"></i> Vratite se nazad u trgovinu</a>
+                        <li class="previous pull-right"><a href="{{route('shop')}}"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Kategorije proizvoda</a>
                         </li>
-                        <li class="next pull-left"><a href="{{route('user.orders.show')}}"> ← Vratite se nazad na sve narudžbe</a></li>
+                        <li class="next pull-left"><a href="{{route('user.orders.show')}}"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Lista narudžbi</a></li>
                     </ul>
                 </div>
             </div>

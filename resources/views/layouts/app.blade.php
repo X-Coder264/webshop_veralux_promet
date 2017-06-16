@@ -110,7 +110,6 @@
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                     <h3>Trgovina</h3>
                     <ul>
-                        <li><a href="/">Istaknuti proizvodi</a></li>
                         <li><a href="{{route('shop')}}">Kategorije proizvoda</a></li>
                     </ul>
                 </div>
@@ -133,7 +132,10 @@
                             <li><a href="/register">Registracija</a></li>
                         @else
                             {{--<li><a href="#"> Profil </a></li>--}}
-                            <li><a href="{{ route('user.orders.show') }}"> Lista narudžbi </a></li>
+                            <li><a href="{{ route('user.orders.show') }}">Lista narudžbi</a></li>
+                            <li><a href="{{ route('user.settings') }}">Profil</a></li>
+                            <li><a href="{{ route('user.password.change') }}">Promjena lozinke</a></li>
+
                         @endif
                     </ul>
                 </div>
@@ -145,9 +147,7 @@
                             <div class="input-append newsLatterBox text-center">
                                 <form method="POST" action="{{route('newsletter.subscribe')}}" id="newsletter">
                                     <input type="email" name="email" class="full text-center" placeholder="E-mail adresa">
-                                    <button class="btn bg-gray" type="submit">Šalji mi katalog
-                                        <i class="fa fa-long-arrow-right"></i>
-                                    </button>
+                                    <button class="btn bg-gray" type="submit"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Šalji mi katalog</button>
                                 </form>
                             </div>
                         </li>
@@ -167,7 +167,7 @@
     </div>
     <div class="footer-bottom">
         <div class="container">
-            <p class="pull-left">&copy; Pragma Once {{date("Y")}}. Sva prava pridržana.</p>
+            <p class="pull-left">&copy; Pragma Once {{ date("Y") }}. Sva prava pridržana.</p>
         </div>
     </div>
     {{--/.footer-bottom--}}

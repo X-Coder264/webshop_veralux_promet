@@ -35,7 +35,7 @@
                         @else
                             <ul class="userMenu">
                                 <li class="dropdown hasUserMenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        {{ Auth::user() -> name}}<b class="caret"></b></a>
+                                        <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;<span class="hidden-xs">{{ Auth::user()->name }}&nbsp;&nbsp;</span><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         @if(Auth::user()->admin)
                                             <li>
@@ -109,12 +109,12 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li {!! setActive('/') !!}><a href="/">Početna</a></li>
-                <li {!! setActive('shop*') !!}><a href="{{route('shop')}}">Kategorije proizvoda</a></li>
+                <li {!! setActive('/') !!}><a href="/"><i class="fa fa-home"></i>&nbsp;&nbsp;Početna</a></li>
+                <li {!! setActive('shop*') !!}><a href="{{route('shop')}}"><i class="fa fa-list"></i>&nbsp;&nbsp;Kategorije proizvoda</a></li>
                 {{--<li {!! setActive('/test') !!}><a href="#">Katalozi</a></li>--}}
-                <li {!! setActive('support_form') !!}><a href="{{route('support_form')}}">Pošalji upit </a></li>
-                <li {!! setActive('about_us') !!}><a href="{{route('about_us')}}">O nama</a></li>
-                <li {!! setActive('contact_us') !!}><a href="{{route('contact_us')}}">Kontakt</a></li>
+                <li {!! setActive('support_form') !!}><a href="{{route('support_form')}}"><i class="fa fa-question"></i>&nbsp;&nbsp;Pošalji upit </a></li>
+                <li {!! setActive('about_us') !!}><a href="{{route('about_us')}}"><i class="fa fa-plug"></i>&nbsp;&nbsp;O nama</a></li>
+                <li {!! setActive('contact_us') !!}><a href="{{route('contact_us')}}"><i class="fa fa-map"></i>&nbsp;&nbsp;Kontakt</a></li>
             </ul>
             {{--- this part will be hidden for mobile version --}}
             <div class="nav navbar-nav navbar-right hidden-xs">

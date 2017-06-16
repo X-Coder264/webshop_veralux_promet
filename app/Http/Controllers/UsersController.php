@@ -316,11 +316,11 @@ class UsersController extends Controller
                     $success = "Lozinka je uspješno izmjenjena.";
                     return back()->with('success', $success);
                 } else {
-                    $error = "Dogodila se pogreška, lozinka nije uspješno izmjenjena.";
+                    $error = "Dogodila se pogreška, lozinka nije izmjenjena.";
                     return back()->with('error', $error);
                 }
             } else {
-                $error = "Vaša trenutna lozinka se ne podudara s našim zapisima.";
+                $error = "Vaša trenutna lozinka se ne podudara s našim zapisom.";
                 return back()->with('error', $error);
             }
         }

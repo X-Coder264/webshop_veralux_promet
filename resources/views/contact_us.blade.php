@@ -14,7 +14,7 @@
                 <div class="row userInfo">
                     <div class="col-xs-12 col-sm-12">
                         <h1 class="title-big text-center section-title-style2">
-                            <span> Kontakt informacije </span>
+                            <span> KONTAKT INFORMACIJE </span>
                         </h1>
                         <p class="lead text-center">
                             <strong>Radno vrijeme:</strong>
@@ -90,7 +90,7 @@
                                     </strong>
                                     : <a style="direction: rtl; unicode-bidi: bidi-override;" href="mailto:filip.veran@veraluxpromet.hr">rh.temorpxularev@narev.pilif</a>
                                 </p>
-                                <br class="hidden-xs">
+                                <hr class="hidden-xs">
                                 <div style="clear:both"></div>
                                 <h3 class="block-title-5">
                                     Milivoj Veran

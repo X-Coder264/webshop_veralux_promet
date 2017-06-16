@@ -111,7 +111,7 @@
                         <br />
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary btn-block" id="submit">Provjeri i spremi izmjene</button>
+                                <button type="submit" class="btn btn-primary btn-block" id="submit"><i class="fa fa-check"></i>&nbsp;&nbsp;Provjeri i spremi izmjene</button>
                             </div>
                         </div>
                     </form>

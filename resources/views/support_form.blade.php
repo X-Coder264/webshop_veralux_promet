@@ -9,6 +9,7 @@
                     <img style="margin-bottom:10px" height="150" alt="Veralux-promet d.o.o." src="/images/veralux-promet.svg">
                     <h3>Brzo i jednostavno pošaljite upit</h3>
                 </div>
+                <hr>
                 <div class="form-group">
                     <label>Vaše ime:</label>
                     <input type="text" name="sender_name" class="form-control">

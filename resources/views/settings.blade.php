@@ -55,7 +55,7 @@
                         <br>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary btn-block">Promijeni lozinku</button>
+                                <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-check"></i>&nbsp;&nbsp;Promijeni lozinku</button>
                             </div>
                         </div>
                     </form>
