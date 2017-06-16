@@ -76,12 +76,12 @@ $actionUrl = route('email-verification.check', $user->verification_token) . '?em
                             <tr>
                                 <td style="{{ $fontFamily }} {{ $style['email-body_cell'] }}">
                                     <!-- Greeting -->
-                                    <h1 style="{{ $style['header-1'] }}">Pozdrav {{ $user->name }} {{ $user->surname }},</h1>
+                                    <h1 style="{{ $style['header-1'] }}">Pozdrav {{ $user->name }},</h1>
                                     <!-- Intro -->
                                     <p style="{{ $style['paragraph'] }}">Zahvaljujemo se na Vašoj registraciji.</p>
                                     <p style="{{ $style['paragraph'] }}">Vaši korisnički podaci su:</p>
                                     <p style="{{ $style['paragraph'] }}">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ime i prezime: {{ $user->name }} {{ $user->surname }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail: {{ $user->email }}<br>@if($user->company != '' && $user->company_id != '')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Naziv tvrtke: {{ $user->company }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OIB tvrtke: {{ $user->company_id }}<br>@endif&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Poštanski broj: {{ $user->postal }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mjesto: {{ $user->city }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adresa: {{ $user->address }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kontakt broj: {{ $user->phone }}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ime i prezime: {{ $user->name }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail: {{ $user->email }}<br>@if($user->company != '' && $user->company_id != '')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Naziv tvrtke: {{ $user->company }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OIB tvrtke: {{ $user->company_id }}<br>@endif&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Poštanski broj: {{ $user->postal }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mjesto: {{ $user->city }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adresa: {{ $user->address }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kontakt broj: {{ $user->phone }}
                                     </p>
                                     <hr>
                                     <p style="{{ $style['paragraph'] }}">Kliknite na gumb "Aktivacija korisničkog računa" kako bi aktivirali Vaš korisnički račun.</p>
