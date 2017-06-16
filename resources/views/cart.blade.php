@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('styles')
-<link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
-@endsection
-
 @section('content')
 <div class="container main-container headerOffset">
 
@@ -99,7 +95,6 @@
 @endsection
 
 @section('scripts')
-<script src="/js/sweetalert.min.js"></script>
     <script>
         $("table td.delete").click(function () {
             var token = $('meta[name="csrf-token"]').attr('content');
