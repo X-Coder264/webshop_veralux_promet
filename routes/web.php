@@ -45,6 +45,7 @@ Route::get('shop/products/{product}', 'ProductsController@show')->name("product.
 Route::get('shop/{category}/products', 'CategoryController@show')->name("ProductCategory");
 Route::get('products/highlighted', 'HomeController@highlighted_products')->name("highlighted_products");
 Route::get('products/search', 'ProductsController@search')->name('products.search');
+Route::delete('product/{product}/image/delete', 'ProductsController@deleteProductImage')->name('product_image.delete');
 
 Route::post('/product/storeToCart/{product}', 'CartController@store')->name("cart.store");;
 Route::post('/updateCart', 'CartController@update')->name("cart.update");

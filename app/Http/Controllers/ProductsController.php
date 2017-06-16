@@ -88,15 +88,10 @@ class ProductsController extends Controller
                 return back()->with(['error' => "Došlo je do pogreške. Molimo pokušajte kasnije."]);
             }
 
-            if ($key == 0) {
-                $product->main_image = $name;
-                $product->save();
-            } else {
-                $image = new ProductImage();
-                $image->product_id = $product->id;
-                $image->path = $name;
-                $image->save();
-            }
+            $image = new ProductImage();
+            $image->product_id = $product->id;
+            $image->path = $name;
+            $image->save();
         });
 
         return back()->with('success', "Proizvod je uspješno dodan.");
@@ -125,7 +120,30 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         $selectHTML = $this->renderCategoriesSelectHTML($product->parent_subcategory);
-        return view('admin.products.edit', compact('product', 'selectHTML'));
+        $product = $product->load('images');
+
+        $product_images = [];
+
+        for ($i = 0; $i < count($product->images); $i++) {
+            $product_images[$i]["name"] = $product->images[$i]->path;
+            $product_images[$i]["size"] = filesize(public_path() . "/product_images/" . $product->slug . "/". $product->images[$i]->path);
+            $product_images[$i]["type"] = mime_content_type(public_path() . "/product_images/" . $product->slug . "/". $product->images[$i]->path);
+            $product_images[$i]["file"] = "/product_images/" . $product->slug . "/". $product->images[$i]->path;
+            $product_images[$i]["data"]["imageID"] = $product->images[$i]->id;
+            $product_images[$i]["data"]["url"] = "/product_images/" . $product->slug . "/". $product->images[$i]->path;
+        }
+
+        $product_images = json_encode($product_images);
+
+        return view('admin.products.edit', compact('product', 'selectHTML', 'product_images'));
+    }
+
+    public function deleteProductImage(Request $request, Product $product)
+    {
+        $product_image = ProductImage::where('product_id', "=", $product->id)->where('id', "=", $request->input('imageID'))->first();
+        if (File::delete(public_path() . "/product_images/" . $product->slug . "/". $product_image->path) && $product_image->delete()) {
+            return "success";
+        }
     }
 
     public function update(Request $request, Product $product)
@@ -137,6 +155,8 @@ class ProductsController extends Controller
             'description' => 'required',
             'parent_subcategory' => 'required|integer',
             'unit' => 'required',
+            'images' => 'required',
+            'images.*' => 'image|mimes:jpg,jpeg,png,gif|max:10240'
         ];
 
         $messages = [
@@ -145,6 +165,10 @@ class ProductsController extends Controller
             'parent_subcategory.required' => 'Morate odabrati kategoriju u koju proizvod spada.',
             'parent_subcategory.integer' => 'Niste ispravno odabrali kategoriju.',
             'unit.required' => 'Mjerna jedinica proizvoda je obavezna.',
+            'images.required' => 'Obavezna je barem jedna slika.',
+            'images.*.image' => 'Ova datoteka nije slika.',
+            'images.*.mimes' => 'Dozvoljeni tipovi slika su: jpg, jpeg, png i gif.',
+            'images.*.max' => 'Maksimalna veličina jedne slike je 10 MB.',
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -160,6 +184,26 @@ class ProductsController extends Controller
         }
 
         $product->update($data);
+
+        $images = collect($request->file('images'));
+        $images->each(function ($item, $key) use (&$product) {
+            $name = $item->getClientOriginalName();
+
+            $image_file = Image::make($item);
+            $path = public_path() . '/product_images/' . $product->slug .'/';
+            File::makeDirectory($path, $mode = 0775, true, true);
+
+            try {
+                $image_file->save($path . $name);
+            } catch (NotWritableException $e) {
+                $product->delete();
+                return back()->with(['error' => "Došlo je do pogreške. Molimo pokušajte kasnije."]);
+            }
+                $image = new ProductImage();
+                $image->product_id = $product->id;
+                $image->path = $name;
+                $image->save();
+        });
 
         return back()->with('success', "Proizvod je uspješno uređen.");
     }

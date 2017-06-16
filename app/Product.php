@@ -65,6 +65,11 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_parent_id');
     }
 
+    public function main_image()
+    {
+        return $this->hasOne(ProductImage::class)->orderBy('id', 'asc');
+    }
+
     public function images()
     {
         return $this->hasMany(ProductImage::class);

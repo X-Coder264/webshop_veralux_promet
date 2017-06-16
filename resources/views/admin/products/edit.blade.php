@@ -4,8 +4,9 @@
 @section('header_styles')
     <link rel="stylesheet" href="/css/themes/default.min.css" />
     <link type="text/css" href="/css/awesome-bootstrap-checkbox.css" rel="stylesheet" />
-    <link href="/css/jquery.filer.css" type="text/css" rel="stylesheet" />
-    <link href="/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
+    <link href="/css/jquery.fileuploader.css" type="text/css" rel="stylesheet" />
+    <link href="/css/jquery.fileuploader-theme-dragdrop.css" media="all" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
 @stop
 
 {{-- Page content --}}
@@ -98,11 +99,9 @@
                                 <textarea id="description" name="description" class="form-control required" required>{{$product->description}}</textarea>
                             </div>
 
-                            {{--<div class="form-group">
-                                <div>Prva slika će biti glavna slika proizvoda, a ostale slike će se vidjeti u detaljima proizvoda u galeriji slika.</div>
-                                <label class="control-label">Odaberite slike</label>
-                                <input type="file" name="images[]" id="filer_input" accept="image/*" multiple>
-                            </div>--}}
+                            <div class="form-group">
+                                <input type="file" name="images" data-fileuploader-files='{{$product_images}}'>
+                            </div>
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block">Spremi izmjene</button>
@@ -118,6 +117,7 @@
             <!--col-md-6 ends-->
 
             <!--col-md-6 ends-->
+            </div>
         </div>
         <!--main content ends-->
     </section>
@@ -128,7 +128,8 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
     <script src="/js/jquery.sceditor.bbcode.min.js"></script>
-    <script src="/js/jquery.filer.min.js"></script>
+    <script src="/js/jquery.fileuploader.min.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
     <script>
         $(function() {
             // Replace all textarea tags with SCEditor
@@ -141,44 +142,45 @@
             });
         });
     </script>
-    <script>
-        $(document).ready(function() {
-            $('#filer_input').filer({
-                limit: 10,
-                maxSize: 8,
-                extensions: ["jpg", "jpeg", "png", "gif"],
-                showThumbs: true,
-                addMore: true,
-                changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-folder"></i></div><div class="jFiler-input-text"><h3>Kliknite ovdje</h3> <span style="display:inline-block; margin: 15px 0">ili</span></div><a class="jFiler-input-choose-btn btn-custom blue-light">Birajte slike</a></div></div>',
-                theme: "dragdropbox",
-                templates: filer_default_opts.templates,
-                captions: {
-                    button: "Odaberi slike",
-                    feedback: "Odaberi slike",
-                    feedback2: "slike su odabrane",
-                    removeConfirmation: "Jeste li sigurni da želite obrisati ovu sliku?",
-                    errors: {
-                        filesLimit: "Možete uploadati najviše 10 slika po proizvodu.",
-                        filesType: "Samo .jpg, .jpeg, .png i .gif slike su dopuštene.",
-                        filesSize: "Slika je prevelika. Najveća veličina pojedine slike je 5 MB.",
-                        filesSizeAll: "Files you've choosed are too large! Please upload files up to 5 MB."
-                    }
+    <script type="text/javascript">
+        $('input[name="images"]').fileuploader({
+            addMore: true,
+            theme: 'dragdrop',
+            extensions: ["jpg", "jpeg", "png", "gif"],
+            onRemove: function(item, listEl, parentEl, newInputEl, inputEl) {
+                console.log(item.data);
+
+                var removed = false;
+
+                var token = $('meta[name="csrf-token"]').attr('content');
+
+                if (item.data.hasOwnProperty('imageID')) {
+                    $.ajax({
+                        async: false,
+                        type: 'DELETE',
+                        url: "{{route('product_image.delete', $product->slug)}}",
+                        headers: {'X-CSRF-TOKEN': token},
+                        data: {imageID: item.data.imageID},
+                        error: function() {
+                            console.log("error");
+                            swal("Dogodila se greška.", "Molimo pokušajte kasnije!", "error");
+                        },
+                        success: function(data) {
+                            if(data === "success") {
+                                removed = true;
+                            } else {
+                                removed = false;
+                                swal("Dogodila se greška.", "Molimo pokušajte kasnije!", "error");
+                            }
+                        }
+                    });
+                } else {
+                    return true;
                 }
-            });
+
+                return removed;
+            }
         });
     </script>
-    {{--
-
-        <script src="{{ asset('assets/vendors/bootstrap-multiselect/js/bootstrap-multiselect.js') }}" ></script>
-        <script src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
-        <script src="{{ asset('assets/vendors/sifter/sifter.js') }}"></script>
-        <script src="{{ asset('assets/vendors/microplugin/microplugin.js') }}"></script>
-        <script src="{{ asset('assets/vendors/selectize/js/selectize.min.js') }}"></script>
-        <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-        <script src="{{ asset('assets/vendors/bootstrap-switch/js/bootstrap-switch.js') }}"></script>
-        <script src="{{ asset('assets/vendors/switchery/js/switchery.js') }}" ></script>
-        <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"></script>
-        <script src="{{ asset('assets/vendors/card/lib/js/jquery.card.js') }}"></script>
-        <script src="{{ asset('assets/js/pages/custom_elements.js') }}"></script>--}}
 
 @stop

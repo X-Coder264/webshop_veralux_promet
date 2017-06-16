@@ -25,16 +25,6 @@
                 <div class="product-images-carousel-wrapper">
                     <div class="productMainImage hasWhiteImg">
                         <ul class="bxslider product-view-slides product-view-slides-h ">
-                            <li>
-                                <div class='zoomContent'>
-                                    <a class="gall-item" title="{{ $product->main_image }}"
-                                       href="/product_images/{{ $product->slug }}/{{ $product->main_image }}"><img
-                                                class="zoomImage1 img-responsive"
-                                                data-src="/product_images/{{ $product->slug }}/{{ $product->main_image }}"
-                                                src='/product_images/{{ $product->slug }}/{{ $product->main_image }}' alt='Image Title'/></a>
-                                </div>
-                            </li>
-
                             @foreach($product->images as $image)
                                 <li>
                                     <div class='zoomContent'>
@@ -45,16 +35,13 @@
                                                     src='/product_images/{{ $product->slug }}/{{ $image->path }}' alt='Image Title'/></a>
                                     </div>
                                 </li>
-
                             @endforeach
                         </ul>
                     </div>
                     <div class="product-view-thumb-wrapper has-carousel-v hasWhiteImg">
                         <div class="product-view-thumb-nav prev"></div>
                         <ul id="bx-pager" class="product-view-thumb ">
-                            <li style="height: auto"><a class="thumb-item-link" data-slide-index="0" href=""><img
-                                            src="/product_images/{{ $product->slug }}/{{ $product->main_image }}" alt="img"/></a></li>
-                            <?php $i = 1; ?>
+                            <?php $i = 0; ?>
                             @foreach($product->images as $image)
                                 <li style="height: auto"><a class="thumb-item-link" data-slide-index="{{$i++}}" href=""><img
                                                 src="/product_images/{{ $product->slug }}/{{ $image->path }}" alt="img"/></a></li>

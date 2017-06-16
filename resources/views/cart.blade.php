@@ -33,7 +33,7 @@
                                 @foreach($products as $product)
                                     <tr class="CartProduct">
                                         <td class="CartProductThumb">
-                                            <div><a href="{{route('product.show', $product->slug)}}"><img src="/product_images/{{ $product->slug }}/{{$product->main_image}}" alt="img"></a>
+                                            <div><a href="{{route('product.show', $product->slug)}}"><img src="/product_images/{{ $product->slug }}/{{$product->main_image->path}}" alt="img"></a>
                                             </div>
                                         </td>
                                         <td>

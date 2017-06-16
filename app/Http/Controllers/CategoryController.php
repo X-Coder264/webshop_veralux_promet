@@ -21,7 +21,7 @@ class CategoryController extends Controller
         }
 
         if (empty($filters->filters())) {
-            $products = Product::orderBy('created_at', 'desc')->paginate(12);
+            $products = Product::with("main_image")->orderBy('created_at', 'desc')->paginate(12);
         } else {
             $products = Product::filter($filters);
         }

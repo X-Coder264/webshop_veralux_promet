@@ -26,7 +26,6 @@ class CreateProductsTable extends Migration
             $table->enum('unit', ['kom', 'm', 'kg']);
             $table->boolean('highlighted')->default(false);
             $table->string('slug');
-            $table->string('main_image')->default('');
             $table->timestamps();
             $table->softDeletes();
         });

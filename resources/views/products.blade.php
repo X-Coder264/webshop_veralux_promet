@@ -165,9 +165,7 @@
                         <div class="product">
                             <div class="image">
                                 <a href="{{route('product.show', $product->slug)}}">
-                                    @if($product->main_image != "")
-                                        <img src="/product_images/{{ $product->slug }}/{{ $product->main_image }}" alt="img" class="img-responsive">
-                                    @endif
+                                        <img src="/product_images/{{ $product->slug }}/{{ $product->main_image->path }}" alt="img" class="img-responsive">
                                 </a>
                             </div>
                             <div class="description">
