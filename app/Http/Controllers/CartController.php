@@ -34,14 +34,21 @@ class CartController extends Controller
                         Cache::decrement(Cookie::get('unique_id') . '.number_of_products_in_cart');
                     }
                 }
+            } else {
+                $DatabaseDeletedProduct = true;
+                unset($products_with_quantity);
             }
         } else {
             $products = new Collection();
         }
 
         if ($DatabaseDeletedProduct) {
-            $products_with_quantity  = array_values($products_with_quantity);
-            return response()->view('cart', compact('products'))->cookie('cart_product_IDs', serialize($products_with_quantity), 0);
+            if (isset($products_with_quantity)) {
+                $products_with_quantity  = array_values($products_with_quantity);
+                return response()->view('cart', compact('products'))->cookie('cart_product_IDs', serialize($products_with_quantity), 12 * 60);
+            } else {
+                return response()->view('cart', compact('products'))->cookie(Cookie::forget('cart_product_IDs'));
+            }
         }
 
         return view('cart', compact('products'));
@@ -70,17 +77,17 @@ class CartController extends Controller
             $value[0]['quantity'] = $request->input('quantity');
             $visitor = Cookie::get('unique_id');
             if (is_null($visitor)) {
-                return back()->withCookie(Cookie::forever('cart_product_IDs', serialize($value)))->withCookie(Cookie::forever('unique_id', uniqid('', true)));
+                return back()->withCookie(cookie('cart_product_IDs', serialize($value), 12 * 60))->withCookie(cookie('unique_id', uniqid('', true), 2628000));
             }
             Cache::increment($visitor . '.number_of_products_in_cart');
-            return back()->withCookie(Cookie::forever('cart_product_IDs', serialize($value)));
+            return back()->withCookie(cookie('cart_product_IDs', serialize($value), 12 * 60));
         } else {
             $products = unserialize($productIDs);
             $value['product_id'] = $product->id;
             $value['quantity'] = $request->input('quantity');
             $products[] = $value;
             Cache::increment(Cookie::get('unique_id') . '.number_of_products_in_cart');
-            return back()->withCookie(Cookie::forever('cart_product_IDs', serialize($products)));
+            return back()->withCookie(cookie('cart_product_IDs', serialize($products), 12 * 60));
         }
     }
 
@@ -108,7 +115,7 @@ class CartController extends Controller
         for ($i = 0; $i < count($products); $i++) {
             $products[$i]["quantity"] = $quantities[$i];
         }
-        return response("success")->withCookie(Cookie::forever('cart_product_IDs', serialize($products)));
+        return response("success")->withCookie(cookie('cart_product_IDs', serialize($products), 12 * 60));
     }
 
     public function destroy(Request $request)
@@ -123,7 +130,7 @@ class CartController extends Controller
         if (count($products_with_quantity) === 0) {
             return response(count($products_with_quantity))->cookie(Cookie::forget('cart_product_IDs'));
         } else {
-            return response(count($products_with_quantity))->cookie('cart_product_IDs', serialize($products_with_quantity), 0);
+            return response(count($products_with_quantity))->cookie('cart_product_IDs', serialize($products_with_quantity), 12 * 60);
         }
     }
 }
