@@ -34,3 +34,39 @@
 tr.CartProduct td input {
 	text-align: center;
 }
+
+.sweet-alert .sa-icon.sa-success::before {
+	-webkit-border-radius: 120px 0 0 120px;
+	border-radius: 120px 0 0 120px;
+	top: -7px;
+	left: -33px;
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-transform-origin: 60px 60px;
+	transform-origin: 60px 60px;
+	background-color: transparent;
+}
+
+.sweet-alert .sa-icon.sa-success .sa-fix {
+	width: 5px;
+	height: 90px;
+	background-color: transparent;
+	position: absolute;
+	left: 28px;
+	top: 8px;
+	z-index: 1;
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.sweet-alert .sa-icon.sa-success::after {
+	-webkit-border-radius: 0 120px 120px 0;
+	border-radius: 0 120px 120px 0;
+	top: -11px;
+	left: 30px;
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-transform-origin: 0px 60px;
+	transform-origin: 0px 60px;
+	background-color: transparent;
+}
