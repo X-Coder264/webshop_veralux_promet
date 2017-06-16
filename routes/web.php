@@ -47,9 +47,9 @@ Route::get('products/highlighted', 'HomeController@highlighted_products')->name(
 Route::get('products/search', 'ProductsController@search')->name('products.search');
 Route::delete('product/{product}/image/delete', 'ProductsController@deleteProductImage')->name('product_image.delete')->middleware(['auth', 'admin']);
 
-Route::post('/product/storeToCart/{product}', 'CartController@store')->name("cart.store");;
+Route::post('/product/storeToCart/{product}', 'CartController@store')->name("cart.store");
 Route::post('/updateCart', 'CartController@update')->name("cart.update");
-Route::delete('/products/deleteFromCart', 'CartController@destroy')->name("cart.delete");;
+Route::delete('/products/deleteFromCart', 'CartController@destroy')->name("cart.delete");
 
 Route::get('cart', 'CartController@index')->name("cart.show");
 Route::get('order', 'OrderController@store')->name("order.store")->middleware('auth');
