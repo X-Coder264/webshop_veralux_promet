@@ -37,12 +37,12 @@
                     </div>
                     <div class="panel-body">
                         @if (session('success'))
-                            <div class="col-md-offset-2 col-md-10 alert alert-success">
+                            <div class="col-md-12 alert alert-success">
                                 {{ session('success') }}
                             </div>
                         @endif
                         @if (session('error'))
-                            <div class="col-md-offset-2 col-md-10 alert alert-warning">
+                            <div class="col-md-12 alert alert-warning">
                                 {{ session('error') }}
                             </div>
                         @endif
@@ -51,113 +51,102 @@
                             <!-- CSRF Token -->
                             {{ csrf_field() }}
 
-                            <div id="rootwizard">
-                                <ul>
-                                    <li><a href="#tab1" data-toggle="tab">Korisnički profil</a></li>
-                                    <li><a href="#tab2" data-toggle="tab">Adresa</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane" id="tab1">
-                                        <h2 class="hidden">&nbsp;</h2>
-                                        <div class="form-group {{ $errors->first('name', 'has-error') }}">
-                                            <label for="name" class="col-sm-2 control-label">Ime i prezime *</label>
-                                            <div class="col-sm-10">
-                                                <input id="name" name="name" type="text"
-                                                       placeholder="Ime i prezime" class="form-control required" value="{!! old('name') !!}" required>
+                            <div class="form-group {{ $errors->first('name', 'has-error') }}">
+                                <label for="name" class="col-sm-2 control-label">Ime i prezime *</label>
+                                <div class="col-sm-10">
+                                    <input id="name" name="name" type="text"
+                                           placeholder="Ime i prezime" class="form-control required" value="{!! old('name') !!}" required>
 
-                                                {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
-                                            </div>
-                                        </div>
+                                    {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
+                                </div>
+                            </div>
 
-                                        <div class="form-group {{ $errors->first('email', 'has-error') }}">
-                                            <label for="email" class="col-sm-2 control-label">E-mail *</label>
-                                            <div class="col-sm-10">
-                                                <input id="email" name="email" placeholder="E-mail" type="text"
-                                                       class="form-control required email" value="{!! old('email') !!}" required>
-                                                {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
-                                            </div>
-                                        </div>
+                            <div class="form-group {{ $errors->first('email', 'has-error') }}">
+                                <label for="email" class="col-sm-2 control-label">E-mail *</label>
+                                <div class="col-sm-10">
+                                    <input id="email" name="email" placeholder="E-mail" type="text"
+                                           class="form-control required email" value="{!! old('email') !!}" required>
+                                    {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
+                                </div>
+                            </div>
 
-                                        <div class="form-group {{ $errors->first('password', 'has-error') }}">
-                                            <label for="password" class="col-sm-2 control-label">Lozinka *</label>
-                                            <div class="col-sm-10">
-                                                <input id="password" name="password" type="password" placeholder="Lozinka"
-                                                       class="form-control required" value="{!! old('password') !!}" required>
-                                                {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
-                                            </div>
-                                        </div>
+                            <div class="form-group {{ $errors->first('password', 'has-error') }}">
+                                <label for="password" class="col-sm-2 control-label">Lozinka *</label>
+                                <div class="col-sm-10">
+                                    <input id="password" name="password" type="password" placeholder="Lozinka"
+                                           class="form-control required" value="{!! old('password') !!}" required>
+                                    {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
+                                </div>
+                            </div>
 
-                                        <div class="form-group {{ $errors->first('password_confirm', 'has-error') }}">
-                                            <label for="password_confirm" class="col-sm-2 control-label">Ponovi lozinku *</label>
-                                            <div class="col-sm-10">
-                                                <input id="password_confirm" name="password_confirm" type="password"
-                                                       placeholder="Ponovi lozinku" class="form-control required"
-                                                       value="{!! old('password_confirm') !!}" required>
-                                                {!! $errors->first('password_confirm', '<span class="help-block">:message</span>') !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab2" disabled="disabled">
+                            <div class="form-group {{ $errors->first('password_confirm', 'has-error') }}">
+                                <label for="password_confirm" class="col-sm-2 control-label">Ponovi lozinku *</label>
+                                <div class="col-sm-10">
+                                    <input id="password_confirm" name="password_confirm" type="password"
+                                           placeholder="Ponovi lozinku" class="form-control required"
+                                           value="{!! old('password_confirm') !!}" required>
+                                    {!! $errors->first('password_confirm', '<span class="help-block">:message</span>') !!}
+                                </div>
+                            </div>
 
-                                        <div class="form-group">
-                                            <label for="company" class="col-sm-2 control-label">Tvrtka</label>
-                                            <div class="col-sm-10">
-                                                <input id="company" name="company" type="text" class="form-control" placeholder="Tvrtka"
-                                                       value="{!! old('company') !!}">
-                                            </div>
-                                            <span class="help-block">{{ $errors->first('company', ':message') }}</span>
-                                        </div>
+                            <div class="form-group">
+                                <label for="company" class="col-sm-2 control-label">Tvrtka</label>
+                                <div class="col-sm-10">
+                                    <input id="company" name="company" type="text" class="form-control" placeholder="Tvrtka"
+                                           value="{!! old('company') !!}">
+                                </div>
+                                <span class="help-block">{{ $errors->first('company', ':message') }}</span>
+                            </div>
 
-                                        <div class="form-group">
-                                            <label for="company_id" class="col-sm-2 control-label">OIB tvrtke</label>
-                                            <div class="col-sm-10">
-                                                <input id="company_id" name="company_id" type="text" class="form-control" placeholder="OIB tvrtke"
-                                                       value="{!! old('company_id') !!}">
-                                            </div>
-                                            <span class="help-block">{{ $errors->first('company_id', ':message') }}</span>
-                                        </div>
+                            <div class="form-group">
+                                <label for="company_id" class="col-sm-2 control-label">OIB tvrtke</label>
+                                <div class="col-sm-10">
+                                    <input id="company_id" name="company_id" type="text" class="form-control" placeholder="OIB tvrtke"
+                                           value="{!! old('company_id') !!}">
+                                </div>
+                                <span class="help-block">{{ $errors->first('company_id', ':message') }}</span>
+                            </div>
 
-                                        <div class="form-group">
-                                            <label for="phone" class="col-sm-2 control-label">Telefon</label>
-                                            <div class="col-sm-10">
-                                                <input id="phone" name="phone" type="text" class="form-control" placeholder="Telefon"
-                                                       value="{!! old('phone') !!}"/>
-                                            </div>
-                                            <span class="help-block">{{ $errors->first('phone', ':message') }}</span>
-                                        </div>
+                            <div class="form-group">
+                                <label for="phone" class="col-sm-2 control-label">Telefon</label>
+                                <div class="col-sm-10">
+                                    <input id="phone" name="phone" type="text" class="form-control" placeholder="Telefon"
+                                           value="{!! old('phone') !!}"/>
+                                </div>
+                                <span class="help-block">{{ $errors->first('phone', ':message') }}</span>
+                            </div>
 
-                                        <div class="form-group">
-                                            <label for="place" class="col-sm-2 control-label">Mjesto</label>
-                                            <div class="col-sm-10">
-                                                <input id="place" name="place" type="text" class="form-control" placeholder="Mjesto"
-                                                       value="{!! old('place') !!}"/>
-                                            </div>
-                                            <span class="help-block">{{ $errors->first('place', ':message') }}</span>
-                                        </div>
+                            <div class="form-group">
+                                <label for="place" class="col-sm-2 control-label">Mjesto</label>
+                                <div class="col-sm-10">
+                                    <input id="place" name="place" type="text" class="form-control" placeholder="Mjesto"
+                                           value="{!! old('place') !!}"/>
+                                </div>
+                                <span class="help-block">{{ $errors->first('place', ':message') }}</span>
+                            </div>
 
-                                        <div class="form-group">
-                                            <label for="address" class="col-sm-2 control-label">Adresa</label>
-                                            <div class="col-sm-10">
-                                                <input id="address" name="address" type="text" class="form-control" placeholder="Adresa"
-                                                       value="{!! old('address') !!}"/>
-                                            </div>
-                                            <span class="help-block">{{ $errors->first('address', ':message') }}</span>
-                                        </div>
+                            <div class="form-group">
+                                <label for="address" class="col-sm-2 control-label">Adresa</label>
+                                <div class="col-sm-10">
+                                    <input id="address" name="address" type="text" class="form-control" placeholder="Adresa"
+                                           value="{!! old('address') !!}"/>
+                                </div>
+                                <span class="help-block">{{ $errors->first('address', ':message') }}</span>
+                            </div>
 
-                                        <div class="form-group">
-                                            <label for="post" class="col-sm-2 control-label">Poštanski broj</label>
-                                            <div class="col-sm-10">
-                                                <input id="post" name="post" type="text" class="form-control" placeholder="Poštanski broj"
-                                                       value="{!! old('post') !!}">
-                                            </div>
-                                            <span class="help-block">{{ $errors->first('post', ':message') }}</span>
-                                        </div>
-                                    </div>
-                                    <ul class="pager wizard">
-                                        <li class="previous"><a href="#">Nazad</a></li>
-                                        <li class="next"><a href="#">Naprijed</a></li>
-                                        <li class="next finish" style="display:none;"><a href="javascript:;">Kraj</a></li>
-                                    </ul>
+                            <div class="form-group">
+                                <label for="post" class="col-sm-2 control-label">Poštanski broj</label>
+                                <div class="col-sm-10">
+                                    <input id="post" name="post" type="text" class="form-control" placeholder="Poštanski broj"
+                                           value="{!! old('post') !!}">
+                                </div>
+                                <span class="help-block">{{ $errors->first('post', ':message') }}</span>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        Dodaj korisnika
+                                    </button>
                                 </div>
                             </div>
                         </form>

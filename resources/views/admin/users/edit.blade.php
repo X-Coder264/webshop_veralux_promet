@@ -26,7 +26,7 @@
                 <div class="panel panel-primary">
                     @if ($user->trashed())
                         <div class="alert alert-warning">
-                            Ovaj korisnik je deaktiviran što znači da ga ne možete uređivati.
+                            Ovaj korisnik je deaktiviran te ga ne možete uređivati.
                         </div>
                     @else
                         <div class="panel-heading">
