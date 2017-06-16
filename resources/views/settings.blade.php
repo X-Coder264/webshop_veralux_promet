@@ -8,12 +8,12 @@
                 <div class="panel-heading">Promjena lozinke</div>
                 <div class="panel-body">
                     @if (session('success'))
-                        <div class="col-md-offset-2 col-md-10 alert alert-success">
+                        <div class="col-md-12 alert alert-success">
                             {{ session('success') }}
                         </div>
                     @endif
                     @if (session('error'))
-                        <div class="col-md-offset-2 col-md-10 alert alert-warning">
+                        <div class="col-md-12 alert alert-warning">
                             {{ session('error') }}
                         </div>
                     @endif

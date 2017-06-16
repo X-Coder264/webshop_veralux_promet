@@ -76,7 +76,7 @@
                         <div class="row row-filter clearfix ">
                             <div class="col-sm-12">
                                 @if (count($errors) > 0)
-                                    <div class="alert alert-danger">
+                                    <div class="alert alert-info">
                                         <ul>
                                             @foreach ($errors->all() as $error)
                                                 <li>{{ $error }}</li>
@@ -96,7 +96,7 @@
                                     Dodaj u košaricu
                                 </button>
                                 @else
-                                 <div class="alert alert-danger" role="alert">
+                                 <div class="alert alert-info" role="alert">
                                     <strong>Proizvod je dodan u košaricu. Količinu ovog proizvoda možete promijeniti unutar košarice.</strong>
                                  </div>
                                 @endif
