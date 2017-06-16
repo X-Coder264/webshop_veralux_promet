@@ -169,7 +169,7 @@ class RegisterController extends Controller
         }
 
         UserVerification::generate($user);
-        UserVerification::send($user, 'Aktivacija korisničkog računa', 'info@veraluxpromet.hr', 'Veralux-promet d.o.o.');
+        UserVerification::send($user, 'Aktivacija korisničkog računa', 'info@veraluxpromet.hr', 'Veralux-Promet d.o.o.');
 
         return redirect($this->redirectPath())->with('warning', 'Poslana je aktivacijska poveznica na ' . $user->email . '. Kliknite na dobivenu poveznicu kako biste aktivirali Vaš korisnički račun.');
     }

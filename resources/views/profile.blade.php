@@ -42,7 +42,6 @@
                                 @endif
                             </div>
                         </div>
-                        @if($user->company != '' && $user->company_id != '')
                         <div class="form-group{{ $errors->has('company') ? ' has-error' : '' }}">
                             <label for="company" class="col-md-4 control-label">Naziv tvrtke</label>
                             <div class="col-md-6">
@@ -65,7 +64,6 @@
                                 @endif
                             </div>
                         </div>
-                        @endif
                         <div class="form-group{{ $errors->has('postal') ? ' has-error' : '' }}">
                             <label for="postal" class="col-md-4 control-label">Poštanski broj</label>
                             <div class="col-md-6">

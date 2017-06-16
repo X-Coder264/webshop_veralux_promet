@@ -41,15 +41,15 @@ $style = [
     'anchor' => 'color: #E4791D;',
     'anchor-footer' => 'color: #E4791D; text-decoration: none;',
     'header-1' => 'margin-top: 0; color: #000; font-size: 19px; font-weight: bold; text-align: left;',
-    'paragraph' => 'margin-top: 0; color: #000; font-size: 16px; line-height: 1.5em;',
+    'paragraph' => 'margin-top: 0; color: #111; font-size: 16px; line-height: 1.5em;',
     'paragraph-sub' => 'margin-top: 0; color: #333; font-size: 12px; line-height: 1.5em;',
-    'paragraph-sub-footer' => 'margin-top: 0; color: #000; font-size: 12px; line-height: 1.5em;',
+    'paragraph-sub-footer' => 'margin-top: 0; color: #111; font-size: 12px; line-height: 1.5em;',
     'paragraph-center' => 'text-align: center;',
 
     /* Buttons ------------------------------ */
 
     'button' => 'display: block; display: inline-block; width: 200px; min-height: 20px; padding: 10px;
-                 background-color: #3869D4; border-radius: 3px; color: #000; font-size: 15px; line-height: 25px;
+                 background-color: #3869D4; border-radius: 3px; color: #fff; font-size: 15px; line-height: 25px;
                  text-align: center; text-decoration: none; -webkit-text-size-adjust: none;',
     'button--orange' => 'background-color: #E4791D;',
 ];
