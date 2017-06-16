@@ -72,7 +72,7 @@ body > .header {
 
 @media screen and (min-width: 992px) {
     .left-side {
-        top: 50px;
+        top: 130px;
     }
 
     /*Right side strech mode*/
@@ -265,8 +265,8 @@ body > .header .navbar .nav > li > a:hover > .label {
 body > .header .logo {
     display: block;
     float: left;
-    height: 50px;
-    line-height: 50px;
+    height: 130px;
+    line-height: 130px;
     padding: 0 10px;
     text-align: center;
     width: 250px;
@@ -2284,8 +2284,12 @@ Customized Bootstrap Buttons
     margin-bottom: 5px;
 }
 
-.category_button:hover {
+.category_button:hover, 
+.category_button:focus,
+.category_button:active {
 	background-color: transparent;
 	color: #EF6F6C;
 	text-decoration: underline;
 }
+
+button:focus {outline:0 !important;}

@@ -16,7 +16,7 @@
             <li>
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
-                    Admin CP
+                    Admin Panel
                 </a>
             </li>
             <li>

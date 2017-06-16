@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>
         @section('title')
-            Veralux-promet d.o.o.
+            Veralux-Promet d.o.o.
         @show
     </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -33,9 +33,11 @@
 
 <body class="skin-josh">
 <header class="header">
-    <a href="{{ route('admin.dashboard') }}" class="logo">
-        <span style="color: white;">Veralux-promet</span>
-    </a>
+    <div class="logo">
+        <a href="{{ route('admin.dashboard') }}">
+            <img height="100" alt="Veralux-promet" src="/images/veralux-promet.svg">
+        </a>
+    </div>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <div>

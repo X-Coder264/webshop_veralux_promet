@@ -89,10 +89,6 @@
 	background-color: #555;
 }
 
-.jFiler-input-choose-btn:active {
-    background-color: #555;
-}
-
 /* gray */
 .jFiler-input-choose-btn.gray {
     background-image: -webkit-gradient(linear,0 0,0 100%,from(#fcfcfc),to(#f5f5f5));

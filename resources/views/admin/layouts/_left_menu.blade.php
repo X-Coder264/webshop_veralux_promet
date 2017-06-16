@@ -39,13 +39,13 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            <li {!! (Request::is('admin/products') ? 'class="active"' : '') !!}>
+            <li {!! (Request::is('admin/products') ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ route('admin.products.index') }}">
                     <i class="fa fa-angle-double-right"></i>
                     Svi proizvodi
                 </a>
             </li>
-            <li {!! (Request::is('admin/products/create') ? 'class="active"' : '') !!}>
+            <li {!! (Request::is('admin/products/create') ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ route('admin.products.create') }}">
                     <i class="fa fa-angle-double-right"></i>
                     Dodaj proizvod

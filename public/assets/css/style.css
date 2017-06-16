@@ -5130,7 +5130,7 @@ div.quickview {
     }
 
     .navbar-top i {
-        font-size: 16px;
+        font-size: 18px;
         font-style: normal;
         font-weight: normal;
         line-height: 1;
@@ -6171,7 +6171,6 @@ div.quickview {
     .about-content .lead-2 {
         margin: 0 0 15px;
     }
-
 }
 
 .white-bg {
@@ -6181,3 +6180,5 @@ div.quickview {
 .cursor-pointer{
     cursor: pointer;
 }
+
+button:focus {outline:0 !important;}
