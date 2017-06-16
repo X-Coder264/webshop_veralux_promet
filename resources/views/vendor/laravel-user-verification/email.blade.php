@@ -16,15 +16,15 @@
 $style = [
     /* Layout ------------------------------ */
 
-    'body' => 'margin: 0; padding: 0; width: 100%; background-color: #222327;',
-    'email-wrapper' => 'width: 100%; margin: 0; padding: 0; background-color: #222327;',
+    'body' => 'margin: 0; padding: 0; width: 100%; background-color: #808285;',
+    'email-wrapper' => 'width: 100%; margin: 0; padding: 0; background-color: #808285;',
 
     /* Masthead ----------------------- */
 
-    'email-masthead' => 'padding: 25px 0; text-align: center; border-bottom: 2px solid #DB5E47;',
-    'email-masthead_name' => 'font-size: 16px; font-weight: bold; color: #DB5E47; text-transform: uppercase; text-decoration: none; text-shadow: 0 1px 0 white;',
+    'email-masthead' => 'padding: 25px 0; text-align: center; border-bottom: 2px solid #E4791D;',
+    'email-masthead_name' => 'font-size: 16px; font-weight: bold; color: #E4791D; text-transform: uppercase; text-decoration: none; text-shadow: 0 1px 0 white;',
 
-    'email-body' => 'width: 100%; margin: 0; padding: 0; border-bottom: 2px solid #DB5E47; background-color: #222327;;',
+    'email-body' => 'width: 100%; margin: 0; padding: 0; border-bottom: 2px solid #E4791D; background-color: #808285;;',
     'email-body_inner' => 'width: auto; max-width: 570px; margin: 0 auto; padding: 0;',
     'email-body_cell' => 'padding: 35px;',
 
@@ -38,10 +38,10 @@ $style = [
 
     /* Type ------------------------------ */
 
-    'anchor' => 'color: #DB5E47;',
-    'anchor-footer' => 'color: #DB5E47; text-decoration: none;',
+    'anchor' => 'color: #E4791D;',
+    'anchor-footer' => 'color: #E4791D; text-decoration: none;',
     'header-1' => 'margin-top: 0; color: #fff; font-size: 19px; font-weight: bold; text-align: left;',
-    'paragraph' => 'margin-top: 0; color: #aaa; font-size: 16px; line-height: 1.5em;',
+    'paragraph' => 'margin-top: 0; color: #fff; font-size: 16px; line-height: 1.5em;',
     'paragraph-sub' => 'margin-top: 0; color: #888; font-size: 12px; line-height: 1.5em;',
     'paragraph-sub-footer' => 'margin-top: 0; color: #fff; font-size: 12px; line-height: 1.5em;',
     'paragraph-center' => 'text-align: center;',
@@ -51,7 +51,7 @@ $style = [
     'button' => 'display: block; display: inline-block; width: 200px; min-height: 20px; padding: 10px;
                  background-color: #3869D4; border-radius: 3px; color: #fff; font-size: 15px; line-height: 25px;
                  text-align: center; text-decoration: none; -webkit-text-size-adjust: none;',
-    'button--orange' => 'background-color: #DB5E47;',
+    'button--orange' => 'background-color: #E4791D;',
 ];
 $actionUrl = route('email-verification.check', $user->verification_token) . '?email=' . urlencode($user->email);
 ?>
