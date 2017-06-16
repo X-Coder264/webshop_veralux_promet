@@ -104,10 +104,10 @@ $actionUrl = route('email-verification.check', $user->verification_token) . '?em
                                     </p>
                                     <!-- Salutation -->
                                     <p style="{{ $style['paragraph'] }}">
-                                        Lijep pozdrav,<br>Vaš Veralux-promet<br>
+                                        Lijep pozdrav,<br>Vaš Veralux-Promet<br>
                                     </p>
                                     <p style="{{ $style['paragraph'] }}">
-                                        Veralux-promet d.o.o.<br>Vrankovec 4/H<br>49223 Sveti Križ Začretje<br>OIB: 44635399735<br><a style="{{ $style['anchor-footer'] }}" target="_blank" href="https://www.veraluxpromet.hr">www.veraluxpromet.hr</a>
+                                        Veralux-Promet d.o.o.<br>Vrankovec 4/H<br>49223 Sveti Križ Začretje<br>OIB: 44635399735<br><a style="{{ $style['anchor-footer'] }}" target="_blank" href="https://www.veraluxpromet.hr">www.veraluxpromet.hr</a>
                                     </p>
                                     <!-- Sub Copy -->
                                     <table style="{{ $style['body_sub'] }}">
@@ -138,7 +138,7 @@ $actionUrl = route('email-verification.check', $user->verification_token) . '?em
                                 <td style="{{ $fontFamily }} {{ $style['email-footer_cell'] }}">
                                     <p style="{{ $style['paragraph-sub-footer'] }}">
                                         &copy; {{ date('Y') }}
-                                        <a style="{{ $style['anchor-footer'] }}" href="{{ url('https://www.veraluxpromet.hr') }}" target="_blank">Veralux-promet d.o.o.</a>
+                                        <a style="{{ $style['anchor-footer'] }}" href="{{ url('https://www.veraluxpromet.hr') }}" target="_blank">Veralux-Promet d.o.o.</a>
                                         Sva prava pridržana.
                                     </p>
                                 </td>
