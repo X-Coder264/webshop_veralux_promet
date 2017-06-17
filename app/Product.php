@@ -20,8 +20,7 @@ class Product extends Model
     {
         return [
             'slug' => [
-                'source' => 'name',
-                'onUpdate' => true,
+                'source' => 'name'
             ],
         ];
     }
