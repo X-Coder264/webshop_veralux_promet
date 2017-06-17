@@ -58,7 +58,11 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        $user = User::where('email', $request->input('email'))->first(['verified', 'verification_token']);
+        $user = User::where('email', $request->input('email'))->first();
+
+        if ($user !== null && $user->trashed()) {
+            return back()->with('warning', 'Vaš korisnički račun je deaktiviran. Molimo da se obratite tehničkoj podršci.');
+        }
 
         if ($user !== null && ! $user->isVerified()) {
             return back()->with('warning', 'Vaš korisnički račun nije aktiviran. Aktivacijska poveznica bila Vam je poslana na ' . $request->input('email') . '. Molimo aktivirajte Vaš korisnički račun pomoću dobivene aktivacijske poveznice.');
