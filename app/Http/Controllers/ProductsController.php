@@ -155,8 +155,8 @@ class ProductsController extends Controller
             'description' => 'required',
             'parent_subcategory' => 'required|integer',
             'unit' => 'required',
-            'images' => 'required',
-            'images.*' => 'image|mimes:jpg,jpeg,png,gif|max:10240'
+            'images' => 'sometimes|required',
+            'images.*' => 'sometimes|image|mimes:jpg,jpeg,png,gif|max:10240'
         ];
 
         $messages = [
@@ -175,6 +175,12 @@ class ProductsController extends Controller
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
+        }
+
+        $product_images_count = ProductImage::where('product_id', "=", $product->id)->count();
+
+        if ($product_images_count === 0 && $request->has('images') === false) {
+            return back()->with("error", "Proizvod mora imati barem jednu sliku!");
         }
 
         if ($request->has('highlighted') && $request->input('highlighted') == 'on') {

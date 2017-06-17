@@ -60,6 +60,11 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+                        @if (session('error'))
+                            <div class="col-md-12 alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <form action="{{ route('admin.products.update', $product) }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             {{method_field('PATCH')}}
