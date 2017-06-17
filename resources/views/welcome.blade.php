@@ -49,13 +49,11 @@
         <div class="container">
             <div class="row categoryProduct xsResponse clearfix" id="highlighted-products">
                 @foreach($products as $product)
-                    <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6 cursor-pointer" onclick="window.location='/trgovina/proizvod/{{ $product->slug }}';">
+                    <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6 cursor-pointer" onclick="window.location='/{{route('product.show', $product->slug)}}';">
                         <div class="product">
                             <div class="image">
                                 <a href="{{route('product.show', $product->slug)}}">
-                                    @if($product->main_image != "")
-                                        <img src="/product_images/{{ $product->slug }}/{{ $product->main_image }}" alt="img" class="img-responsive">
-                                    @endif
+                                        <img src="/product_images/{{ $product->slug }}/{{ $product->main_image->path }}" alt="img" class="img-responsive">
                                 </a>
                                 <div class="promotion">
                                     <span class="new-product">Istaknuti proizvod</span>
