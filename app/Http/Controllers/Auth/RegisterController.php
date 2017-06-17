@@ -79,10 +79,10 @@ class RegisterController extends Controller
         $messages = [
             'name.required' => "Ime je obavezno polje.",
             'name.max' => "Ime smije sadržavati maksimalno 255 znakova.",
-            'company.required_with' => "Ako je unešen OIB tvrtke, mora biti unešen i naziv tvrtke.",
+            'company.required_with' => "Ukoliko ste unijeli OIB tvrtke, potrebno je unijeti i naziv.",
             'company.max' => "Naziv tvrtke smije sadržavati maksimalno 255 znakova.",
             'company_id.max' => "OIB tvrtke smije sadržavati maksimalno 255 znakova.",
-            'company_id.required_with' => "Ako je unešen naziv tvrtke, mora biti unešen i OIB tvrtke.",
+            'company_id.required_with' => "Ukoliko ste unijeli naziv tvrtke, potrebno je unijeti i OIB tvrtke.",
             'post.required' => "Poštanski broj je obavezno polje.",
             'post.max' => "Poštanski broj smije sadržavati maksimalno 255 znakova.",
             'place.required' => "Mjesto je obavezno polje.",

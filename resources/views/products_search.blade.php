@@ -30,7 +30,7 @@
                                             {{--/.item--}}
                                         </div>
                                     @else
-                                        <div class="alert alert-danger" role="alert">
+                                        <div class="alert alert-info" role="alert">
                                             <strong>Nije pronađen niti jedan proizvod.</strong>
                                         </div>
                                     @endif

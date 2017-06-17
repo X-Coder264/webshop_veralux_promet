@@ -75,36 +75,35 @@
                             </span>
                         @endif
                     </div>
-                    <br>
-                    <div class="panel panel-default">
+                    <div style="margin-bottom:15px; margin-top:20px;" class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a href="#pravna" data-toggle="collapse" class="collapsed">PRAVNA OSOBA - posjedujem tvrtku <b class="caret"></b></a>
+                                <a href="#company" data-toggle="collapse" class="collapsed">PRAVNA OSOBA - posjedujem tvrtku <b class="caret"></b></a>
                             </h4>
                         </div>
-                        <div class="panel-collapse collapse" id="pravna" style="height: 0px;">
+                        <div class="panel-collapse collapse" id="company" style="height: 0px;">
                             <div class="panel-body">
                                 <div class="form-group {{ $errors->has('company') ? ' has-error' : '' }}">
                                     <label>Naziv tvrtke</label>
                                     <input type="text" class="form-control" name="company" placeholder="Naziv tvrtke" value="{{ old('company') }}">
-                                    @if ($errors->has('company'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('company') }}</strong>
-                                    </span>
-                                    @endif
                                 </div>
                                 <div class="form-group {{ $errors->has('company_id') ? ' has-error' : '' }}">
                                     <label>OIB tvrtke</label>
                                     <input type="text" class="form-control" name="company_id" placeholder="OIB tvrtke" value="{{ old('company_id') }}">
-                                    @if ($errors->has('company_id'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('company_id') }}</strong>
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @if ($errors->has('company'))
+                        <span class="help-block">
+                                <strong>{{ $errors->first('company') }}</strong>
+                            </span>
+                    @endif
+                    @if ($errors->has('company_id'))
+                        <span class="help-block">
+                                <strong>{{ $errors->first('company_id') }}</strong>
+                            </span>
+                    @endif
                     <div class="form-group {{ $errors->has('post') ? ' has-error' : '' }}">
                         <label>Poštanski broj *</label>
                         <input type="text" class="form-control" name="post" placeholder="Poštanski broj" value="{{ old('post') }}" required>
