@@ -13,7 +13,7 @@
                     <div class="col-sm-12">
                         <div class=" statusTop">
                             {{--<p><strong>Status:</strong> Naručeno</p>--}}
-                            <p><strong>Naručeno:</strong> {{$order->created_at}}</p>
+                            <p><strong>Naručeno:</strong> {{$order->created_at->format('d.m.Y. H:i:s')}}</p>
                             <p><strong>Broj narudžbe:</strong> #{{$order->id}} </p>
                         </div>
                     </div>

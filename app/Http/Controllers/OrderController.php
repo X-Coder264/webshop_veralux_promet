@@ -24,7 +24,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         if (Auth::check() && (Auth::user()->id === $order->user_id || Auth::user()->admin)) {
-            $order->load(['orderProducts.product.main_image' => function ($query) {
+            $order->load(['orderProducts.product' => function ($query) {
                 // soft deleted products are displayed in the users order history too
                 $query->withTrashed();
             }]);

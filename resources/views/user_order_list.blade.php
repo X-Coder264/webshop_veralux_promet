@@ -36,7 +36,7 @@
                                 <td data-type="number" data-value="{{$order->id}}">#{{$order->id}}</td>
                                 <td>{{$order->orderProducts->count()}} artikl/artikla </td>
                                 {{--<td><a target="_blank" href="{{'/users/' . \Auth::user()->slug . '/invoices/' . 'Invoice ' . $order->id .  '.pdf'}}">Narudžba {{$order->id}}</a></td>--}}
-                                <td data-type="date" data-value="{{$order->created_at->timestamp}}">{{$order->created_at}}</td>
+                                <td data-type="date" data-value="{{$order->created_at->timestamp}}">{{$order->created_at->format('d.m.Y. H:i:s')}}</td>
                                 <td><a href="{{route('user.order.show', $order)}}" class="btn btn-primary btn-md"><i class="fa fa-file"></i>&nbsp;&nbsp;Pogledajte narudžbu</a></td>
                                 {{--<td data-value="3"><span class="label label-success">Done</span></td>--}}
                             </tr>
