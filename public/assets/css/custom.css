@@ -81,7 +81,7 @@ tr.CartProduct td input {
 	background: #E4791D;
 }
 
-.footable > tbody > tr:last-child > td.footable-last-column {
+.footable > tbody > tr > td:last-child {
 	-moz-border-radius: 0 0 6px 0;
 	-webkit-border-radius: 0 0 6px 0;
 	text-align: center;
