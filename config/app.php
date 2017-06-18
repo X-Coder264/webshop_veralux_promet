@@ -174,6 +174,7 @@ return [
         Golonka\BBCode\BBCodeParserServiceProvider::class,
         Spatie\Newsletter\NewsletterServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
+        Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider::class,
 
 
         /*
