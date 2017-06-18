@@ -4,7 +4,6 @@
 @section('header_styles')
     <!--page level css -->
     <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/wizard.css') }}" rel="stylesheet">
     <!--end of page level css-->
 @stop
 
@@ -162,7 +161,4 @@
 {{-- page level scripts --}}
 @section('footer_scripts')
     <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-    <script src="{{ asset('assets/vendors/bootstrapwizard/jquery.bootstrap.wizard.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/js/adduser.js') }}"></script>
 @stop

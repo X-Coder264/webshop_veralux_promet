@@ -34,6 +34,16 @@
             </div>
             <br>
             <div class="panel-body">
+                @if (session('success'))
+                    <div class="col-md-12 alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="col-md-12 alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <table class="table table-bordered " id="table">
                     <thead>
                         <tr class="filters">
