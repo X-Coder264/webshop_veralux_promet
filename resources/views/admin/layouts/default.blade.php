@@ -35,7 +35,7 @@
 <header class="header">
     <div class="logo">
         <a href="{{ route('admin.dashboard') }}">
-            <img height="100" alt="Veralux-promet" src="/images/veralux-promet.svg">
+            <img height="100" alt="Veralux-promet" src="/images/veralux-promet-white.svg">
         </a>
     </div>
     <nav class="navbar navbar-static-top" role="navigation">

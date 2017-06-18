@@ -81,7 +81,8 @@
     </div>
     {{--/.search-full--}}
     </div>
-@yield('content')
+
+    @yield('content')
 
 {{--/.footer--}}
 <footer class="footer-js">

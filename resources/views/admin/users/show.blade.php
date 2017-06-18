@@ -55,42 +55,41 @@
                                             <div class="panel-body">
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-striped table-hover" id="users">
-
                                                         <tr>
                                                             <td>Ime i prezime:</td>
-                                                            <td>
-                                                                <p class="user_name_max">{{ $user->name }}</p>
-                                                            </td>
-
+                                                            <td><p class="user_name_max">{{ $user->name }}</p></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Email:</td>
-                                                            <td>
-                                                                {{ $user->email }}
-                                                            </td>
+                                                            <td>{{ $user->email }}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Mjesto:</td>
-                                                            <td>
-                                                                {{ $user->city }}
-                                                            </td>
+                                                            <td>Naziv tvrtke:</td>
+                                                            <td>{{ $user->company }}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Adresa:</td>
-                                                            <td>
-                                                                {{ $user->address }}
-                                                            </td>
+                                                            <td>OIB tvrtke:</td>
+                                                            <td>{{ $user->company_id }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Poštanski broj:</td>
-                                                            <td>
-                                                                {{ $user->postal }}
-                                                            </td>
+                                                            <td>{{ $user->postal }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Mjesto:</td>
+                                                            <td>{{ $user->city }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Adresa:</td>
+                                                            <td>{{ $user->address }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Kontakt broj:</td>
+                                                            <td>{{ $user->phone }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Status:</td>
                                                             <td>
-
                                                                 @if($user->verified)
                                                                     Aktiviran
                                                                 @else
@@ -100,9 +99,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>Registriran:</td>
-                                                            <td>
-                                                                <?php \Carbon\Carbon::setLocale('hr'); ?>
-                                                                {{ $user->created_at->format('d.m.Y. H:i:s') }} ({{ $user->created_at->diffForHumans() }})
+                                                            <td><?php \Carbon\Carbon::setLocale('hr'); ?>{{ $user->created_at->format('d.m.Y. H:i:s') }} ({{ $user->created_at->diffForHumans() }})
                                                             </td>
                                                         </tr>
                                                     </table>

@@ -31,9 +31,9 @@
                         <h3 class="panel-title">
                             Dodaj novog korisnika
                         </h3>
-                                <span class="pull-right clickable">
-                                    <i class="glyphicon glyphicon-chevron-up"></i>
-                                </span>
+                        <span class="pull-right clickable">
+                            <i class="glyphicon glyphicon-chevron-up"></i>
+                        </span>
                     </div>
                     <div class="panel-body">
                         @if (session('success'))
@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="form-group {{ $errors->first('email', 'has-error') }}">
-                                <label for="email" class="col-sm-2 control-label">E-mail *</label>
+                                <label for="email" class="col-sm-2 control-label">E-mail adresa *</label>
                                 <div class="col-sm-10">
                                     <input id="email" name="email" placeholder="E-mail" type="text"
                                            class="form-control required email" value="{!! old('email') !!}" required>
@@ -90,9 +90,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="company" class="col-sm-2 control-label">Tvrtka</label>
+                                <label for="company" class="col-sm-2 control-label">Naziv tvrtke</label>
                                 <div class="col-sm-10">
-                                    <input id="company" name="company" type="text" class="form-control" placeholder="Tvrtka"
+                                    <input id="company" name="company" type="text" class="form-control" placeholder="Naziv tvrtke"
                                            value="{!! old('company') !!}">
                                 </div>
                                 <span class="help-block">{{ $errors->first('company', ':message') }}</span>
@@ -108,12 +108,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="phone" class="col-sm-2 control-label">Telefon</label>
+                                <label for="post" class="col-sm-2 control-label">Poštanski broj</label>
                                 <div class="col-sm-10">
-                                    <input id="phone" name="phone" type="text" class="form-control" placeholder="Telefon"
-                                           value="{!! old('phone') !!}"/>
+                                    <input id="post" name="post" type="text" class="form-control" placeholder="Poštanski broj"
+                                           value="{!! old('post') !!}">
                                 </div>
-                                <span class="help-block">{{ $errors->first('phone', ':message') }}</span>
+                                <span class="help-block">{{ $errors->first('post', ':message') }}</span>
                             </div>
 
                             <div class="form-group">
@@ -135,13 +135,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="post" class="col-sm-2 control-label">Poštanski broj</label>
+                                <label for="phone" class="col-sm-2 control-label">Kontakt broj</label>
                                 <div class="col-sm-10">
-                                    <input id="post" name="post" type="text" class="form-control" placeholder="Poštanski broj"
-                                           value="{!! old('post') !!}">
+                                    <input id="phone" name="phone" type="text" class="form-control" placeholder="Telefon"
+                                           value="{!! old('phone') !!}"/>
                                 </div>
-                                <span class="help-block">{{ $errors->first('post', ':message') }}</span>
+                                <span class="help-block">{{ $errors->first('phone', ':message') }}</span>
                             </div>
+
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <button type="submit" class="btn btn-primary btn-block">

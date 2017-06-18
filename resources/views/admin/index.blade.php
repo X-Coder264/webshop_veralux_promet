@@ -32,7 +32,7 @@
                                 <thead>
                                 <tr class="filters">
                                     <th>ID narudžbe</th>
-                                    <th>Ime korisnika</th>
+                                    <th>Korisnik</th>
                                     <th>Stvorena</th>
                                     <th>Opcije</th>
                                 </tr>

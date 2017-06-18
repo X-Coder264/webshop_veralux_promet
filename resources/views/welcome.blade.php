@@ -44,7 +44,7 @@
     @if($products->count())
     <div class="morePost row featuredPostContainer style2 globalPaddingTop">
         <h1 class="title-big text-center section-title-style2" id="discount_products">
-            <span style="color: #eb5e58;">ISTAKNUTI PROIZVODI</span>
+            <span>ISTAKNUTI PROIZVODI</span>
         </h1>
         <div class="container">
             <div class="row categoryProduct xsResponse clearfix" id="highlighted-products">

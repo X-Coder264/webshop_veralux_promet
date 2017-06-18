@@ -19,15 +19,11 @@
             <li>
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
-                    Admin CP
+                    Admin Panel
                 </a>
             </li>
-            <li>
-                <a href="#">Proizvodi</a>
-            </li>
-            <li class="active">
-                Dodaj proizvod
-            </li>
+            <li><a href="#">Proizvodi</a></li>
+            <li class="active">Dodaj proizvod</li>
         </ol>
     </section>
     <!--section ends-->
@@ -83,11 +79,11 @@
                                 <option value="kg">kg</option>
                             </select>
                         </div>
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox1" type="checkbox" name="highlighted">
-                            <label for="checkbox1">
-                                Istaknuti proizvod
-                            </label>
+                        <div class="form-group">
+                            <div class="checkbox checkbox-primary">
+                                <input id="checkbox1" type="checkbox" name="highlighted">
+                                <label for="checkbox1"><strong>Istakni proizvod</strong></label>
+                            </div>
                         </div>
                         {{-- <div class="form-group">
                             <label for="price" class="col-sm-2 control-label">Price</label>
@@ -111,8 +107,8 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="control-label">Odaberite slike:</label>
                             <div>Prva slika će biti glavna slika proizvoda, a ostale slike će se vidjeti u detaljima proizvoda u galeriji slika.</div>
-                            <label class="control-label">Odaberite slike</label>
                             {{--<input id="images" name="images[]" type="file" class="file-loading" accept="image/*" multiple> --}}
                             <input type="file" name="images[]" id="filer_input" accept="image/*" multiple>
                         </div>

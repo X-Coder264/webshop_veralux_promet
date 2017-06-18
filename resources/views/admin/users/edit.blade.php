@@ -57,17 +57,17 @@
                                         {{ csrf_field() }}
 
                                         <div class="form-group {{ $errors->first('name', 'has-error') }}">
-                                            <label for="name" class="col-sm-2 control-label">Ime *</label>
+                                            <label for="name" class="col-sm-2 control-label">Ime i prezime *</label>
                                             <div class="col-sm-10">
                                                 <input id="name" name="name" type="text"
-                                                       placeholder="Ime" class="form-control required"
+                                                       placeholder="Ime i prezime" class="form-control required"
                                                        value="{!! old('name', $user->name) !!}" required>
                                             </div>
                                             {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
                                         </div>
 
                                         <div class="form-group {{ $errors->first('email', 'has-error') }}">
-                                            <label for="email" class="col-sm-2 control-label">E-mail *</label>
+                                            <label for="email" class="col-sm-2 control-label">E-mail adresa *</label>
                                             <div class="col-sm-10">
                                                 <input id="email" name="email" placeholder="E-mail" type="text"
                                                        class="form-control required email"
@@ -76,19 +76,10 @@
                                             {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                                         </div>
 
-                                        <div class="form-group {{ $errors->first('phone', 'has-error') }}">
-                                            <label for="phone" class="col-sm-2 control-label">Telefon</label>
-                                            <div class="col-sm-10">
-                                                <input id="phone" name="phone" type="text" class="form-control" placeholder="Telefon"
-                                                       value="{!! old('phone', $user->phone) !!}">
-                                            </div>
-                                            {!! $errors->first('phone', '<span class="help-block">:message</span>') !!}
-                                        </div>
-
                                         <div class="form-group {{ $errors->first('company', 'has-error') }}">
-                                            <label for="company" class="col-sm-2 control-label">Tvrtka</label>
+                                            <label for="company" class="col-sm-2 control-label">Naziv tvrtke</label>
                                             <div class="col-sm-10">
-                                                <input id="company" name="company" type="text" class="form-control" placeholder="Tvrtka"
+                                                <input id="company" name="company" type="text" class="form-control" placeholder="Naziv tvrtke"
                                                        value="{!! old('company', $user->company) !!}">
                                             </div>
                                             {!! $errors->first('company', '<span class="help-block">:message</span>') !!}
@@ -101,6 +92,15 @@
                                                        value="{!! old('company_id', $user->company_id) !!}">
                                             </div>
                                             {!! $errors->first('company_id', '<span class="help-block">:message</span>') !!}
+                                        </div>
+
+                                        <div class="form-group {{ $errors->first('post', 'has-error') }}">
+                                            <label for="post" class="col-sm-2 control-label">Poštanski broj</label>
+                                            <div class="col-sm-10">
+                                                <input id="post" name="postal" type="text" class="form-control" placeholder="Poštanski broj"
+                                                       value="{!! old('postal', $user->postal) !!}" required>
+                                            </div>
+                                            {!! $errors->first('post', '<span class="help-block">:message</span>') !!}
                                         </div>
 
                                         <div class="form-group {{ $errors->first('place', 'has-error') }}">
@@ -121,13 +121,13 @@
                                             {!! $errors->first('address', '<span class="help-block">:message</span>') !!}
                                         </div>
 
-                                        <div class="form-group {{ $errors->first('post', 'has-error') }}">
-                                            <label for="post" class="col-sm-2 control-label">Poštanski broj</label>
+                                        <div class="form-group {{ $errors->first('phone', 'has-error') }}">
+                                            <label for="phone" class="col-sm-2 control-label">Kontakt broj</label>
                                             <div class="col-sm-10">
-                                                <input id="post" name="postal" type="text" class="form-control" placeholder="Poštanski broj"
-                                                       value="{!! old('postal', $user->postal) !!}" required>
+                                                <input id="phone" name="phone" type="text" class="form-control" placeholder="Telefon"
+                                                       value="{!! old('phone', $user->phone) !!}">
                                             </div>
-                                            {!! $errors->first('post', '<span class="help-block">:message</span>') !!}
+                                            {!! $errors->first('phone', '<span class="help-block">:message</span>') !!}
                                         </div>
 
                                         @if(Auth::user()->id !== $user->id)

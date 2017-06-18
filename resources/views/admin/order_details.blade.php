@@ -22,6 +22,16 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('warning'))
+                    <div class="alert alert-warning">
+                        {{ session('warning') }}
+                    </div>
+                @endif
                 <form method="POST" action ="{{route('admin.user.order.update', $order->id)}}">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
@@ -29,26 +39,49 @@
                     <div class="panel-heading">
                         <span>Narudžba #{{$order->id}}</span>
                     </div>
-
                     <div class="panel-body">
-                        <div class="panel-footer">
-                            @foreach ($user->toArray() as $key => $value)
-                                @if($value != "")
-                                    {{$value}} <br>
-                                @endif
-                            @endforeach
-                            <br>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover">
+                                            <tr>
+                                                <td>Ime i prezime:</td>
+                                                <td><p class="user_name_max">{{ $user->name }}</p></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td>{{ $user->email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Naziv tvrtke:</td>
+                                                <td>{{ $user->company }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>OIB tvrtke:</td>
+                                                <td>{{ $user->company_id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Poštanski broj:</td>
+                                                <td>{{ $user->postal }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mjesto:</td>
+                                                <td>{{ $user->city }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Adresa:</td>
+                                                <td>{{ $user->address }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kontakt broj:</td>
+                                                <td>{{ $user->phone }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                        @if (session('warning'))
-                            <div class="alert alert-warning">
-                                {{ session('warning') }}
-                            </div>
-                        @endif
                         <table class="table table-bordered" id="table_orders">
                             <thead>
                             <tr class="filters">

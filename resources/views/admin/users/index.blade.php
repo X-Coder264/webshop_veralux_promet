@@ -38,7 +38,7 @@
                     <thead>
                         <tr class="filters">
                             <th>ID korisnika</th>
-                            <th>Ime</th>
+                            <th>Korisnik</th>
                             <th>E-mail</th>
                             <th>Stvoren</th>
                             <th>Status</th>
