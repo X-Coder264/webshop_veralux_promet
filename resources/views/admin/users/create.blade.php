@@ -1,12 +1,5 @@
 @extends('admin/layouts/default')
 
-{{-- page level styles --}}
-@section('header_styles')
-    <!--page level css -->
-    <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
-    <!--end of page level css-->
-@stop
-
 {{-- Page content --}}
 @section('content')
     <section class="content-header">
@@ -156,9 +149,4 @@
         </div>
         <!--row end-->
     </section>
-@stop
-
-{{-- page level scripts --}}
-@section('footer_scripts')
-    <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
 @stop
