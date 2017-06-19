@@ -3266,7 +3266,7 @@ h5.parallaxSubtitle {
 }
 
 .main-container {
-    min-height: 580px;
+    min-height: 380px;
 }
 
 .headerOffset {
@@ -4726,7 +4726,7 @@ div.quickview {
 
 @media (min-width: 1800px) {
     .banner, .slider-content, .slider, .slider-v2 {
-        max-height: 700px;
+        max-height: 100%;
     }
 
     .sliderImg {

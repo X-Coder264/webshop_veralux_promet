@@ -21,7 +21,7 @@
     <div class="container-1400 container main-container product-details-container ">
         <div class="row">
             <!-- left column -->
-            <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+            <div style="margin-bottom:40px;" class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
                 <div class="product-images-carousel-wrapper">
                     <div class="productMainImage hasWhiteImg">
                         <ul class="bxslider product-view-slides product-view-slides-h ">
@@ -72,7 +72,7 @@
                                     </div>
                                 @endif
                                 @if($product_is_in_cart === false)
-                                <input style="font-size: 14px;" min="1" name="quantity" placeholder="Unesite količinu..." type="number" class="form-control input-lg" id="quantity" value="{{old('quantity')}}">
+                                <input style="font-size: 16px;" min="1" name="quantity" placeholder="Unesite količinu..." type="number" class="form-control input-lg" id="quantity" value="{{old('quantity')}}">
                             </div>
                         </div>
 
@@ -91,29 +91,45 @@
                         </div>
                         <div style="clear:both"></div>
                     </form>
+                </div>
+            </div>
+            <!--/ right column end -->
+        </div>
+        <!--/.row-->
+    </div>
+    <!-- /.product-details-container -->
+</section>
 
-                    <div class="product-details-info">
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-blank ">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion"
-                                           href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            OPIS PROIZVODA
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                                     aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        <ul class="discription-list-inner bullet-list list-check">
-                                            <li>
-                                                <p>
-                                                    <span>{!! BBCode::parse($product->description) !!}</span>
-                                                </p>
-                                            </li>
-                                        </ul>
+<section class="section-product-info-bottom">
+    <div class="product-details-bottom-bar">
+        <div class="container-1400 container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs flat list-unstyled list-inline social-inline" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#tab1" aria-controls="home" role="tab" data-toggle="tab"> Opis proizvoda</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="section-tab-content">
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab1">
+            <div class="product-story-inner ">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-lg-12 ">
+                            <div class="hw100 display-table">
+                                <div class="hw100 display-table-cell">
+                                    <div class="product-story-info-box">
+                                        <div class="product-story-info-text ">
+                                            <p class="desc">{!! BBCode::parse($product->description) !!}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -121,12 +137,8 @@
                     </div>
                 </div>
             </div>
-            <!--/ right column end -->
         </div>
-        <!--/.row-->
-        <div style="clear:both"></div>
     </div>
-    <!-- /.product-details-container -->
 </section>
 
 @endsection

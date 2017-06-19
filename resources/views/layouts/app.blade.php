@@ -29,8 +29,6 @@
     <link rel="stylesheet" href="/assets/css/style.min.css">
 
     <link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
-
-    <link rel="stylesheet" href="/assets/css/custom.css">
 	
 	    {{-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries --}}
     <!--[if lt IE 9]>
@@ -55,6 +53,8 @@
     {{-- End Cookie Consent plugin --}}
 
     @yield('styles')
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
 
     <!-- Scripts -->
     <script>

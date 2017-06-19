@@ -55,10 +55,10 @@
 
                         <div class="cartFooter w100">
                             <div class="box-footer">
-                                <div class="pull-left"><a href="{{route('shop')}}" class="btn btn-default"> <i
+                                <div class="pull-left"><a href="{{route('shop')}}" class="btn btn-primary"> <i
                                                 class="fa fa-arrow-left"></i> &nbsp; Nastavite kupovati</a></div>
                                 <div class="pull-right">
-                                    <button type="submit" class="btn btn-default" id="update"><i class="fa fa-undo"></i> &nbsp; Promjenite količine u košarici</button>
+                                    <button type="submit" class="btn btn-primary" id="update"><i class="fa fa-undo"></i> &nbsp; Promjenite količine u košarici</button>
                                 </div>
                             </div>
                         </div>
