@@ -9,7 +9,7 @@
 @section('content')
 
     <section class="content-header">
-        <h1>Veralux-promet | Admin panel</h1>
+        <h1>Veralux-Promet | Admin panel</h1>
         <ol class="breadcrumb">
             <li class="active">
                 <a href="#">
