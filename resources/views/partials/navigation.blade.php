@@ -5,7 +5,7 @@
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
                     <div class="pull-left ">
                         <ul class="userMenu ">
-                            <li class="phone-number"><a href="callto:38549236059">
+                            <li class="phone-number"><a href="tel:38549236059">
                                     <span>
                                         <i class="glyphicon glyphicon-phone-alt "></i>
                                     </span>

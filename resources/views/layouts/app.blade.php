@@ -94,7 +94,7 @@
                     <ul>
                         <li class="supportLi">
                             <h4>
-                                <a class="inline" href="callto:38549236059">
+                                <a class="inline" href="tel:38549236059">
                                     <strong>
                                         <i class="fa fa-phone"></i> +385 49 236 059
                                     </strong>
@@ -179,7 +179,7 @@
 
 <script type="text/javascript" src="/assets/js/jquery/jquery-1.12.4.min.js"></script>
 
-<!--<script>
+<script>
     $(document).ready(function() {
         var viewpointHeight=$(window).height();
         var contentHeight=$(".main-container").height();
@@ -202,7 +202,7 @@
             $(".footer-js").removeAttr('style');
         }
     });
-</script>-->
+</script>
 
 <script src="/js/sweetalert.min.js"></script>
 <script>
