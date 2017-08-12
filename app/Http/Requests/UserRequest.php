@@ -25,26 +25,23 @@ class UserRequest extends FormRequest
     {
         switch ($this->method()) {
             case 'GET':
-            case 'DELETE': {
+            case 'DELETE':
                 return [];
-            }
-            case 'POST': {
+            case 'POST':
                 return [
                     'name' => 'required|min:3',
                     'email' => 'required|email|unique:users,email',
                     'password' => 'required|min:6',
                     'password_confirm' => 'required|same:password'
                 ];
-            }
             case 'PUT':
-            case 'PATCH': {
+            case 'PATCH':
                 return [
                     'name' => 'required|min:3',
                     'email' => 'required|unique:users,email,' . $this->route('user')->id,
                     'password' => 'min:6',
                     'password_confirm' => 'min:6|same:password',
                 ];
-            }
             default:
                 break;
         }

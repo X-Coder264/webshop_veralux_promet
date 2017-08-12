@@ -48,7 +48,6 @@ class ComposerServiceProvider extends ServiceProvider
 
             $view->with('unopened_order_count', $unopened_order_count);
         });
-
     }
 
     /**

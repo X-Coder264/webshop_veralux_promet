@@ -25,7 +25,7 @@ class ProductFilters extends QueryFilters
      */
     public function search($name = "")
     {
-        return $this->builder->where('name', 'LIKE' , '%' . $name . '%');
+        return $this->builder->where('name', 'LIKE', '%' . $name . '%');
     }
 
     /**
@@ -36,13 +36,13 @@ class ProductFilters extends QueryFilters
      */
     public function orderBy($order = 0)
     {
-        if($order == 0) {
+        if ($order == 0) {
             return $this->builder->orderBy('created_at', 'desc');
         } elseif ($order == 1) {
             return $this->builder->orderBy('created_at', 'asc');
         } elseif ($order == 2) {
             return $this->builder->orderBy('price', 'desc');
-        } else{
+        } else {
             return $this->builder->orderBy('price', 'asc');
         }
     }
@@ -77,7 +77,7 @@ class ProductFilters extends QueryFilters
      */
     public function discount($discount = 'off')
     {
-        if($discount == 'on'){
+        if ($discount == 'on') {
             return $this->builder->where('discount', '=', true);
         } else {
             return $this->builder->where('discount', '=', false);

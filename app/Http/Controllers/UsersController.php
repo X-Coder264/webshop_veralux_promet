@@ -40,18 +40,23 @@ class UsersController extends Controller
                 } else {
                     return "Nije aktiviran";
                 }
-            })->add_column('actions', function(User $user) {
+            })->add_column('actions', function (User $user) {
                 $actions = "";
                 if (! $user->trashed()) {
-                    $actions .= '<a href='. route('admin.users.show', $user->slug) .'><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="Pregled korisnika"></i></a>
-                                &nbsp;&nbsp;&nbsp;<a href='. route('admin.users.edit', $user->slug) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="Uredi korisnika"></i></a>';
+                    $actions .= '<a href='. route('admin.users.show', $user->slug) .
+                        '><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="Pregled korisnika"></i></a>
+                                &nbsp;&nbsp;&nbsp;<a href='.
+                        route('admin.users.edit', $user->slug) .
+                        '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="Uredi korisnika"></i></a>';
                 }
 
                 if (Auth::user()->id != $user->id) {
                     if (! $user->trashed()) {
                         $actions .= '&nbsp;&nbsp;&nbsp;<a href='. route('admin.confirm-delete/user', $user->slug) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="Izbriši korisnika"></i></a>';
                     } else {
-                        $actions .= '<a href='. route('admin.restore/user', $user->id) .' <i class="livicon" data-name="refresh" data-size="18" data-loop="true" data-c="#f36254" data-hc="#f36254" title="Aktiviraj korisnika"></i></a>';
+                        $actions .= '<a href='.
+                            route('admin.restore/user', $user->id) .
+                            ' <i class="livicon" data-name="refresh" data-size="18" data-loop="true" data-c="#f36254" data-hc="#f36254" title="Aktiviraj korisnika"></i></a>';
                     }
                 }
                 return $actions;
@@ -118,14 +123,13 @@ class UsersController extends Controller
         $orders = Order::where('user_id', '=', $id)->get();
 
         return Datatables::of($orders)
-            ->edit_column('created_at', function(Order $order) {
+            ->edit_column('created_at', function (Order $order) {
                 Carbon::setLocale('hr');
                 return $order->created_at->format('d.m.Y. H:i:s') . " (" . $order->created_at->diffForHumans() . ")";
-            })->edit_column('updated_at', function(Order $order) {
+            })->edit_column('updated_at', function (Order $order) {
                 Carbon::setLocale('hr');
                 return $order->updated_at . " (" . $order->updated_at->diffForHumans() . ")";
             })->make(true);
-
     }
 
     /**
@@ -168,9 +172,9 @@ class UsersController extends Controller
             // the admin field is not fillable so an additional query is needed
             if ($request->has('admin') && $check) {
                 $user->admin = true;
-            } elseif(Auth::user()->id === $user->id && $check) {
+            } elseif (Auth::user()->id === $user->id && $check) {
                 $user->admin = true;
-            } elseif($user->id !== 1) {
+            } elseif ($user->id !== 1) {
                 $user->admin = false;
             }
 

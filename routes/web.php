@@ -19,15 +19,15 @@ Route::get('contact_us', function () {
     return view('contact_us');
 })->name('contact_us');
 
-Route::get('support_form', function() {
+Route::get('support_form', function () {
     return view('support_form');
 })->name('support_form');
 
-Route::get('settings', function() {
+Route::get('settings', function () {
     return view('settings');
 })->name('user.password.change')->middleware('auth');
 
-Route::get('about_us', function() {
+Route::get('about_us', function () {
     return view('about_us');
 })->name('about_us');
 
@@ -43,9 +43,11 @@ Route::get('shop', 'CategoryController@index')->name("shop");
 Route::get('shop/products', 'CategoryController@index')->name('shop.products');
 Route::get('shop/products/{product}', 'ProductsController@show')->name("product.show");
 Route::get('shop/{category}/products', 'CategoryController@show')->name("ProductCategory");
-Route::get('products/highlighted', 'HomeController@highlighted_products')->name("highlighted_products");
+Route::get('products/highlighted', 'HomeController@highlightedProducts')->name("highlighted_products");
 Route::get('products/search', 'ProductsController@search')->name('products.search');
-Route::delete('product/{product}/image/delete', 'ProductsController@deleteProductImage')->name('product_image.delete')->middleware(['auth', 'admin']);
+Route::delete('product/{product}/image/delete', 'ProductsController@deleteProductImage')
+        ->name('product_image.delete')
+        ->middleware(['auth', 'admin']);
 
 Route::post('/product/storeToCart/{product}', 'CartController@store')->name("cart.store");
 Route::post('/updateCart', 'CartController@update')->name("cart.update");
@@ -64,7 +66,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     # User Management
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', ['as' => 'users', 'uses' => 'UsersController@index'])->name('admin.dashboard');
-        Route::get('data',['as' => 'users.data', 'uses' =>'UsersController@data']);
+        Route::get('data', ['as' => 'users.data', 'uses' =>'UsersController@data']);
         Route::get('index', ["as" => "users.index", "uses" => "UsersController@index"]);
         Route::get('create', ["as" => "users.create", "uses" => "UsersController@create"]);
         Route::post('create', 'UsersController@store');
@@ -99,11 +101,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     });
 
     Route::get('all_orders', ['as' => 'orders.show', 'uses' => 'OrderController@getAllOrders']);
-    Route::get('order/{order}', ['as' => 'user.order.show', 'uses' => 'OrderController@order_details']);
+    Route::get('order/{order}', ['as' => 'user.order.show', 'uses' => 'OrderController@orderDetails']);
     Route::patch('order/{order}', ['as' => 'user.order.update', 'uses' => 'OrderController@update']);
 
     Route::get('all_products', ['as' => 'products.show', 'uses' => 'ProductsController@getAllProducts']);
 
     //Route::get('{name?}', 'AdminCPController@showView');
-
 });

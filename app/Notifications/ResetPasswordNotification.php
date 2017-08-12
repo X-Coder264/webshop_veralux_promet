@@ -14,12 +14,6 @@ class ResetPasswordNotification extends Notification
      */
     public $token;
 
-    /**
-     * Create a notification instance.
-     *
-     * @param  string  $token
-     * @return void
-     */
     public function __construct($token)
     {
         $this->token = $token;
@@ -45,7 +39,8 @@ class ResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)->view(
-            'emails.reset_password', ['token' => $this->token]
+            'emails.reset_password',
+            ['token' => $this->token]
         );
     }
 }

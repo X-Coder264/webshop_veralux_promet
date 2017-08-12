@@ -7,7 +7,6 @@ use App\Category;
 use Carbon\Carbon;
 use App\ProductImage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Cache;
@@ -126,8 +125,10 @@ class ProductsController extends Controller
 
         for ($i = 0; $i < count($product->images); $i++) {
             $product_images[$i]["name"] = $product->images[$i]->path;
-            $product_images[$i]["size"] = filesize(public_path() . "/product_images/" . $product->slug . "/". $product->images[$i]->path);
-            $product_images[$i]["type"] = mime_content_type(public_path() . "/product_images/" . $product->slug . "/". $product->images[$i]->path);
+            $product_images[$i]["size"] = filesize(public_path() .
+                "/product_images/" . $product->slug . "/". $product->images[$i]->path);
+            $product_images[$i]["type"] = mime_content_type(public_path() .
+                "/product_images/" . $product->slug . "/". $product->images[$i]->path);
             $product_images[$i]["file"] = "/product_images/" . $product->slug . "/". $product->images[$i]->path;
             $product_images[$i]["data"]["imageID"] = $product->images[$i]->id;
             $product_images[$i]["data"]["url"] = "/product_images/" . $product->slug . "/". $product->images[$i]->path;
@@ -140,8 +141,11 @@ class ProductsController extends Controller
 
     public function deleteProductImage(Request $request, Product $product)
     {
-        $product_image = ProductImage::where('product_id', "=", $product->id)->where('id', "=", $request->input('imageID'))->first();
-        if (File::delete(public_path() . "/product_images/" . $product->slug . "/". $product_image->path) && $product_image->delete()) {
+        $product_image = ProductImage::where('product_id', "=", $product->id)
+                                     ->where('id', "=", $request->input('imageID'))->first();
+        if (File::delete(
+            public_path() . "/product_images/" . $product->slug . "/". $product_image->path
+        ) && $product_image->delete()) {
             return "success";
         }
     }
@@ -258,7 +262,11 @@ class ProductsController extends Controller
 
     public function search(Request $request)
     {
-        $products = Product::where('name', 'LIKE' , '%' . $request->input('search') . '%')->orderBy('created_at', 'desc')->paginate(12);
+        $products = Product::where(
+            'name',
+            'LIKE',
+            '%' . $request->input('search') . '%'
+        )->orderBy('created_at', 'desc')->paginate(12);
         return view('products_search', compact('products'));
     }
 
@@ -267,17 +275,19 @@ class ProductsController extends Controller
         $products = Product::all();
 
         return Datatables::of($products)
-            ->edit_column('created_at', function(Product $product) {
+            ->edit_column('created_at', function (Product $product) {
                 Carbon::setLocale('hr');
                 return $product->created_at->format('d.m.Y. H:i:s') . " (" . $product->created_at->diffForHumans() . ")";
             })
-            ->edit_column('updated_at', function(Product $product) {
+            ->edit_column('updated_at', function (Product $product) {
                 Carbon::setLocale('hr');
                 return $product->updated_at->format('d.m.Y. H:i:s') . " (" . $product->updated_at->diffForHumans() . ")";
             })
-            ->add_column('actions', function(Product $product) {
-                $actions = '<a href='. route('admin.products.edit', ['product' => $product]) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Uredi proizvod"></i></a>';
-                $actions .= '&nbsp;&nbsp;&nbsp;<a href='. route('admin.products.confirm-delete', $product->slug) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="Obriši proizvod"></i></a>';
+            ->add_column('actions', function (Product $product) {
+                $actions = '<a href='. route('admin.products.edit', ['product' => $product]) .
+                    '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Uredi proizvod"></i></a>';
+                $actions .= '&nbsp;&nbsp;&nbsp;<a href='. route('admin.products.confirm-delete', $product->slug) .
+                    ' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="Obriši proizvod"></i></a>';
                 return $actions;
             })->rawColumns(['actions'])->make(true);
     }
@@ -299,7 +309,6 @@ class ProductsController extends Controller
         $list_items = [];
 
         foreach ($categories as $category) {
-
             // always start only from the top parent categories in the tree
             if (! count($category->parentCategory)) {
                 $list_items[] = $this->renderCategorySelectHTML($category, $checkedCategory);

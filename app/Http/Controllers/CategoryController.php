@@ -11,17 +11,25 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class CategoryController extends Controller
 {
+    /** @var bool */
+    private $products;
+
+    public function __construct()
+    {
+        $this->products = false;
+    }
+
     public function index(ProductFilters $filters)
     {
         if (Cache::has('categories')) {
             $categoriesHTML = Cache::get('categories');
         } else {
-            Cache::forever('categories', $this->category_list());
+            Cache::forever('categories', $this->categoryList());
             $categoriesHTML = Cache::get('categories');
         }
 
         if (empty($filters->filters())) {
-            $products = Product::with("main_image")->orderBy('created_at', 'desc')->paginate(12);
+            $products = Product::with("mainImage")->orderBy('created_at', 'desc')->paginate(12);
         } else {
             $products = Product::filter($filters);
         }
@@ -34,19 +42,23 @@ class CategoryController extends Controller
         if (Cache::has('category.' . $category->slug)) {
             $categoriesHTML = Cache::get('category.' . $category->slug);
         } else {
-            Cache::forever('category.' . $category->slug, $this->category_list());
+            Cache::forever('category.' . $category->slug, $this->categoryList());
             $categoriesHTML = Cache::get('category.' . $category->slug);
         }
 
         if (empty($filters->filters())) {
-            $products = Cache::remember('category.' . $category->slug . '.paginatedProducts', 15, function () use ($category) {
-                $category_with_products = $category->load('products');
-                $products = $category_with_products->products;
+            $products = Cache::remember(
+                'category.' . $category->slug . '.paginatedProducts',
+                15,
+                function () use ($category) {
+                    $category_with_products = $category->load('products');
+                    $products = $category_with_products->products;
 
-                $products = $products->sortByDesc('created_at');
+                    $products = $products->sortByDesc('created_at');
 
-                return $products;
-            });
+                    return $products;
+                }
+            );
 
             $currentPage = 0;
 
@@ -62,7 +74,14 @@ class CategoryController extends Controller
             $paginatedProducts = new LengthAwarePaginator($currentProducts, $number_of_products, $perPage);
             $paginatedProducts->setPath(route("ProductCategory", $category->slug));
 
-            return view('products', ['categories' => $categoriesHTML, 'products' => $paginatedProducts, 'category' => $category]);
+            return view(
+                'products',
+                [
+                'categories' => $categoriesHTML,
+                'products' => $paginatedProducts,
+                'category' => $category
+                ]
+            );
         } else {
             $filters->getRequest()->request->add(['category' => $category->id]);
             $products = Product::filter($filters);
@@ -86,7 +105,12 @@ class CategoryController extends Controller
         }
 
         if ($request->has('parent_category') && $request->has('subcategory')) {
-            Category::create(['name' => $request->input('subcategory'), 'category_parent_id' => $request->input('parent_category')]);
+            Category::create(
+                [
+                    'name' => $request->input('subcategory'),
+                    'category_parent_id' => $request->input('parent_category')
+                ]
+            );
             flushCategoriesCache();
             return back()->with('success', "Podkategorija je uspješno dodana.");
         }
@@ -99,11 +123,11 @@ class CategoryController extends Controller
         $category = Category::find($request->input('category'));
         $this->checkForProducts($category);
 
-        if (! CategoryController::$products) {
+        if (! $this->products) {
             if ($category->delete()) {
                 flushCategoriesCache();
                 return "success";
-            } 
+            }
         } else {
             return "Ova kategorija ili neka njezina podkategorija ima u sebi proizvod(e).";
         }
@@ -136,11 +160,13 @@ class CategoryController extends Controller
         }
 
         return $html;
-
     }
 
-    static $products = false;
-    
+    /**
+     * Checks whether a given category or any of its subcategories has any product.
+     *
+     * @param Category $category
+     */
     public function checkForProducts(Category $category)
     {
         if ($category->products->count() === 0) {
@@ -150,7 +176,7 @@ class CategoryController extends Controller
                 }
             }
         } else {
-            CategoryController::$products = true;
+            $this->products = true;
         }
     }
 
@@ -171,7 +197,7 @@ class CategoryController extends Controller
 
         foreach ($categories as $category) {
             // always start only from the top parent categories in the tree
-            if(! count($category->parentCategory)) {
+            if (! count($category->parentCategory)) {
                 $list_items[] = $this->renderCategorySelectHTML($category);
             }
         }
@@ -224,7 +250,7 @@ class CategoryController extends Controller
      * @param  int $category_parent_id
      * @return string
      */
-    public function category_list($category_parent_id = 0)
+    public function categoryList($category_parent_id = 0)
     {
         // napravi listu kategoriju samo jednom
         static $categories;
@@ -237,7 +263,7 @@ class CategoryController extends Controller
 
         foreach ($categories as $category) {
             // ako se ne poklapa kategorija od koje se želi krenuti stvarati stablo, kreni u iduću iteraciju
-            if ($category->category_parent_id !== $category_parent_id ) {
+            if ($category->category_parent_id !== $category_parent_id) {
                 continue;
             }
 
@@ -256,7 +282,7 @@ class CategoryController extends Controller
             $list_items[] = '</a>';
 
             // rekurzija kroz djecu kategorije (ponavljanje cijelog ovog postupka)
-            $list_items[] = $this->category_list($category->id);
+            $list_items[] = $this->categoryList($category->id);
 
             // zatvori li
             $list_items[] = '</li>';

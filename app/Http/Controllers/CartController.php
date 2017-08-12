@@ -21,7 +21,9 @@ class CartController extends Controller
         if ($products_with_quantity !== false) {
             $product_IDs = collect($products_with_quantity)->pluck('product_id');
             $product_ids_ordered = implode(',', $product_IDs->toArray());
-            $products = Product::whereIn('id', $product_IDs)->orderByRaw(DB::raw("FIELD(id, $product_ids_ordered)"))->get();
+            $products = Product::whereIn('id', $product_IDs)->orderByRaw(
+                DB::raw("FIELD(id, $product_ids_ordered)")
+            )->get();
             $count = count($products_with_quantity);
             if ($products->count() !== 0) {
                 for ($i = 0, $x = 0; $i < $count; $i++) {
@@ -45,7 +47,8 @@ class CartController extends Controller
         if ($DatabaseDeletedProduct) {
             if (isset($products_with_quantity)) {
                 $products_with_quantity  = array_values($products_with_quantity);
-                return response()->view('cart', compact('products'))->cookie('cart_product_IDs', serialize($products_with_quantity), 12 * 60);
+                return response()->view('cart', compact('products'))
+                                 ->cookie('cart_product_IDs', serialize($products_with_quantity), 12 * 60);
             } else {
                 return response()->view('cart', compact('products'))->cookie(Cookie::forget('cart_product_IDs'));
             }
@@ -77,7 +80,8 @@ class CartController extends Controller
             $value[0]['quantity'] = $request->input('quantity');
             $visitor = Cookie::get('unique_id');
             if (is_null($visitor)) {
-                return back()->withCookie(cookie('cart_product_IDs', serialize($value), 12 * 60))->withCookie(cookie('unique_id', uniqid('', true), 2628000));
+                return back()->withCookie(cookie('cart_product_IDs', serialize($value), 12 * 60))
+                             ->withCookie(cookie('unique_id', uniqid('', true), 2628000));
             }
             Cache::increment($visitor . '.number_of_products_in_cart');
             return back()->withCookie(cookie('cart_product_IDs', serialize($value), 12 * 60));
@@ -130,7 +134,11 @@ class CartController extends Controller
         if (count($products_with_quantity) === 0) {
             return response(count($products_with_quantity))->cookie(Cookie::forget('cart_product_IDs'));
         } else {
-            return response(count($products_with_quantity))->cookie('cart_product_IDs', serialize($products_with_quantity), 12 * 60);
+            return response(count($products_with_quantity))->cookie(
+                'cart_product_IDs',
+                serialize($products_with_quantity),
+                12 * 60
+            );
         }
     }
 }

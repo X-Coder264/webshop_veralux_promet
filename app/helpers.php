@@ -17,7 +17,6 @@ function deleteRedisKeysPattern($pattern = "")
     $cursor = 0;
 
     while ($data = $redis->scan($cursor)) {
-
         $cursor = $data[0];
 
         foreach ($data[1] as $key) {
@@ -25,7 +24,9 @@ function deleteRedisKeysPattern($pattern = "")
                 $redis->del($key);
             }
         }
-        if ($cursor == 0) break;
+        if ($cursor == 0) {
+            break;
+        }
     }
 }
 

@@ -32,7 +32,7 @@
                                                     <div>
                                                         @if(! $orderProduct->product->trashed())
                                                             <a href="{{route('product.show', $orderProduct->product->slug)}}">
-                                                                <img alt="img" src="/product_images/{{ $orderProduct->product->slug }}/{{ $orderProduct->product->main_image->path }}">
+                                                                <img alt="img" src="/product_images/{{ $orderProduct->product->slug }}/{{ $orderProduct->product->mainImage->path }}">
                                                             </a>
                                                         @endif
                                                     </div>

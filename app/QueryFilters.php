@@ -53,13 +53,15 @@ abstract class QueryFilters
             }
         }
 
-        if(! isset($this->filters()['orderBy'])) {
+        if (! isset($this->filters()['orderBy'])) {
             $this->orderBy();
         }
 
-        if(isset($this->filters()['numberPerPage']) && is_numeric($this->filters()['numberPerPage']) && $this->filters()['numberPerPage'] != 0) {
+        if (isset($this->filters()['numberPerPage']) && is_numeric($this->filters()['numberPerPage']) &&
+            $this->filters()['numberPerPage'] != 0) {
             return $this->builder->paginate($this->filters()['numberPerPage']);
-        } elseif (isset($this->filters()['numberPerPage']) && is_numeric($this->filters()['numberPerPage']) && $this->filters()['numberPerPage'] == 0) {
+        } elseif (isset($this->filters()['numberPerPage']) && is_numeric($this->filters()['numberPerPage']) &&
+            $this->filters()['numberPerPage'] == 0) {
             return $this->builder->get();
         }
 

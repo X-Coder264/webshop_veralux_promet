@@ -14,8 +14,8 @@
                                                     <div class="product">
                                                         <div class="image">
                                                             <a href="/trgovina/proizvod/{{ $product->slug }}">
-                                                                @if($product->main_image != "")
-                                                                    <img src="/product_images/{{ $product->slug }}/{{ $product->main_image }}" alt="img" class="img-responsive">
+                                                                @if(count($product->mainImage))
+                                                                    <img src="/product_images/{{ $product->slug }}/{{ $product->mainImage->path }}" alt="img" class="img-responsive">
                                                                 @endif
                                                             </a>
                                                         </div>

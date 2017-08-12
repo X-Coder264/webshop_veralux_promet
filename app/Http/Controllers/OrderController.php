@@ -42,10 +42,12 @@ class OrderController extends Controller
         if ($products_with_quantity !== false) {
             $product_IDs = collect($products_with_quantity)->pluck('product_id');
             $product_ids_ordered = implode(',', $product_IDs->toArray());
-            $products = Product::whereIn('id', $product_IDs)->orderByRaw(DB::raw("FIELD(id, $product_ids_ordered)"))->get();
+            $products = Product::whereIn('id', $product_IDs)->orderByRaw(
+                DB::raw("FIELD(id, $product_ids_ordered)")
+            )->get();
             $count = count($products_with_quantity);
             if ($products->count() !== 0) {
-                for($i = 0, $x = 0; $i < $count; $i++) {
+                for ($i = 0, $x = 0; $i < $count; $i++) {
                     if ($products[$x]->id == $products_with_quantity[$i]['product_id']) {
                         $products[$x]->quantity = $products_with_quantity[$i]['quantity'];
                         $x++;
@@ -69,7 +71,8 @@ class OrderController extends Controller
 
         Cache::forever(Cookie::get('unique_id') . '.number_of_products_in_cart', 0);
 
-        return response()->view('thanks_for_order', compact('user', 'order'))->withCookie(Cookie::forget('cart_product_IDs'));
+        return response()->view('thanks_for_order', compact('user', 'order'))
+                         ->withCookie(Cookie::forget('cart_product_IDs'));
     }
 
     public function getAllOrders()
@@ -77,17 +80,18 @@ class OrderController extends Controller
         $orders = Order::with('user')->get();
 
         return Datatables::of($orders)
-            ->edit_column('created_at', function(Order $order) {
+            ->edit_column('created_at', function (Order $order) {
                 Carbon::setLocale('hr');
                 return $order->created_at->format('d.m.Y. H:i:s') . " (" . $order->created_at->diffForHumans() . ")";
             })
-            ->add_column('actions', function(Order $order) {
-                $actions = '<a href='. route('admin.user.order.show', ['order' => $order]) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Pregledaj narudžbu"></i></a>';
+            ->add_column('actions', function (Order $order) {
+                $actions = '<a href='. route('admin.user.order.show', ['order' => $order]) .
+                    '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Pregledaj narudžbu"></i></a>';
                 return $actions;
             })->rawColumns(['actions'])->make(true);
     }
 
-    public function order_details(Order $order)
+    public function orderDetails(Order $order)
     {
         if (! $order->read_by_admin) {
             $order->timestamps = false;

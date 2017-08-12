@@ -107,13 +107,12 @@
 
                             </tbody>
                         </table>
-                        {{--<div class="panel-footer">&nbsp;
-                            <hr>
+                        <div class="panel-footer">
                             <div class="clear">
                                 <input type="button" class="btn btn-danger" value="Povratak">
                                 <input type="submit" class="btn btn-primary pull-right" value="Spremi promjene">
                             </div>
-                        </div>--}}
+                        </div>
                     </div>
                 </div>
                 </form>

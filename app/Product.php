@@ -64,7 +64,7 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_parent_id');
     }
 
-    public function main_image()
+    public function mainImage()
     {
         return $this->hasOne(ProductImage::class)->orderBy('id', 'asc');
     }
@@ -73,5 +73,4 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class);
     }
-
 }

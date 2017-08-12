@@ -10,7 +10,7 @@ class NewsletterController extends Controller
     public function store(Request $request)
     {
         $email = $request->input('email');
-        if(! Newsletter::hasMember($email)) {
+        if (! Newsletter::hasMember($email)) {
             Newsletter::subscribe($email);
         }
         echo Newsletter::lastActionSucceeded();

@@ -45,11 +45,6 @@ class RegisterController extends Controller
      */
     protected $redirectAfterVerification = '/login';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest', ['except' => ['getVerification', 'getVerificationError']]);
@@ -173,7 +168,13 @@ class RegisterController extends Controller
         UserVerification::generate($user);
         UserVerification::send($user, 'Aktivacija korisničkog računa', 'info@veraluxpromet.hr', 'Veralux-Promet d.o.o.');
 
-        return redirect($this->redirectPath())->with('warning', 'Poslana je aktivacijska poveznica na ' . $user->email . '. Kliknite na dobivenu poveznicu kako biste aktivirali Vaš korisnički račun.');
+        return redirect(
+            $this->redirectPath()
+        )->with(
+            'warning',
+            'Poslana je aktivacijska poveznica na ' . $user->email .
+            '. Kliknite na dobivenu poveznicu kako biste aktivirali Vaš korisnički račun.'
+        );
     }
 
     /**
@@ -199,6 +200,9 @@ class RegisterController extends Controller
             return redirect($this->redirectIfVerificationFails());
         }
 
-        return redirect($this->redirectAfterVerification())->with('success', 'Vaš korisnički račun uspješno je aktiviran. Prijavite se u sustav.');
+        return redirect($this->redirectAfterVerification())->with(
+            'success',
+            'Vaš korisnički račun uspješno je aktiviran. Prijavite se u sustav.'
+        );
     }
 }

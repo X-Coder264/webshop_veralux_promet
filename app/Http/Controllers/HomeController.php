@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,14 +19,14 @@ class HomeController extends Controller
         return view('welcome', ['products' => $products]);
     }
 
-    public function highlighted_products(Request $request)
+    public function highlightedProducts(Request $request)
     {
         $products = Product::where('highlighted', '=', true)->paginate(4);
         $html = "";
 
         foreach ($products as $product) {
             $link = "'" . route('product.show', $product->slug, false) . "'";
-            $image_link = "/product_images/" . $product->slug . "/" . $product->main_image;
+            $image_link = "/product_images/" . $product->slug . "/" . $product->mainImage->path;
             $html .= '<div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6 cursor-pointer" onclick="window.location=' . $link . ';" style="height:312px;">
                         <div class="product">
                             <div class="image">
