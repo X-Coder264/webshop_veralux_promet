@@ -109,6 +109,9 @@
                         </table>
                         <div class="panel-footer">
                             <div class="clear">
+                                @if($order->remark != '')
+                                    <textarea class="form-control" disabled>{{$order->remark}}</textarea><br>
+                                @endif
                                 <input type="button" class="btn btn-danger" value="Povratak">
                                 <input type="submit" class="btn btn-primary pull-right" value="Spremi promjene">
                             </div>

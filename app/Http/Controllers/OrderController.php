@@ -6,6 +6,7 @@ use App\User;
 use App\Order;
 use App\Product;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -34,7 +35,7 @@ class OrderController extends Controller
         }
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $user = Auth::user();
 
@@ -58,7 +59,10 @@ class OrderController extends Controller
             return back();
         }
 
-        $order = $user->orders()->save(new Order());
+        $order = new Order();
+        $order->remark = $request->input('remark');
+
+        $order = $user->orders()->save($order);
 
         $products->each(function ($item, $key) use (&$order) {
             $order->orderProducts()->create([

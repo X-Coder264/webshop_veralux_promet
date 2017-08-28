@@ -53,14 +53,18 @@
                         </div>
                         <!--cartContent-->
 
+                        <form action="{{route('order.store')}}" method="post">
+                            {{csrf_field()}}
                         <div class="cartFooter w100">
+                            <textarea class="form-control" name="remark"></textarea> <br>
                             <div class="box-footer">
-                                <div class="pull-left"><a href="{{route('shop')}}" class="btn btn-primary"> <i
+                                <div class="pull-left"><a href="{{route('shop.products')}}" class="btn btn-primary"> <i
                                                 class="fa fa-arrow-left"></i> &nbsp; Nastavite kupovati</a></div>
                                 <div class="pull-right">
                                     <button type="submit" class="btn btn-primary" id="update"><i class="fa fa-undo"></i> &nbsp; Promjenite količine u košarici</button>
                                 </div>
                             </div>
+
                         </div>
                         <!--/ cartFooter -->
 
@@ -71,15 +75,16 @@
             <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
                 <div class="contentBox">
                     <div class="w100 costDetails">
-                        <div class="table-block" id="order-detail-content"><a class="btn btn-primary btn-lg btn-block "
-                                                                              title="checkout" href="{{route('order.store')}}"
-                                                                              style="margin-bottom:20px">Naruči &nbsp; <i class="fa fa-arrow-right"></i> </a>
+                        <div class="table-block" id="order-detail-content"><button class="btn btn-primary btn-lg btn-block"
+                                                                              title="checkout"
+                                                                              style="margin-bottom:20px">Naruči &nbsp; <i class="fa fa-arrow-right"></i> </button>
                         </div>
                     </div>
                 </div>
                 <!-- End popular -->
             </div>
             <!--/rightSidebar-->
+            </form>
         </div>
         <!--/row-->
         <div style="clear:both"></div>

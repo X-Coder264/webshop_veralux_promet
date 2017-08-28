@@ -12,6 +12,10 @@
 */
 
 Auth::routes();
+Route::get('email-verification/error', 'Auth\RegisterController@getVerificationError')->name('email-verification.error');
+Route::get('email-verification/check/{token}', 'Auth\RegisterController@getVerification')->name('email-verification.check');
+Route::get('/email-verification-resend', 'Auth\VerificationController@getResendForm');
+Route::post('/email-verification-resend/send', 'Auth\VerificationController@resend');
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -54,7 +58,7 @@ Route::post('/updateCart', 'CartController@update')->name("cart.update");
 Route::delete('/products/deleteFromCart', 'CartController@destroy')->name("cart.delete");
 
 Route::get('cart', 'CartController@index')->name("cart.show");
-Route::get('order', 'OrderController@store')->name("order.store")->middleware('auth');
+Route::post('order', 'OrderController@store')->name("order.store")->middleware('auth');
 Route::get('orders', 'OrderController@index')->name("user.orders.show")->middleware('auth');
 Route::get('order/{order}', 'OrderController@show')->name("user.order.show")->middleware('auth');
 

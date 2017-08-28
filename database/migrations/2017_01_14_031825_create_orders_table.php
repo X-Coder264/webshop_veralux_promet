@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->text('remark')->default('');
             $table->boolean('read_by_admin')->default(false);
             //$table->decimal('order_total', 7, 2);
             $table->timestamps();
