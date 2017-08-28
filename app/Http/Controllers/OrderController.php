@@ -60,7 +60,7 @@ class OrderController extends Controller
         }
 
         $order = new Order();
-        $order->remark = $request->input('remark');
+        $order->remark = $request->input('remark', '');
 
         $order = $user->orders()->save($order);
 
