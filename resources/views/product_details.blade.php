@@ -100,36 +100,22 @@
     <!-- /.product-details-container -->
 </section>
 
-<section class="section-product-info-bottom">
-    <div class="product-details-bottom-bar">
-        <div class="container-1400 container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs flat list-unstyled list-inline social-inline" role="tablist">
-                        <li role="presentation" class="active">
-                            <a href="#tab1" aria-controls="home" role="tab" data-toggle="tab"> Opis proizvoda</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-</section>
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Opis proizvoda</a></li>
+    <li><a data-toggle="tab" href="#menu1">Upit o proizvodu</a></li>
+</ul>
 
-<section class="section-tab-content">
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="tab1">
-            <div class="product-story-inner ">
-                <div class="container">
-                    <div class="row ">
-                        <div class="col-lg-12 ">
-                            <div class="hw100 display-table">
-                                <div class="hw100 display-table-cell">
-                                    <div class="product-story-info-box">
-                                        <div class="product-story-info-text ">
-                                            <p class="desc">{!! BBCode::parse($product->description) !!}</p>
-                                        </div>
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <div class="product-story-inner ">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-lg-12 ">
+                        <div class="hw100 display-table">
+                            <div class="hw100 display-table-cell">
+                                <div class="product-story-info-box">
+                                    <div class="product-story-info-text ">
+                                        <p class="desc">{!! BBCode::parse($product->description) !!}</p>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +125,69 @@
             </div>
         </div>
     </div>
-</section>
+    <div id="menu1" class="tab-pane fade">
+        <div class="row">
+            <form method="post" action="{{route('support_form_post')}}">
+            <div class="panel panel-default col-xs-12 col-sm-8 col-sm-offset-2 col-md-7 col-md-offset-3 col-lg-6 col-lg-offset-3">
+                <div class="panel-body">
+                    <div class="text-center">
+                        <img style="margin-bottom:10px" height="150" alt="Veralux-promet d.o.o." src="/images/veralux-promet.svg">
+                        <h3>Brzo i jednostavno pošaljite upit</h3>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label>Vaše ime:</label>
+                        <input type="text" name="sender_name" class="form-control" @if(Auth::check()) value="{{Auth::user()->name}}"@endif>
+                        @if ($errors->has('sender_name'))
+                            <span class="help-block">
+                            <strong>{{ $errors->first('sender_name') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label>Vaša e-mail adresa:</label>
+                        <input type="email" name="sender_email" class="form-control" @if(Auth::check()) value="{{Auth::user()->email}}"@endif>
+                        @if ($errors->has('sender_email'))
+                            <span class="help-block">
+                            <strong>{{ $errors->first('sender_email') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label>Naslov poruke:</label>
+                        <input type="text" name="subject" class="form-control" value="Upit za proizvod idiote - {{$product->name}}" disabled>
+                        @if ($errors->has('subject'))
+                            <span class="help-block">
+                            <strong>{{ $errors->first('subject') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label>Tekst poruke:</label>
+                        <textarea style="resize:vertical;" name="message" class="form-control" rows="4"></textarea>
+                        @if ($errors->has('message'))
+                            <span class="help-block">
+                            <strong>{{ $errors->first('message') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6LddUCkTAAAAAJKrlEXYQbgUFvETI4ybdl2zeCi9"></div>
+                        @if ($errors->has('g-recaptcha-response'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="submit" class="btn btn-success" value="Pošalji upit">
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 @endsection
 

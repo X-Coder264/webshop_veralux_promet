@@ -27,6 +27,10 @@ Route::get('support_form', function () {
     return view('support_form');
 })->name('support_form');
 
+Route::post('support_form', function () {
+    return view('support_form');
+})->name('support_form_post');
+
 Route::get('settings', function () {
     return view('settings');
 })->name('user.password.change')->middleware('auth');

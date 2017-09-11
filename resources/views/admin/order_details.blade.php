@@ -32,9 +32,6 @@
                         {{ session('warning') }}
                     </div>
                 @endif
-                <form method="POST" action ="{{route('admin.user.order.update', $order->id)}}">
-                    {{ csrf_field() }}
-                    {{ method_field('PATCH') }}
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <span>Narudžba #{{$order->id}}</span>
@@ -107,18 +104,15 @@
 
                             </tbody>
                         </table>
-                        <div class="panel-footer">
-                            <div class="clear">
-                                @if($order->remark != '')
+                        @if($order->remark != '')
+                            <div class="panel-footer">
+                                <div class="clear">
                                     <textarea class="form-control" disabled>{{$order->remark}}</textarea><br>
-                                @endif
-                                <input type="button" class="btn btn-danger" value="Povratak">
-                                <input type="submit" class="btn btn-primary pull-right" value="Spremi promjene">
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
-                </form>
             </div>
         </div>
     </section>

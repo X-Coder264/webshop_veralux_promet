@@ -179,31 +179,6 @@
 
 <script type="text/javascript" src="/assets/js/jquery/jquery-1.12.4.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        var viewpointHeight=$(window).height();
-        var contentHeight=$(".main-container").height();
-        var mapHeight=$(".map").height();
-        var sliderHeight=$(".full-container").height();
-        var sumHeight=contentHeight+mapHeight+sliderHeight;
-        if(sumHeight <= 580 && viewpointHeight>=960){
-            $(".footer-js").css({"bottom":"0","margin-bottom":"0","position":"fixed","right":"0","left":"0","z-index":"1030"});
-        }
-    });
-    $(window).resize(function() {
-        var viewpointHeight=$(window).height();
-        var contentHeight=$(".main-container").height();
-        var mapHeight=$(".map").height();
-        var sliderHeight=$(".full-container").height();
-        var sumHeight=contentHeight+mapHeight+sliderHeight;
-        if(sumHeight <= 580 && viewpointHeight>=960){
-            $(".footer-js").css({"bottom":"0","margin-bottom":"0","position":"fixed","right":"0","left":"0","z-index":"1030"});
-        } else {
-            $(".footer-js").removeAttr('style');
-        }
-    });
-</script>
-
 <script src="/js/sweetalert.min.js"></script>
 <script>
         $("#newsletter").submit(function (event) {

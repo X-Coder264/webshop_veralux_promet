@@ -126,10 +126,10 @@ class UsersController extends Controller
             ->edit_column('created_at', function (Order $order) {
                 Carbon::setLocale('hr');
                 return $order->created_at->format('d.m.Y. H:i:s') . " (" . $order->created_at->diffForHumans() . ")";
-            })->edit_column('updated_at', function (Order $order) {
-                Carbon::setLocale('hr');
-                return $order->updated_at . " (" . $order->updated_at->diffForHumans() . ")";
-            })->make(true);
+            })->add_column('options', function (Order $order) {
+                return '<a href='. route('admin.user.order.show', ['order' => $order]) .
+                    '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Pregledaj narudžbu"></i></a>';
+            })->rawColumns(['options'])->make(true);
     }
 
     /**

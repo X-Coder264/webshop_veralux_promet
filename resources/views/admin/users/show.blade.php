@@ -123,8 +123,7 @@
                                             <tr class="filters">
                                                 <th>ID narudžbe</th>
                                                 <th>Stvoreno</th>
-                                                <th>Zadnja izmjena</th>
-                                                {{--<th>Opcije</th>--}}
+                                                <th>Opcije</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -222,7 +221,7 @@
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'created_at', name: 'created_at' },
-                    { data: 'updated_at', name: 'updated_at' },
+                    { data: 'options', name: 'options' },
                 ]
             });
             table.on( 'draw', function () {
