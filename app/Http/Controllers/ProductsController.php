@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
@@ -162,8 +163,14 @@ class ProductsController extends Controller
 
         $rules = [
             'name' => 'required',
-            'catalogNumber' => 'required|unique:products',
-            'EAN' => 'required|unique:products',
+            'catalogNumber' => [
+                'required',
+                Rule::unique('products')->ignore($product->id),
+            ],
+            'EAN' => [
+                'required',
+                Rule::unique('products')->ignore($product->id),
+            ],
             'description' => 'required',
             'parent_subcategory' => 'required|integer',
             'unit' => 'required',
