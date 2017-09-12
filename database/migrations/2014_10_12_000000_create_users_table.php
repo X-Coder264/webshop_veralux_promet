@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('slug')->nullable();
             $table->boolean('admin')->default(false);
-            $table->boolean('verified')->default(false);
-            $table->string('verification_token')->nullable();
             $table->string('phone')->nullable();
             $table->string('city')->nullable();
             $table->string('address')->nullable();
