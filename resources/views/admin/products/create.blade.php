@@ -57,12 +57,18 @@
                         @endif
                         <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="select21" class="control-label">
-                                Odaberite kategoriju proizvoda:
-                            </label>
-                            {!! $selectHTML !!}
-                        </div>
+                        @if($selectHTML === '')
+                                <div class="col-md-12 alert alert-danger">
+                                    <p>Trenutno nema niti jedne kategorije. Unesite prvo barem jednu kategoriju kako bi mogli unijeti proizvod.</p>
+                                </div>
+                        @else
+                            <div class="form-group">
+                                <label for="select21" class="control-label">
+                                    Odaberite kategoriju proizvoda:
+                                </label>
+                                {!! $selectHTML !!}
+                            </div>
+                        @endif
 
                         <div class="form-group">
                             <label for="name" class="control-label">Naziv proizvoda:</label>

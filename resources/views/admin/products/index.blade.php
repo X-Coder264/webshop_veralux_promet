@@ -34,6 +34,8 @@
                             <tr class="filters">
                                 <th>ID proizvoda</th>
                                 <th>Naziv proizvoda</th>
+                                <th>Kataloški broj</th>
+                                <th>EAN</th>
                                 <th>Stvoren</th>
                                 <th>Zadnja izmjena</th>
                                 <th>Opcije</th>
@@ -77,9 +79,11 @@
                 ajax: '{!! route('admin.products.show') !!}',
                 columns: [
                     { data: 'id', name: 'id'},
-                    { data: 'name', name:'name'},
-                    { data: 'created_at', name:'created_at', searchable: false},
-                    { data: 'updated_at', name:'updated_at', searchable: false},
+                    { data: 'name', name: 'name'},
+                    { data: 'catalogNumber', name: 'catalogNumber'},
+                    { data: 'EAN', name: 'EAN'},
+                    { data: 'created_at', name: 'created_at', searchable: false},
+                    { data: 'updated_at', name: 'updated_at', searchable: false},
                     { data: 'actions', name: 'actions', orderable: false, searchable: false }
                 ],
                 "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "Svi proizvodi"] ]

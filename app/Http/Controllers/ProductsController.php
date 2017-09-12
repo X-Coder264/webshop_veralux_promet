@@ -39,6 +39,8 @@ class ProductsController extends Controller
     {
         $rules = [
             'name' => 'required',
+            'catalogNumber' => 'required|unique:products',
+            'EAN' => 'required|unique:products',
             'description' => 'required',
             'parent_subcategory' => 'required|integer',
             'unit' => 'required',
@@ -48,6 +50,10 @@ class ProductsController extends Controller
 
         $messages = [
             'name.required' => 'Naziv proizvoda je obavezan.',
+            'catalogNumber.required' => 'Kataloški broj je obavezan.',
+            'catalogNumber.unique' => 'Kataloški broj mora biti jedinstven.',
+            'EAN.required' => 'EAN je obavezan.',
+            'EAN.unique' => 'EAN mora biti jedinstven.',
             'description.required' => 'Opis proizvoda je obavezan.',
             'parent_subcategory.required' => 'Morate odabrati kategoriju u koju proizvod spada.',
             'parent_subcategory.integer' => 'Niste ispravno odabrali kategoriju.',
@@ -156,6 +162,8 @@ class ProductsController extends Controller
 
         $rules = [
             'name' => 'required',
+            'catalogNumber' => 'required|unique:products',
+            'EAN' => 'required|unique:products',
             'description' => 'required',
             'parent_subcategory' => 'required|integer',
             'unit' => 'required',
@@ -165,6 +173,10 @@ class ProductsController extends Controller
 
         $messages = [
             'name.required' => 'Naziv proizvoda je obavezan.',
+            'catalogNumber.required' => 'Kataloški broj je obavezan.',
+            'catalogNumber.unique' => 'Kataloški broj mora biti jedinstven.',
+            'EAN.required' => 'EAN je obavezan.',
+            'EAN.unique' => 'EAN mora biti jedinstven.',
             'description.required' => 'Opis proizvoda je obavezan.',
             'parent_subcategory.required' => 'Morate odabrati kategoriju u koju proizvod spada.',
             'parent_subcategory.integer' => 'Niste ispravno odabrali kategoriju.',
@@ -262,11 +274,11 @@ class ProductsController extends Controller
 
     public function search(Request $request)
     {
-        $products = Product::where(
-            'name',
-            'LIKE',
-            '%' . $request->input('search') . '%'
-        )->orderBy('created_at', 'desc')->paginate(12);
+        $searchString = $request->input('search', '');
+        $products = Product::where('name', 'LIKE', '%' . $searchString . '%')
+            ->orWhere('catalogNumber', 'LIKE', '%' . $searchString . '%')
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
         return view('products_search', compact('products'));
     }
 

@@ -84,6 +84,20 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="catalogNumber" class="control-label">Kataloški broj:</label>
+                                <input id="catalogNumber" name="catalogNumber" type="text"
+                                       placeholder="Kataloški broj" class="form-control required"
+                                       value="{{$product->catalogNumber}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="EAN" class="control-label">EAN:</label>
+                                <input id="EAN" name="EAN" type="text"
+                                       placeholder="EAN" class="form-control required"
+                                       value="{{$product->EAN}}" required>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="unit" class="control-label">Mjerna jedinica proizvoda:</label>
                                 <select id="unit" class="form-control" name="unit">
                                     <option value="kom" @if($product->unit == 'kom') selected @endif>kom</option>

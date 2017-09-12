@@ -58,6 +58,7 @@
 
 
                     <h2 class="product-details-product-title"> {{ $product->name }}</h2>
+                    <h3> Kataloški broj: {{ $product->catalogNumber }}</h3>
 
                     <form method="POST" action="{{route('cart.store', $product->slug)}}">
                         <div class="row row-filter clearfix ">
