@@ -22,6 +22,8 @@ class CreateProductsTable extends Migration
             $table->decimal('discount_price', 7, 2)->default(0);
             $table->enum('currency', ['HRK', 'EUR', 'USD']);
             $table->boolean('discount')->default(0);*/
+            $table->string('catalogNumber')->unique();
+            $table->string('EAN')->unique();
             $table->text('description');
             $table->enum('unit', ['kom', 'm', 'kg']);
             $table->boolean('highlighted')->default(false);

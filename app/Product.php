@@ -41,7 +41,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'parent_subcategory', 'name', 'description', 'unit', 'highlighted'
+        'parent_subcategory', 'name', 'catalogNumber', 'EAN', 'description', 'unit', 'highlighted'
     ];
 
     /**
