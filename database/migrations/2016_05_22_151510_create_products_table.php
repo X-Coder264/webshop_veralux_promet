@@ -15,13 +15,15 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parent_subcategory')->unsigned();
+            $table->integer('parent_subcategory')->unsigned()->index();
             $table->foreign('parent_subcategory')->references('id')->on('product_categories')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             /*$table->decimal('price', 7, 2)->default(0);
             $table->decimal('discount_price', 7, 2)->default(0);
             $table->enum('currency', ['HRK', 'EUR', 'USD']);
             $table->boolean('discount')->default(0);*/
+            $table->integer('manufacturer_id')->unsigned()->index();
+            $table->foreign('manufacturer_id')->references('id')->on('product_manufacturers')->onUpdate('cascade')->onDelete('cascade');
             $table->string('catalogNumber')->unique();
             $table->string('EAN')->unique();
             $table->text('description');

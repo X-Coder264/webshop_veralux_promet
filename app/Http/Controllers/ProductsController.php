@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Manufacturer;
 use App\Product;
 use App\Category;
 use Carbon\Carbon;
@@ -33,13 +34,18 @@ class ProductsController extends Controller
             Cache::forever('CategoriesSelectHTML', $selectHTML);
         }
 
-        return view('admin.products.create', compact('selectHTML'));
+        $manufacturers = Cache::rememberForever('manufacturers', function () {
+            return Manufacturer::all()->toJson();
+        });
+
+        return view('admin.products.create', compact('selectHTML', 'manufacturers'));
     }
 
     public function store(Request $request)
     {
         $rules = [
             'name' => 'required',
+            'manufacturer_id' => 'required|exists:product_manufacturers,id',
             'catalogNumber' => 'required|unique:products',
             'EAN' => 'required|unique:products',
             'description' => 'required',
@@ -51,6 +57,8 @@ class ProductsController extends Controller
 
         $messages = [
             'name.required' => 'Naziv proizvoda je obavezan.',
+            'manufacturer_id.required' => 'Proizvođač je obavezan.',
+            'manufacturer_id.exists' => 'Proizvođač već mora postojati u bazi.',
             'catalogNumber.required' => 'Kataloški broj je obavezan.',
             'catalogNumber.unique' => 'Kataloški broj mora biti jedinstven.',
             'EAN.required' => 'EAN je obavezan.',
@@ -105,7 +113,7 @@ class ProductsController extends Controller
     
     public function show(Product $product)
     {
-        $product = $product->load('images');
+        $product = $product->load(['manufacturer', 'images']);
 
         $product_is_in_cart = false;
         $products_with_quantity = Cookie::get('cart_product_IDs');
@@ -126,7 +134,7 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         $selectHTML = $this->renderCategoriesSelectHTML($product->parent_subcategory);
-        $product = $product->load('images');
+        $product = $product->load(['manufacturer', 'images']);
 
         $product_images = [];
 
@@ -143,7 +151,11 @@ class ProductsController extends Controller
 
         $product_images = json_encode($product_images);
 
-        return view('admin.products.edit', compact('product', 'selectHTML', 'product_images'));
+        $manufacturers = Cache::rememberForever('manufacturers', function () {
+            return Manufacturer::all()->toJson();
+        });
+
+        return view('admin.products.edit', compact('product', 'selectHTML', 'product_images', 'manufacturers'));
     }
 
     public function deleteProductImage(Request $request, Product $product)
@@ -163,6 +175,7 @@ class ProductsController extends Controller
 
         $rules = [
             'name' => 'required',
+            'manufacturer_id' => 'required|exists:product_manufacturers,id',
             'catalogNumber' => [
                 'required',
                 Rule::unique('products')->ignore($product->id),
@@ -180,6 +193,8 @@ class ProductsController extends Controller
 
         $messages = [
             'name.required' => 'Naziv proizvoda je obavezan.',
+            'manufacturer_id.required' => 'Proizvođač je obavezan.',
+            'manufacturer_id.exists' => 'Proizvođač već mora postojati u bazi.',
             'catalogNumber.required' => 'Kataloški broj je obavezan.',
             'catalogNumber.unique' => 'Kataloški broj mora biti jedinstven.',
             'EAN.required' => 'EAN je obavezan.',
@@ -291,7 +306,7 @@ class ProductsController extends Controller
 
     public function getAllProducts()
     {
-        $products = Product::all();
+        $products = Product::with('manufacturer')->get();
 
         return Datatables::of($products)
             ->edit_column('created_at', function (Product $product) {

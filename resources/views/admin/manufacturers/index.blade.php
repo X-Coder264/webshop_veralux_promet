@@ -1,4 +1,4 @@
-@extends('admin/layouts/default')
+@extends('admin.layouts.default')
 
 @section('header_styles')
     <link rel="stylesheet" href="/css/themes/default.min.css" />
@@ -10,7 +10,7 @@
 @section('content')
 
     <section class="content-header">
-        <h1>Popis svih proizovda</h1>
+        <h1>Popis svih proizvođača</h1>
         <ol class="breadcrumb">
             <li class="active">
                 <a href="#">
@@ -25,20 +25,15 @@
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <span>Svi proizvodi</span>
+                        <span>Svi proizvođači</span>
                     </div>
 
                     <div class="panel-body flip-scroll">
                         <table class="table table-bordered table-hover flip-content" id="table">
                             <thead>
                             <tr class="filters">
-                                <th>ID proizvoda</th>
+                                <th>ID proizvođača</th>
                                 <th>Proizvođač</th>
-                                <th>Naziv proizvoda</th>
-                                <th>Kataloški broj</th>
-                                <th>EAN</th>
-                                <th>Stvoren</th>
-                                <th>Zadnja izmjena</th>
                                 <th>Opcije</th>
                             </tr>
                             </thead>
@@ -63,7 +58,7 @@
         $(document).ready(function() {
             var table = $('#table').DataTable({
                 "language": {
-                    "lengthMenu": "Prikaz _MENU_ proizvoda po stranici",
+                    "lengthMenu": "Prikaz _MENU_ proizvođača po stranici",
                     "zeroRecords": "Ništa nije pronađeno.",
                     "info": "Stranica _PAGE_ od _PAGES_",
                     "infoEmpty": "Nema dostupnih podataka",
@@ -77,18 +72,13 @@
                 },
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('admin.products.show') !!}',
+                ajax: '{!! route('admin.manufactures.show') !!}',
                 columns: [
                     { data: 'id', name: 'id'},
-                    { data: 'manufacturer.name', name: 'manufacturer.name'},
                     { data: 'name', name: 'name'},
-                    { data: 'catalogNumber', name: 'catalogNumber'},
-                    { data: 'EAN', name: 'EAN'},
-                    { data: 'created_at', name: 'created_at', searchable: false},
-                    { data: 'updated_at', name: 'updated_at', searchable: false},
-                    { data: 'actions', name: 'actions', orderable: false, searchable: false }
+                    { data: 'actions', name: 'actions'}
                 ],
-                "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "Svi proizvodi"] ]
+                "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "Svi proizvođači"] ]
             });
 
             table.on( 'draw', function () {

@@ -20,7 +20,7 @@ class Product extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => ['manufacturer.name', 'name']
             ],
         ];
     }
@@ -41,7 +41,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'parent_subcategory', 'name', 'catalogNumber', 'EAN', 'description', 'unit', 'highlighted'
+        'parent_subcategory', 'name', 'manufacturer_id', 'catalogNumber', 'EAN', 'description', 'unit', 'highlighted'
     ];
 
     /**
@@ -72,5 +72,10 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function manufacturer()
+    {
+        return $this->hasOne(Manufacturer::class, 'id', 'manufacturer_id');
     }
 }

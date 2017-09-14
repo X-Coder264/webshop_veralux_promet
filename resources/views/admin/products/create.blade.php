@@ -6,6 +6,7 @@
     <link type="text/css" href="/css/awesome-bootstrap-checkbox.css" rel="stylesheet" />
     <link href="/css/jquery.filer.css" type="text/css" rel="stylesheet" />
     <link href="/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
+    <link href="/css/select2.min.css" type="text/css" rel="stylesheet" />
 @stop
 
 {{-- Page content --}}
@@ -75,6 +76,13 @@
                                 <input id="name" name="name" type="text"
                                        placeholder="Naziv proizvoda" class="form-control required"
                                        value="{!! old('name') !!}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="manufacturer_id" class="control-label">
+                                Odaberite proizvođača:
+                                <select class="form-control" id="manufacturer_id" name="manufacturer_id" required></select>
+                            </label>
                         </div>
 
                         <div class="form-group">
@@ -196,18 +204,19 @@
             });
         });
     </script>
-    {{--
+        <script src="{{ asset('js/select2.min.js') }}"></script>
+        <script type="text/javascript">
+            var data = $.map({!! $manufacturers !!}, function (obj) {
+                obj.text = obj.text || obj.name; // replace name with the property used for the text
 
-        <script src="{{ asset('assets/vendors/bootstrap-multiselect/js/bootstrap-multiselect.js') }}" ></script>
-        <script src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
-        <script src="{{ asset('assets/vendors/sifter/sifter.js') }}"></script>
-        <script src="{{ asset('assets/vendors/microplugin/microplugin.js') }}"></script>
-        <script src="{{ asset('assets/vendors/selectize/js/selectize.min.js') }}"></script>
-        <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-        <script src="{{ asset('assets/vendors/bootstrap-switch/js/bootstrap-switch.js') }}"></script>
-        <script src="{{ asset('assets/vendors/switchery/js/switchery.js') }}" ></script>
-        <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"></script>
-        <script src="{{ asset('assets/vendors/card/lib/js/jquery.card.js') }}"></script>
-        <script src="{{ asset('assets/js/pages/custom_elements.js') }}"></script>--}}
+                return obj;
+            });
+
+            $('#manufacturer_id').select2(
+                {
+                    data: data
+                }
+            );
+        </script>
 
 @stop

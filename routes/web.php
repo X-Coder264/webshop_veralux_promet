@@ -108,11 +108,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
         Route::post('/', ['as' => 'categories.delete', 'uses' => 'CategoryController@delete']);
     });
 
+    # Manufactures Management
+    Route::group(['prefix' => 'manufacturers'], function () {
+        Route::get('/', ['as' => 'manufacturers.index', 'uses' => 'ManufacturerController@index']);
+        Route::get('create', ['as' => 'manufacturers.create', 'uses' => 'ManufacturerController@create']);
+        Route::post('/', ['as' => 'manufacturers.store', 'uses' => 'ManufacturerController@store']);
+        Route::get('{manufacturer}/edit', ['as' => 'manufacturers.edit', 'uses' => 'ManufacturerController@edit']);
+        Route::put('{manufacturer}', ['as' => 'manufacturers.update', 'uses' => 'ManufacturerController@update']);
+    });
+
     Route::get('all_orders', ['as' => 'orders.show', 'uses' => 'OrderController@getAllOrders']);
     Route::get('order/{order}', ['as' => 'user.order.show', 'uses' => 'OrderController@orderDetails']);
     Route::patch('order/{order}', ['as' => 'user.order.update', 'uses' => 'OrderController@update']);
 
     Route::get('all_products', ['as' => 'products.show', 'uses' => 'ProductsController@getAllProducts']);
+    Route::get('all_manufacturers', ['as' => 'manufactures.show', 'uses' => 'ManufacturerController@getAllManufacturers']);
 
     //Route::get('{name?}', 'AdminCPController@showView');
 });

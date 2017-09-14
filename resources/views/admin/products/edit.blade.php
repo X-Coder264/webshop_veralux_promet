@@ -7,6 +7,7 @@
     <link href="/css/jquery.fileuploader.css" type="text/css" rel="stylesheet" />
     <link href="/css/jquery.fileuploader-theme-dragdrop.css" media="all" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
+    <link href="/css/select2.min.css" type="text/css" rel="stylesheet" />
 @stop
 
 {{-- Page content --}}
@@ -81,6 +82,13 @@
                                 <input id="name" name="name" type="text"
                                        placeholder="Naziv proizvoda" class="form-control required"
                                        value="{{$product->name}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="manufacturer_id" class="control-label">
+                                    Odaberite proizvođača:
+                                    <select class="form-control" id="manufacturer_id" name="manufacturer_id" required></select>
+                                </label>
                             </div>
 
                             <div class="form-group">
@@ -200,6 +208,23 @@
                 return removed;
             }
         });
+    </script>
+
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script type="text/javascript">
+        var data = $.map({!! $manufacturers !!}, function (obj) {
+            obj.text = obj.text || obj.name; // replace name with the property used for the text
+
+            return obj;
+        });
+        $('#manufacturer_id').select2(
+            {
+                data: data
+            }
+        );
+
+        $('#manufacturer_id').val({{ $product->manufacturer->id }});
+        $('#manufacturer_id').trigger('change');
     </script>
 
 @stop
