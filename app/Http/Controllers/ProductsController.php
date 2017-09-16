@@ -276,10 +276,10 @@ class ProductsController extends Controller
      */
     public function destroy(Product $product)
     {
-        $path = public_path() . '/product_images/' . $product->slug .'/';
-        File::deleteDirectory($path);
-
         if ($product->delete()) {
+            $path = public_path() . '/product_images/' . $product->slug .'/';
+            File::deleteDirectory($path);
+
             // Prepare the success message
             $success = "Proizvod je uspješno obrisan.";
 
