@@ -168,7 +168,7 @@
     </div>
     <div class="footer-bottom">
         <div class="container">
-            <p class="pull-left">&copy; Pragma Once {{ date("Y") }}. Sva prava pridržana.</p>
+            <p class="pull-left">Copyright  &copy; {{ date("Y") }}. - Mario Šunc (HTML5, CSS3, JS) & Antonio Pauletich (PHP - Laravel)</p>
         </div>
     </div>
     {{--/.footer-bottom--}}
