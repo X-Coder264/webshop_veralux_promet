@@ -25,7 +25,7 @@ class HomeController extends Controller
         $html = "";
 
         foreach ($products as $product) {
-            $link = "'" . route('product.show', $product->slug, false) . "'";
+            $link = route('product.show', $product->slug, false);
             $image_link = "/product_images/" . $product->slug . "/" . $product->mainImage->path;
             $html .= '<div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6 cursor-pointer" onclick="window.location=' . $link . ';" style="height:312px;">
                         <div class="product">
