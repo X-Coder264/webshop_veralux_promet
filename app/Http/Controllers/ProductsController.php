@@ -217,7 +217,7 @@ class ProductsController extends Controller
 
         $product_images_count = ProductImage::where('product_id', "=", $product->id)->count();
 
-        if ($product_images_count === 0 && $request->has('images') === false) {
+        if ($product_images_count === 0 && $request->hasFile('images') === false) {
             return back()->with("error", "Proizvod mora imati barem jednu sliku!");
         }
 
