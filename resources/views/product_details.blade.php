@@ -130,6 +130,7 @@
     <div id="menu1" class="tab-pane fade">
         <div class="row">
             <form method="post" action="{{route('support_form_post')}}">
+                {{ csrf_field() }}
             <div class="panel panel-default col-xs-12 col-sm-8 col-sm-offset-2 col-md-7 col-md-offset-3 col-lg-6 col-lg-offset-3">
                 <div class="panel-body">
                     <div class="text-center">
@@ -157,7 +158,7 @@
                     </div>
                     <div class="form-group">
                         <label>Naslov poruke:</label>
-                        <input type="text" name="subject" class="form-control" value="Upit za proizvod idiote - {{$product->name}}" disabled>
+                        <input type="text" name="subject" class="form-control" value="Upit za proizvod - {{$product->name}}">
                         @if ($errors->has('subject'))
                             <span class="help-block">
                             <strong>{{ $errors->first('subject') }}</strong>
@@ -174,7 +175,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="6LddUCkTAAAAAJKrlEXYQbgUFvETI4ybdl2zeCi9"></div>
+                        <div class="g-recaptcha" data-sitekey="6LcS7DAUAAAAAI2knOSub-2YmiVabN3P789VplXV"></div>
                         @if ($errors->has('g-recaptcha-response'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
@@ -194,6 +195,7 @@
 @endsection
 
 @section('scripts')
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="/assets/plugins/magnific/jquery.magnific-popup.min.js"></script>
 <script>
     $(document).ready(function () {

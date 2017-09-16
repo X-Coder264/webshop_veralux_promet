@@ -130,10 +130,11 @@ class CartController extends Controller
             unset($products_with_quantity[$key]);
             $products_with_quantity  = array_values($products_with_quantity->toArray());
         }
-        Cache::decrement(Cookie::get('unique_id') . '.number_of_products_in_cart');
-        if (count($products_with_quantity) === 0) {
-            return response(count($products_with_quantity))->cookie(Cookie::forget('cart_product_IDs'));
+        if (count($products_with_quantity) <= 0) {
+            Cache::forget(Cookie::get('unique_id') . '.number_of_products_in_cart');
+            return response(0)->cookie(Cookie::forget('cart_product_IDs'));
         } else {
+            Cache::decrement(Cookie::get('unique_id') . '.number_of_products_in_cart');
             return response(count($products_with_quantity))->cookie(
                 'cart_product_IDs',
                 serialize($products_with_quantity),
