@@ -141,7 +141,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="6LddUCkTAAAAAJKrlEXYQbgUFvETI4ybdl2zeCi9"></div>
+                        <div class="g-recaptcha" data-sitekey="6LcS7DAUAAAAAI2knOSub-2YmiVabN3P789VplXV"></div>
                         @if ($errors->has('g-recaptcha-response'))
                             <span class="help-block">
                                     <strong>{{ $errors->first('g-recaptcha-response') }}</strong>

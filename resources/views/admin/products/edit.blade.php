@@ -8,6 +8,7 @@
     <link href="/css/jquery.fileuploader-theme-dragdrop.css" media="all" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
     <link href="/css/select2.min.css" type="text/css" rel="stylesheet" />
+    <link href="/css/select2-bootstrap.min.css" type="text/css" rel="stylesheet" />
 @stop
 
 {{-- Page content --}}
@@ -212,6 +213,12 @@
 
     <script src="{{ asset('js/select2.min.js') }}"></script>
     <script type="text/javascript">
+        $('#select21').select2(
+            {
+                theme: "bootstrap"
+            }
+        );
+
         var data = $.map({!! $manufacturers !!}, function (obj) {
             obj.text = obj.text || obj.name; // replace name with the property used for the text
 
@@ -219,7 +226,8 @@
         });
         $('#manufacturer_id').select2(
             {
-                data: data
+                data: data,
+                theme: "bootstrap"
             }
         );
 

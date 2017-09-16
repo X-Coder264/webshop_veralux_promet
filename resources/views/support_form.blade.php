@@ -4,8 +4,23 @@
 <div class="container main-container headerOffset">
     <div class="row">
         <form method="post" action="{{route('support_form_post')}}">
+            {{ csrf_field() }}
             <div class="panel panel-default col-xs-12 col-sm-8 col-sm-offset-2 col-md-7 col-md-offset-3 col-lg-6 col-lg-offset-3">
                 <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="col-md-12 alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="col-md-12 alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="text-center">
                         <img style="margin-bottom:10px" height="150" alt="Veralux-promet d.o.o." src="/images/veralux-promet.svg">
                         <h3>Brzo i jednostavno pošaljite upit</h3>
@@ -48,7 +63,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="6LddUCkTAAAAAJKrlEXYQbgUFvETI4ybdl2zeCi9"></div>
+                        <div class="g-recaptcha" data-sitekey="6LcS7DAUAAAAAI2knOSub-2YmiVabN3P789VplXV"></div>
                         @if ($errors->has('g-recaptcha-response'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('g-recaptcha-response') }}</strong>

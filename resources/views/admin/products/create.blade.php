@@ -7,6 +7,7 @@
     <link href="/css/jquery.filer.css" type="text/css" rel="stylesheet" />
     <link href="/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
     <link href="/css/select2.min.css" type="text/css" rel="stylesheet" />
+    <link href="/css/select2-bootstrap.min.css" type="text/css" rel="stylesheet" />
 @stop
 
 {{-- Page content --}}
@@ -212,9 +213,16 @@
                 return obj;
             });
 
+            $('#select21').select2(
+                {
+                    theme: "bootstrap"
+                }
+            );
+
             $('#manufacturer_id').select2(
                 {
-                    data: data
+                    data: data,
+                    theme: "bootstrap"
                 }
             );
         </script>

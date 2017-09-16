@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
                             <div class="col-md-6 col-md-offset-4">
-                                <div class="g-recaptcha" data-theme="dark" data-sitekey="6LeQBQkUAAAAAALuIQVKFde-LJDXCwKir_01UiGR"></div>
+                                <div class="g-recaptcha" data-theme="dark" data-sitekey="6LcS7DAUAAAAAI2knOSub-2YmiVabN3P789VplXV"></div>
                                 @if ($errors->has('g-recaptcha-response'))
                                     <span class="help-block">
                                     <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
