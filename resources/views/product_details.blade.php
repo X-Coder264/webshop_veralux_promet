@@ -102,7 +102,7 @@
     <!-- /.product-details-container -->
 </section>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs nav-justified">
     <li class="active"><a data-toggle="tab" href="#home">Opis proizvoda</a></li>
     <li><a data-toggle="tab" href="#menu1">Upit o proizvodu</a></li>
 </ul>
