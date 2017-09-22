@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container main-container headerOffset">
+<div class="container-fluid main-container headerOffset">
     {{-- Main component call to action --}}
     <div class="row">
         {{--left column--}}
-        <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="col-lg-2 col-md-3 col-sm-12 col-lg-offset-1">
             <div class="panel-group" id="accordionNo">
                 {{--Category--}}
                 <div class="panel panel-default has-tree">
@@ -161,7 +161,7 @@
             @if($products->count())
             <div class="row categoryProduct xsResponse clearfix">
                 @foreach($products as $product)
-                    <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6 cursor-pointer" onclick="window.location='{{route('product.show', $product->slug)}}';">
+                    <div class="item col-sm-4 col-lg-3 col-md-4 col-xs-12 cursor-pointer" onclick="window.location='{{route('product.show', $product->slug)}}';">
                         <div class="product">
                             <div class="image">
                                 <a href="{{route('product.show', $product->slug)}}">
