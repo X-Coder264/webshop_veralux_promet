@@ -49,7 +49,7 @@
         <div class="container">
             <div class="row categoryProduct xsResponse clearfix" id="highlighted-products">
                 @foreach($products as $product)
-                    <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6 cursor-pointer" onclick="window.location='/{{route('product.show', $product->slug)}}';">
+                    <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6 cursor-pointer" onclick="window.location='{{route('product.show', $product->slug)}}';">
                         <div class="product">
                             <div class="image">
                                 <a href="{{route('product.show', $product->slug)}}">
