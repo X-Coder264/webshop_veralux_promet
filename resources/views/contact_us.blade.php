@@ -19,11 +19,11 @@
                         <p class="lead text-center">
                             <strong>Radno vrijeme:</strong>
                             <br>
-                            Pon-pet: 09:00 - 13:00
+                            Pon-pet: 10:00 - 13:00
                             <br>
                             Pon-pet: 15:00 - 19:00
                             <br>
-                            Sub: 8:00 - 14:00
+                            Sub: 8:00 - 13:00
                         </p>
                         <hr>
                         <div class="row">
@@ -112,8 +112,8 @@
                                     <strong>
                                         Broj mobitela
                                     </strong>
-                                    : <a href="tel:385993713007">
-                                        +385 99 3713 007
+                                    : <a href="tel:38598713007">
+                                        +385 98 713 007
                                     </a>
                                     <br>
                                     <strong>

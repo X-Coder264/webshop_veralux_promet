@@ -15,19 +15,79 @@
             </span>
             <div class="slider slider-v1" data-cycle-swipe=true data-cycle-prev=".prevControl" data-cycle-next=".nextControl" data-cycle-loader="wait">
                 <div class="slider-item slider-item-img1">
-                    <img src="images/slider/slider1.jpg" class="img-responsive parallaximg sliderImg" alt="img">
+                    <div class="sliderInfo">
+                        <div class="container">
+                            <div class="col-lg-12 col-md-12 col-sm-12 sliderTextFull  ">
+                                <div class="inner dark maxwidth500 text-center animated topAnima">
+                                    <div class=" ">
+                                        <a href="http://www.trevos.eu" target="_blank"><img class="text-center hidden-xs" width="250" src="images/slider/trevos-logo.png" alt="Trevos"></a>
+                                        <a href="http://www.trevos.eu" target="_blank"><img class="text-center hidden-lg hidden-sm hidden-md" width="120" src="images/slider/trevos-logo.png" alt="Trevos"></a>
+                                        <h3>Nova linija <strong>LINEA</strong> proizvoda</h3>
+                                    </div>
+                                    <a href="http://www.trevos.eu/catalogue/linea" target="_blank" class="text-center btn btn-danger btn-lg">PREGLED PROIZVODA</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/slider/slider1.jpg" class="img-responsive parallaximg sliderImg" alt="Trevos">
                 </div>
                 <div class="slider-item slider-item-img1">
-                    <img src="images/slider/slider2.jpg" class="img-responsive parallaximg sliderImg" alt="img">
+                    <div class="sliderInfo">
+                        <div class="container">
+                            <div class="col-lg-5 col-md-6 col-sm-5 col-xs-5 pull-left sliderText blankstyle transformRight">
+                                <div class="inner text-right"><a href="http://www2.meethue.com/en-us" target="_blank"><img src="images/slider/philips-hue-logo.png" class="img-responsive" alt="Philips Hue"></a></div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-7   pull-left sliderText blankstyle color-white">
+                                <div class="inner">
+                                    <div class="hidden-xs hidden-sm">
+                                        <h1 class="uppercase topAnima animated xlarge">PHILIPS HUE</h1>
+                                        <p class="bot tomAnima animated opacity0">Philips Hue je vaš osobni bežični rasvjetni sustav koji vam omogućuje jednostavno upravljanje svjetlošću kako bi stvoriti odgovarajući ambijent u svakom trenutku.</p>
+                                        <a href="http://www2.meethue.com/en-us" target="_blank" class="btn btn-danger btn-lg">PREGLED PROIZVODA</a>
+                                    </div>
+                                    <div class="hidden-lg hidden-md">
+                                        <h1 class="uppercase topAnima animated xlarge">PHILIPS HUE</h1>
+                                        <a href="http://www2.meethue.com/en-us" target="_blank" class="btn btn-danger btn-lg">PREGLED PROIZVODA</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/slider/slider2.jpg" class="img-responsive parallaximg sliderImg" alt="Philips Hue">
                 </div>
                 <div class="slider-item slider-item-img1">
-                    <img src="images/slider/slider3.jpg" class="img-responsive parallaximg sliderImg" alt="img">
+                    <div class="sliderInfo">
+                        <div class="container">
+                            <div class="col-lg-5 col-md-4 col-sm-6 col-xs-8 pull-left sliderText white">
+                                <div class="inner">
+                                    <div class="hidden-xs hidden-sm">
+                                        <h1 class="uppercase xlarge">PHILIPS URBAN LIGHTS</h1>
+                                        <p>Posjetite stranicu Philips Urban Lights proizvoda i uvjerite se u vrhnsku kvalitetu rasvjete i osvjetljenja!</p>
+                                        <a href="http://www.lighting.philips.com/main/prof/outdoor-luminaires/road-and-urban-lighting" target="_blank" class="btn btn-info btn-lg">PREGLED PROIZVODA</a>
+                                    </div>
+                                    <div class="hidden-lg hidden-md">
+                                        <h1 class="uppercase xlarge">PHILIPS URBAN LIGHTS</h1>
+                                        <a href="http://www.lighting.philips.com/main/prof/outdoor-luminaires/road-and-urban-lighting" target="_blank" class="btn btn-info btn-md" style="font-size:12px;">PREGLED PROIZVODA</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/slider/slider3.jpg" class="img-responsive parallaximg sliderImg" alt="Philips">
                 </div>
                 <div class="slider-item slider-item-img1">
-                    <img src="images/slider/slider5.jpg" class="img-responsive parallaximg sliderImg" alt="img">
-                </div>
-                <div class="slider-item slider-item-img1">
-                    <img src="images/slider/slider4.jpg" class="img-responsive parallaximg sliderImg" alt="img">
+                    <div class="sliderInfo">
+                        <div class="container">
+                            <div class="col-lg-12 col-md-12 col-sm-12 sliderTextFull  ">
+                                <div class="inner dark maxwidth500 text-center animated topAnima">
+                                    <div class=" ">
+                                        <h1 class="uppercase xlarge">PHILIPS HOME LIGHTING</h1>
+                                    </div>
+                                    <a href="https://www.philips.hr/c-m-li/odaberite-vrstu-rasvjetnog-tijela" target="_blank" class="text-center btn btn-danger btn-lg">PREGLED PROIZVODA</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/slider/slider4.jpg" class="img-responsive parallaximg sliderImg" alt="Philips">
                 </div>
                 {{--/.slider-item--}}
             </div>

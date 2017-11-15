@@ -5,7 +5,7 @@
     {{-- Main component call to action --}}
     <div class="row">
         {{--left column--}}
-        <div class="col-lg-2 col-md-3 col-sm-12 col-lg-offset-1">
+        <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="panel-group" id="accordionNo">
                 {{--Category--}}
                 <div class="panel panel-default has-tree">

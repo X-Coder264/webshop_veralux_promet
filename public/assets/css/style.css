@@ -778,7 +778,6 @@ legend {
 }
 
 .hasUserMenu > .dropdown-menu > li > a i {
-
     margin-right: 10px;
 }
 
@@ -1839,11 +1838,12 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     top: 45%;
     display: inline-block;
     cursor: pointer;
-    background: #fff;
+    background: transparent;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    color: #454545;
+    color: #000;
+    font-size: 18px;
     padding: 0 5px;
 }
 
@@ -2706,7 +2706,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 }
 
 .image {
-    display: block;
+    display: table;
     overflow: hidden;
     position: relative;
     text-align: center;
@@ -2721,7 +2721,8 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 }
 
 .image a {
-    display: block;
+    vertical-align: middle;
+    display: table-cell;
     overflow: hidden;
 }
 
@@ -2804,8 +2805,8 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     overflow: hidden;
     display: block;
     line-height: 18px;
-    margin: 25px 0 0;
-    padding: 0;
+    margin: 0 0 25px;
+    padding: 0 7px;
 }
 
 .item h4 a {
@@ -2814,7 +2815,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
     color: #3a3a3a;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 14px;
 
 }
 
@@ -3076,6 +3077,13 @@ h5.parallaxSubtitle {
     display: block;
 }
 
+/*.footer-fix {
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    }*/
+
 .footer {
     background: #f2f2f2;
     height: auto;
@@ -3266,6 +3274,7 @@ h5.parallaxSubtitle {
 }
 
 .main-container {
+	max-width: 1170px;
     min-height: 380px;
 }
 
@@ -4263,7 +4272,7 @@ tr.CartProduct td, tr.CartProduct th {
 /* =============================================================== */
 
 .innerPage {
-    padding-top: 60px;
+    padding-top: 30px;
 }
 
 .parallaxOffset {
@@ -4990,10 +4999,6 @@ div.quickview {
         padding-top: 2px !important;
     }
 
-    .navbar-brand {
-        padding: 15px;
-    }
-
     .search-box .input-group {
         margin-top: 9px;
     }
@@ -5451,10 +5456,6 @@ div.quickview {
         width: 100%;
         text-align: center;
         padding-bottom: 5px;
-    }
-
-    .navbar-brand {
-        padding: 17px 0 0 10px;
     }
 
     .navbar-brand img {

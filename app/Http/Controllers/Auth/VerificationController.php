@@ -77,7 +77,7 @@ class VerificationController extends Controller
         }
         
         UserVerification::generate($user);
-        UserVerification::send($user, 'Aktivacija korisničkog računa', 'noreply@ahelos.hr', 'Ahelos');
+        UserVerification::send($user, 'Aktivacija korisničkog računa', 'noreply@veraluxpromet.hr', 'Veralux-Promet d.o.o.');
 
         return redirect($this->redirectPath())->with(
             'warning',

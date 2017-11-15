@@ -2005,7 +2005,7 @@ pre code {
 
 @media (min-width: 768px) {
     .container {
-        width: 750px;
+        width: 950px;
     }
 }
 
@@ -5245,7 +5245,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-left: -15px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 782px) {
     .container > .navbar-header,
     .container-fluid > .navbar-header,
     .container > .navbar-collapse,

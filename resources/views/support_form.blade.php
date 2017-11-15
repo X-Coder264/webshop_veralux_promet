@@ -22,7 +22,7 @@
                         </div>
                     @endif
                     <div class="text-center">
-                        <img style="margin-bottom:10px" height="150" alt="Veralux-promet d.o.o." src="/images/veralux-promet.svg">
+                        <img class="hidden-xs" style="margin-bottom:10px" height="150" alt="Veralux-Promet d.o.o." src="/images/veralux-promet.svg">
                         <h3>Brzo i jednostavno pošaljite upit</h3>
                     </div>
                     <hr>

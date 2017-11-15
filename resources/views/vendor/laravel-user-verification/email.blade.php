@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="hr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,7 +65,7 @@ $actionUrl = route('email-verification.check', $user->verification_token) . '?em
                 <tr>
                     <td style="{{ $style['email-masthead'] }}">
                         <a style="{{ $fontFamily }} {{ $style['email-masthead_name'] }}" href="{{ url('/') }}" target="_blank">
-                            <img src="{{ url('/images/veralux-promet.svg"') }}" alt="Veralux-promet" height="150">
+                            <img src="{{ url('https://veraluxpromet.tk/images/veralux-promet.svg') }}" alt="Veralux-Promet d.o.o." height="150">
                         </a>
                     </td>
                 </tr>

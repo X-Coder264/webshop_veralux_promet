@@ -8,14 +8,14 @@
     <title>Veralux-Promet d.o.o.</title>
 	
     {{-- Fav and touch icons --}}
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=qAqK76n9y9">
-    <link rel="icon" type="image/png" href="/favicon-32x32.png?v=qAqK76n9y9" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png?v=qAqK76n9y9" sizes="16x16">
-    <link rel="manifest" href="/manifest.json?v=qAqK76n9y9">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=qAqK76n9y9">
-    <link rel="shortcut icon" href="/favicon.ico?v=qAqK76n9y9">
-    <meta name="apple-mobile-web-app-title" content="Veralux-Promet d.o.o.">
-    <meta name="application-name" content="Veralux-Promet d.o.o.">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=694nrY3mBB">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=694nrY3mBB">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=694nrY3mBB">
+    <link rel="manifest" href="/manifest.json?v=694nrY3mBB">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=694nrY3mBB" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon.ico?v=694nrY3mBB">
+    <meta name="apple-mobile-web-app-title" content="Veralux-Promet">
+    <meta name="application-name" content="Veralux-Promet">
     <meta name="theme-color" content="#ffffff">
 
     <!-- CSRF Token -->
@@ -85,7 +85,7 @@
     @yield('content')
 
 {{--/.footer--}}
-<footer class="footer-js">
+<footer{{--class="footer-fix"--}}>
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -121,6 +121,7 @@
                     <h3>Informacije</h3>
                     <ul class="list-unstyled footer-nav">
                         <li><a href="{{route('support_form')}}">Pošalji upit</a></li>
+                        <li><a href="{{route('terms_conditions')}}">Uvjeti korištenja</a></li>
                         <li><a href="{{route('about_us')}}">O nama</a></li>
                         <li><a href="{{route('contact_us')}}">Kontakt</a></li>
                     </ul>
@@ -159,6 +160,11 @@
                                 <i class=" fa fa-facebook">&nbsp;</i>
                             </a>
                         </li>
+                        <li>
+                            <a href="https://www.google.com" target="_blank">
+                                <i class=" fa fa-google">&nbsp;</i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -168,7 +174,12 @@
     </div>
     <div class="footer-bottom">
         <div class="container">
-            <p class="pull-left">Copyright  &copy; {{ date("Y") }}. - Mario Šunc (HTML5, CSS3, JS) & Antonio Pauletich (PHP - Laravel)</p>
+            <p class="pull-left">Sva prava pridržana  &copy; {{ date("Y") }}.&nbsp;-&nbsp;<a href="https://www.ahelos.hr" target="_blank">Ahelos d.o.o.</a></p>
+            <div class="pull-right paymentMethodImg">
+                <img height="30" class="pull-right" src="/images/site/payment/maestro_card.png" alt="Maestro Card">
+                <img height="30" class="pull-right" src="/images/site/payment/master_card.png" alt="Master Card">
+                <img height="30" class="pull-right" src="/images/site/payment/visa_card.png" alt="Visa Card">
+            </div>
         </div>
     </div>
     {{--/.footer-bottom--}}

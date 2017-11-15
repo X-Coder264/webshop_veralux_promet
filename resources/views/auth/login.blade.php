@@ -6,7 +6,7 @@
         <div class="panel panel-default col-xs-12 col-sm-8 col-sm-offset-2 col-md-7 col-md-offset-3 col-lg-6 col-lg-offset-3">
             <div class="panel-body">
                 <div class="text-center">
-                    <img style="margin-bottom:10px" height="150" alt="Veralux-promet d.o.o." src="/images/veralux-promet.svg">
+                    <img style="margin-bottom:10px" height="150" alt="Veralux-Promet d.o.o." src="/images/veralux-promet.svg">
                 </div>
                 @if (session('success'))
                     <br>

@@ -56,7 +56,7 @@
 
     <li {!! (Request::is('admin/manufacturers') || Request::is('admin/manufacturers/*')  ? 'class="active"' : '') !!}>
         <a href="#">
-            <i class="livicon" data-name="truck" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+            <i class="livicon" data-name="tag" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
             <span class="title">Proizvođači</span>
             <span class="fa arrow"></span>

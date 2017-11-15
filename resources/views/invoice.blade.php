@@ -5,7 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Veralux-promet d.o.o.</title>
+    <title>Veralux-Promet d.o.o.</title>
+
+    {{-- Fav and touch icons --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=694nrY3mBB">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=694nrY3mBB">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=694nrY3mBB">
+    <link rel="manifest" href="/manifest.json?v=694nrY3mBB">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=694nrY3mBB" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon.ico?v=694nrY3mBB">
+    <meta name="apple-mobile-web-app-title" content="Veralux-Promet">
+    <meta name="application-name" content="Veralux-Promet">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Styles -->
     {{-- Bootstrap core CSS --}}

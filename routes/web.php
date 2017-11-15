@@ -37,6 +37,10 @@ Route::get('about_us', function () {
     return view('about_us');
 })->name('about_us');
 
+Route::get('terms_conditions', function () {
+    return view('terms_conditions');
+})->name('terms_conditions');
+
 Route::get('profile', 'ProfileController@index')->name('user.settings')->middleware('auth');
 Route::put('{user}/update', 'UsersController@update')->name('user.update')->middleware('auth');
 Route::post('{user}/passwordupdate', 'UsersController@passwordreset')->name('user.password.update')->middleware('auth');
@@ -44,7 +48,6 @@ Route::post('{user}/passwordupdate', 'UsersController@passwordreset')->name('use
 Route::post('subscribe', 'NewsletterController@store')->name('newsletter.subscribe');
 
 Route::get('shop', 'CategoryController@index')->name("shop");
-
 
 Route::get('shop/products', 'CategoryController@index')->name('shop.products');
 Route::get('shop/products/{product}', 'ProductsController@show')->name("product.show");
@@ -63,7 +66,6 @@ Route::get('cart', 'CartController@index')->name("cart.show");
 Route::post('order', 'OrderController@store')->name("order.store")->middleware('auth');
 Route::get('orders', 'OrderController@index')->name("user.orders.show")->middleware('auth');
 Route::get('order/{order}', 'OrderController@show')->name("user.order.show")->middleware('auth');
-
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin'] ], function () {
     # Dashboard / Index

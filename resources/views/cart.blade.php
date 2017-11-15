@@ -56,7 +56,7 @@
                         <form action="{{route('order.store')}}" method="post">
                             {{csrf_field()}}
                         <div class="cartFooter w100">
-                            <textarea class="form-control" name="remark"></textarea> <br>
+                            <textarea style="resize:vertical;" class="form-control" name="remark" placeholder="Napomena..."></textarea> <br>
                             <div class="box-footer">
                                 <div class="pull-left"><a href="{{route('shop.products')}}" class="btn btn-primary"> <i
                                                 class="fa fa-arrow-left"></i> &nbsp; Nastavite kupovati</a></div>

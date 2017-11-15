@@ -3,17 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
-                    <div class="pull-left ">
-                        <ul class="userMenu ">
-                            <li class="phone-number"><a href="tel:38549236059">
-                                    <span>
-                                        <i class="glyphicon glyphicon-phone-alt "></i>
-                                    </span>
-                                    <span class="hidden-xs" style="margin-left:5px"> +385 49 236 059</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="pull-left"></div>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
                     <div class="pull-right">
@@ -92,9 +82,7 @@
                 <i class="fa fa-shopping-cart colorWhite"></i>
                 <span class="cartRespons colorWhite"> ({{$number_of_products_in_cart}})</span>
             </a>
-            {{--}}<a class="navbar-brand " href="/">
-                <img height="70" src="/images/veralux.svg" alt="Veralux-promet">
-            </a>--}}
+            <a class="navbar-brand hidden-lg hidden-md hidden-sm" href="/"> <img height="40" src="/images/veralux-promet-noLines.svg" alt="Veralux-Promet d.o.o."></a>
 
             {{-- this part for mobile --}}
             <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
@@ -111,8 +99,8 @@
             <ul class="nav navbar-nav">
                 <li {!! setActive('/') !!}><a href="/"><i class="fa fa-home"></i>&nbsp;&nbsp;Početna</a></li>
                 <li {!! setActive('shop*') !!}><a href="{{route('shop')}}"><i class="fa fa-list"></i>&nbsp;&nbsp;Kategorije proizvoda</a></li>
-                {{--<li {!! setActive('/test') !!}><a href="#">Katalozi</a></li>--}}
                 <li {!! setActive('support_form') !!}><a href="{{route('support_form')}}"><i class="fa fa-question"></i>&nbsp;&nbsp;Pošalji upit </a></li>
+                <li {!! setActive('terms_conditions') !!}><a href="{{route('terms_conditions')}}"><i class="fa fa-file-text"></i>&nbsp;&nbsp;Uvjeti korištenja</a></li>
                 <li {!! setActive('about_us') !!}><a href="{{route('about_us')}}"><i class="fa fa-plug"></i>&nbsp;&nbsp;O nama</a></li>
                 <li {!! setActive('contact_us') !!}><a href="{{route('contact_us')}}"><i class="fa fa-map"></i>&nbsp;&nbsp;Kontakt</a></li>
             </ul>
