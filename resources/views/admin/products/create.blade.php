@@ -227,7 +227,7 @@
             );
         </script>
 
-    <script src="/assets/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/assets/vendors/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('description');
     </script>
