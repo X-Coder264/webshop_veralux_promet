@@ -235,4 +235,8 @@
         $('#manufacturer_id').trigger('change');
     </script>
 
+    <script src="/assets/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('description');
+    </script>
 @stop
