@@ -132,7 +132,7 @@
                         </div> --}}
                         <div class="form-group">
                             <label for="description" class="control-label">Opis proizvoda:</label>
-                            <textarea id="description" name="description" class="form-control required" required></textarea>
+                            <textarea id="description" name="description" class="form-control required" required>{!! old('description') !!}</textarea>
                         </div>
 
                         <div class="form-group">
