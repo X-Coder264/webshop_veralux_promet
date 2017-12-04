@@ -9,7 +9,6 @@
         "barryvdh/laravel-debugbar": "^2.3",
         "cviebrock/eloquent-sluggable": "^4.2",
         "fedeisas/laravel-mail-css-inliner": "^2.1",
-        "golonka/bbcodeparser": "^2.2",
         "google/recaptcha": "^1.1",
         "intervention/image": "^2.3",
         "jrean/laravel-user-verification": "^4.1",

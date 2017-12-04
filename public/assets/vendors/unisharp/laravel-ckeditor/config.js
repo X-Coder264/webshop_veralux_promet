@@ -37,5 +37,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
     //BBCode plugin.
-	config.extraPlugins = 'bbcode';
+	//config.extraPlugins = 'bbcode';
 };

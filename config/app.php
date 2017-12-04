@@ -171,7 +171,6 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Golonka\BBCode\BBCodeParserServiceProvider::class,
         Spatie\Newsletter\NewsletterServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
         Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider::class,
@@ -238,7 +237,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'BBCode' => Golonka\BBCode\Facades\BBCodeParser::class,
         'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
         'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
 

@@ -165,20 +165,7 @@
 
 {{-- page level scripts --}}
 @section('footer_scripts')
-    <script src="/js/jquery.sceditor.bbcode.min.js"></script>
     <script src="/js/jquery.filer.min.js"></script>
-    <script>
-        $(function() {
-            // Replace all textarea tags with SCEditor
-            $('textarea').sceditor({
-                height: 300,
-                plugins: 'bbcode',
-                style: '/css/jquery.sceditor.default.min.css',
-                emoticonsRoot: '/',
-                toolbar:"bold,italic,underline,strike|left,center,right,justify|size,color,removeformat|code,quote|image,email,link,unlink|emoticon,youtube,date,time|maximize,source"
-            });
-        });
-    </script>
     <script>
         $(document).ready(function() {
             $('#filer_input').filer({

@@ -101,7 +101,7 @@
                                 <div class="hw100 display-table-cell">
                                     <div class="product-story-info-box">
                                         <div class="product-story-info-text">
-                                            <p class="desc">{!! BBCode::parse($product->description) !!}</p>
+                                            <p class="desc">{!! $product->description !!}</p>
                                         </div>
                                     </div>
                                 </div>
