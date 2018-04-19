@@ -100,6 +100,19 @@
 {{--/.banner style1--}}
 
 <div class="container main-container">
+    <div class="morePost row featuredPostContainer style2 globalPaddingTop">
+        <div class="home-intro">
+            <h2>PROIZVODI NA <span>AKCIJI</span> - PONUDA TRAJE OD <span>20.4.2018</span> DO<span> ISTEKA ZALIHA</h2>
+        </div>
+        <div class="container">
+            <div class="row categoryProduct xsResponse clearfix">
+                <br>
+                <blockquote style="border-right:5px solid #E4791D;border-left-color:#E4791D;background:#ccc;text-align:center;font-size:20px;">
+                    <p>Tablicu proizvoda na akciji možete preuzeti <a href="documents/akcija_rasvjeta1.pdf" target="_blank" style="color:#E4791D;">ovdje</a></p>
+                </blockquote>
+            </div>
+        </div>
+    </div>
     {{-- Main component call to action --}}
     @if($products->count())
     <div class="morePost row featuredPostContainer style2 globalPaddingTop">
