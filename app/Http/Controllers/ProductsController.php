@@ -309,15 +309,15 @@ class ProductsController extends Controller
         $products = Product::with('manufacturer')->get();
 
         return Datatables::of($products)
-            ->edit_column('created_at', function (Product $product) {
+            ->editColumn('created_at', function (Product $product) {
                 Carbon::setLocale('hr');
                 return $product->created_at->format('d.m.Y. H:i:s') . " (" . $product->created_at->diffForHumans() . ")";
             })
-            ->edit_column('updated_at', function (Product $product) {
+            ->editColumn('updated_at', function (Product $product) {
                 Carbon::setLocale('hr');
                 return $product->updated_at->format('d.m.Y. H:i:s') . " (" . $product->updated_at->diffForHumans() . ")";
             })
-            ->add_column('actions', function (Product $product) {
+            ->addColumn('actions', function (Product $product) {
                 $actions = '<a href='. route('admin.products.edit', ['product' => $product]) .
                     '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Uredi proizvod"></i></a>';
                 $actions .= '&nbsp;&nbsp;&nbsp;<a href='. route('admin.products.confirm-delete', $product->slug) .

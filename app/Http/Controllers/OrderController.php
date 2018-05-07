@@ -84,11 +84,11 @@ class OrderController extends Controller
         $orders = Order::with('user')->get();
 
         return Datatables::of($orders)
-            ->edit_column('created_at', function (Order $order) {
+            ->editColumn('created_at', function (Order $order) {
                 Carbon::setLocale('hr');
                 return $order->created_at->format('d.m.Y. H:i:s') . " (" . $order->created_at->diffForHumans() . ")";
             })
-            ->add_column('actions', function (Order $order) {
+            ->addColumn('actions', function (Order $order) {
                 $actions = '<a href='. route('admin.user.order.show', ['order' => $order]) .
                     '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Pregledaj narudžbu"></i></a>';
                 return $actions;

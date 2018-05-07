@@ -83,15 +83,15 @@ class ManufacturerController extends Controller
         $manufacturers = Manufacturer::all();
 
         return Datatables::of($manufacturers)
-            ->edit_column('created_at', function (Manufacturer $manufacturer) {
+            ->editColumn('created_at', function (Manufacturer $manufacturer) {
                 Carbon::setLocale('hr');
                 return $manufacturer->created_at->format('d.m.Y. H:i:s') . " (" . $manufacturer->created_at->diffForHumans() . ")";
             })
-            ->edit_column('updated_at', function (Manufacturer $manufacturer) {
+            ->editColumn('updated_at', function (Manufacturer $manufacturer) {
                 Carbon::setLocale('hr');
                 return $manufacturer->updated_at->format('d.m.Y. H:i:s') . " (" . $manufacturer->updated_at->diffForHumans() . ")";
             })
-            ->add_column('actions', function (Manufacturer $manufacturer) {
+            ->addColumn('actions', function (Manufacturer $manufacturer) {
                 $actions = '<a href='. route('admin.manufacturers.edit', ['manufacturer' => $manufacturer]) .
                     '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Uredi proizvođača"></i></a>';
                 return $actions;
