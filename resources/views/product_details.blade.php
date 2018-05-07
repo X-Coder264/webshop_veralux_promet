@@ -193,7 +193,7 @@
 @section('scripts')
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <!-- jquery-migrate only for product details -->
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
 <script type="text/javascript" src="/assets/js/smoothproducts.min.js"></script>
 @endsection
