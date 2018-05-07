@@ -14,7 +14,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redirect;
-use Yajra\Datatables\Facades\Datatables;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Exception\NotWritableException;
 

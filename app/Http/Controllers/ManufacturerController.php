@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Yajra\Datatables\Facades\Datatables;
+use Yajra\DataTables\DataTables;
 use Carbon\Carbon;
 
 class ManufacturerController extends Controller

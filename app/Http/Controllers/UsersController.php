@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use Yajra\Datatables\Facades\Datatables;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
