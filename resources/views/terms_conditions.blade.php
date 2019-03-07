@@ -13,7 +13,7 @@
                 <div class="clearfix">
                     <h3>1. Uvjeti poslovanja i prodaje</h3>
                     <p>Opće uvjete poslovanja i veleprodaje preuzmite na linku ispod.</p>
-                    <a href="https://wwww.veraluxpromet.hr/documents/Opci-uvjeti-poslovanja-i-veleprodaja.pdf">
+                    <a href="https://www.veraluxpromet.hr/documents/Opci-uvjeti-poslovanja-i-veleprodaja.pdf">
                         <i class="glyphicon glyphicon-file"></i>
                         &nbsp;Opci uvjeti poslovanja i veleprodaje.pdf</a>
                     <hr>
@@ -52,7 +52,7 @@
 
                     <h3>9. Zaštita privatnosti</h3>
                     <p>Pravilnik o obradi i zaštiti osobnih podataka preuzmite na linku ispod.</p>
-                    <a href="https://wwww.veraluxpromet.hr/documents/Veralux-Promet-GDPR.pdf">
+                    <a href="https://www.veraluxpromet.hr/documents/Veralux-Promet-GDPR.pdf">
                         <i class="glyphicon glyphicon-file"></i>
                         &nbsp;GDPR Veralux-Promet.pdf</a>
                     <hr>
