@@ -14,7 +14,7 @@
                 <i class="fa fa-angle-right fa-3x "></i>
             </span>
             <div class="slider slider-v1" data-cycle-swipe=true data-cycle-prev=".prevControl" data-cycle-next=".nextControl" data-cycle-loader="wait">
-                <div class="slider-item slider-item-img1">
+                {{--<div class="slider-item slider-item-img1">
                     <div class="sliderInfo">
                         <div class="container">
                             <div class="col-lg-12 col-md-12 col-sm-12 sliderTextFull  ">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <img src="images/slider/slider1.jpg" class="img-responsive parallaximg sliderImg" alt="Trevos">
-                </div>
+                </div>--}}
                 <div class="slider-item slider-item-img1">
                     <div class="sliderInfo">
                         <div class="container">
@@ -100,19 +100,6 @@
 {{--/.banner style1--}}
 
 <div class="container main-container">
-    <div class="morePost row featuredPostContainer style2 globalPaddingTop">
-        <div class="home-intro">
-            <h2>PROIZVODI NA <span>AKCIJI</span> - PONUDA TRAJE OD <span>20.4.2018</span> DO<span> ISTEKA ZALIHA</h2>
-        </div>
-        <div class="container">
-            <div class="row categoryProduct xsResponse clearfix">
-                <br>
-                <blockquote style="border-right:5px solid #E4791D;border-left-color:#E4791D;background:#ccc;text-align:center;font-size:20px;">
-                    <p>Tablicu proizvoda na akciji možete preuzeti <a href="documents/akcija_rasvjeta1.pdf" target="_blank" style="color:#E4791D;">ovdje</a></p>
-                </blockquote>
-            </div>
-        </div>
-    </div>
     {{-- Main component call to action --}}
     @if($products->count())
     <div class="morePost row featuredPostContainer style2 globalPaddingTop">
@@ -190,7 +177,7 @@
                     <li style="margin-right: 5px;"><a href="http://www.steinel.net/" target="_blank"><img src="images/brand/steinel-logo.png" alt="steinel-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.tem.si/" target="_blank"><img src="images/brand/tem-logo.png" alt="tem-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.teslacables.hr/" target="_blank"><img src="images/brand/tesla-logo.png" alt="tesla-logo"></a></li>
-                    <li style="margin-right: 5px;"><a href="http://www.trevos.eu/" target="_blank"><img src="images/brand/trevos-logo.png" alt="trevos-logo"></a></li>
+                    {{--<li style="margin-right: 5px;"><a href="http://www.trevos.eu/" target="_blank"><img src="images/brand/trevos-logo.png" alt="trevos-logo"></a></li>--}}
                     <li style="margin-right: 5px;"><a href="http://www.urmetdomus.it/urmet_web/it/home.html" target="_blank"><img src="images/brand/urmet-logo.png" alt="urmet-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.viko.com.tr/tr/urunler/" target="_blank"><img src="images/brand/viko-logo.png" alt="viko-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.vimar.com/en/int" target="_blank"><img src="images/brand/vimar-logo.png" alt="vimar-logo"></a></li>

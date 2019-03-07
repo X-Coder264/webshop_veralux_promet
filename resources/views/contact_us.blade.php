@@ -80,6 +80,8 @@
                                 <p>
                                     Direktor
                                     <br>
+                                    Voditelj veleprodaje
+                                    <br>
                                     <strong>
                                         Broj mobitela
                                     </strong>
@@ -107,7 +109,7 @@
                                     Milivoj Veran
                                 </h3>
                                 <p>
-                                    Voditelj prodaje
+                                    Voditelj maloprodaje
                                     <br>
                                     <strong>
                                         Broj mobitela

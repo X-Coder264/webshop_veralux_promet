@@ -28,6 +28,7 @@
         <div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-5">
             <h3 class="product-title">{{ $product->name }}</h3>
             <h3 class="product-code">Proizvođač: {{ $product->manufacturer->name }}</h3>
+            <h3 class="product-code">EAN: {{ $product->EAN }}</h3>
             <h3 class="product-code">Kataloško broj: {{ $product->catalogNumber }}</h3>
             @if($product_is_in_cart === false)
             <form method="POST" action="{{ route('cart.store', $product->slug) }}">
