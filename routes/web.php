@@ -19,27 +19,17 @@ Route::post('/email-verification-resend/send', 'Auth\VerificationController@rese
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('contact_us', function () {
-    return view('contact_us');
-})->name('contact_us');
+Route::view('contact_us', 'contact_us')->name('contact_us');
 
-Route::get('support_form', function () {
-    return view('support_form');
-})->name('support_form');
+Route::view('support_form', 'support_form')->name('support_form');
 
 Route::post('support_form', 'SupportQuestionsController@store')->name('support_form_post');
 
-Route::get('settings', function () {
-    return view('settings');
-})->name('user.password.change')->middleware('auth');
+Route::view('settings', 'settings')->name('user.password.change')->middleware('auth');
 
-Route::get('about_us', function () {
-    return view('about_us');
-})->name('about_us');
+Route::view('about_us', 'about_us')->name('about_us');
 
-Route::get('terms_conditions', function () {
-    return view('terms_conditions');
-})->name('terms_conditions');
+Route::view('terms_conditions', 'terms_conditions')->name('terms_conditions');
 
 Route::get('profile', 'ProfileController@index')->name('user.settings')->middleware('auth');
 Route::put('{user}/update', 'UsersController@update')->name('user.update')->middleware('auth');
