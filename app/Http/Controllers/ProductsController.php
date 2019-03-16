@@ -343,7 +343,7 @@ class ProductsController extends Controller
 
         foreach ($categories as $category) {
             // always start only from the top parent categories in the tree
-            if (! count($category->parentCategory)) {
+            if (null !== $category->parentCategory && ! count($category->parentCategory)) {
                 $list_items[] = $this->renderCategorySelectHTML($category, $checkedCategory);
             }
         }
