@@ -197,7 +197,7 @@ class CategoryController extends Controller
 
         foreach ($categories as $category) {
             // always start only from the top parent categories in the tree
-            if (null !== $category->parentCategory) {
+            if (0 === $category->category_parent_id) {
                 $list_items[] = $this->renderCategorySelectHTML($category);
             }
         }
