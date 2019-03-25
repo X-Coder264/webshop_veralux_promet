@@ -177,7 +177,7 @@
                     <li style="margin-right: 5px;"><a href="http://www.steinel.net/" target="_blank"><img src="images/brand/steinel-logo.png" alt="steinel-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.tem.si/" target="_blank"><img src="images/brand/tem-logo.png" alt="tem-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.teslacables.hr/" target="_blank"><img src="images/brand/tesla-logo.png" alt="tesla-logo"></a></li>
-                    {{--<li style="margin-right: 5px;"><a href="http://www.trevos.eu/" target="_blank"><img src="images/brand/trevos-logo.png" alt="trevos-logo"></a></li>--}}
+                    <li style="margin-right: 5px;"><a href="http://www.trevos.eu/" target="_blank"><img src="images/brand/trevos-logo.png" alt="trevos-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.urmetdomus.it/urmet_web/it/home.html" target="_blank"><img src="images/brand/urmet-logo.png" alt="urmet-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.viko.com.tr/tr/urunler/" target="_blank"><img src="images/brand/viko-logo.png" alt="viko-logo"></a></li>
                     <li style="margin-right: 5px;"><a href="http://www.vimar.com/en/int" target="_blank"><img src="images/brand/vimar-logo.png" alt="vimar-logo"></a></li>
