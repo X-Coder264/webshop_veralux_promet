@@ -55,8 +55,8 @@ class SupportQuestionsController extends Controller
     public function captchaCheck(Request $request)
     {
         $response = $request->input('g-recaptcha-response');
-        $remoteIp = $_SERVER['REMOTE_ADDR'];
-        $secret = env('RE_CAP_SECRET');
+        $remoteIp = $request->ip();
+        $secret = config('services.recaptcha.secret');
 
         $recaptcha = new ReCaptcha($secret);
         $resp = $recaptcha->verify($response, $remoteIp);
