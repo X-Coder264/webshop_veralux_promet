@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,27 +39,27 @@ Route::post('{user}/passwordupdate', 'UsersController@passwordreset')->name('use
 
 Route::post('subscribe', 'NewsletterController@store')->name('newsletter.subscribe');
 
-Route::get('shop', 'CategoryController@index')->name("shop");
+Route::get('shop', 'CategoryController@index')->name('shop');
 
 Route::get('shop/products', 'CategoryController@index')->name('shop.products');
-Route::get('shop/products/{product}', 'ProductsController@show')->name("product.show");
-Route::get('shop/{category}/products', 'CategoryController@show')->name("ProductCategory");
-Route::get('products/highlighted', 'HomeController@highlightedProducts')->name("highlighted_products");
+Route::get('shop/products/{product}', 'ProductsController@show')->name('product.show');
+Route::get('shop/{category}/products', 'CategoryController@show')->name('ProductCategory');
+Route::get('products/highlighted', 'HomeController@highlightedProducts')->name('highlighted_products');
 Route::get('products/search', 'ProductsController@search')->name('products.search');
 Route::delete('product/{product}/image/delete', 'ProductsController@deleteProductImage')
         ->name('product_image.delete')
         ->middleware(['auth', 'admin']);
 
-Route::post('/product/storeToCart/{product}', 'CartController@store')->name("cart.store");
-Route::post('/updateCart', 'CartController@update')->name("cart.update");
-Route::delete('/products/deleteFromCart', 'CartController@destroy')->name("cart.delete");
+Route::post('/product/storeToCart/{product}', 'CartController@store')->name('cart.store');
+Route::post('/updateCart', 'CartController@update')->name('cart.update');
+Route::delete('/products/deleteFromCart', 'CartController@destroy')->name('cart.delete');
 
-Route::get('cart', 'CartController@index')->name("cart.show");
-Route::post('order', 'OrderController@store')->name("order.store")->middleware('auth');
-Route::get('orders', 'OrderController@index')->name("user.orders.show")->middleware('auth');
-Route::get('order/{order}', 'OrderController@show')->name("user.order.show")->middleware('auth');
+Route::get('cart', 'CartController@index')->name('cart.show');
+Route::post('order', 'OrderController@store')->name('order.store')->middleware('auth');
+Route::get('orders', 'OrderController@index')->name('user.orders.show')->middleware('auth');
+Route::get('order/{order}', 'OrderController@show')->name('user.order.show')->middleware('auth');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin'] ], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
     # Dashboard / Index
     Route::get('/', ['as' => 'dashboard','uses' => 'AdminCPController@index']);
 
@@ -65,11 +67,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', ['as' => 'users', 'uses' => 'UsersController@index'])->name('admin.dashboard');
         Route::get('data', ['as' => 'users.data', 'uses' =>'UsersController@data']);
-        Route::get('index', ["as" => "users.index", "uses" => "UsersController@index"]);
-        Route::get('create', ["as" => "users.create", "uses" => "UsersController@create"]);
+        Route::get('index', ['as' => 'users.index', 'uses' => 'UsersController@index']);
+        Route::get('create', ['as' => 'users.create', 'uses' => 'UsersController@create']);
         Route::post('create', 'UsersController@store');
-        Route::get('{user}/edit', ["as" => "users.edit", "uses" => "UsersController@edit"]);
-        Route::patch('{user}/update', ["as" => "users.update", "uses" => "UsersController@update"]);
+        Route::get('{user}/edit', ['as' => 'users.edit', 'uses' => 'UsersController@edit']);
+        Route::patch('{user}/update', ['as' => 'users.update', 'uses' => 'UsersController@update']);
         Route::get('{user}/delete', ['as' => 'delete/user', 'uses' => 'UsersController@destroy']);
         Route::get('{user}/confirm-delete', ['as' => 'confirm-delete/user', 'uses' => 'UsersController@getModalDelete']);
         Route::get('{user}/restore', ['as' => 'restore/user', 'uses' => 'UsersController@getRestore']);

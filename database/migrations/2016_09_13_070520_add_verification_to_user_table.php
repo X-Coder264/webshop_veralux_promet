@@ -1,12 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * This file is part of Jrean\UserVerification package.
  *
  * (c) Jean Ragouin <go@askjong.com> <www.askjong.com>
  */
-
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class AddVerificationToUserTable extends Migration
 {
@@ -19,7 +20,7 @@ class AddVerificationToUserTable extends Migration
     {
         $user_model = config('auth.providers.users.model', App\User::class);
 
-        return (new $user_model)->getTable();
+        return (new $user_model())->getTable();
     }
 
     /**

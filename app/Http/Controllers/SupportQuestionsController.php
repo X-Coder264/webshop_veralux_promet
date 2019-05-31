@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Mail\SupportQuestion;
+use ReCaptcha\ReCaptcha;
 use Illuminate\Http\Request;
+use App\Mail\SupportQuestion;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use ReCaptcha\ReCaptcha;
 
 class SupportQuestionsController extends Controller
 {
     public function store(Request $request)
     {
-        if ($this->captchaCheck($request) === false) {
+        if (false === $this->captchaCheck($request)) {
             return redirect()->back()
                 ->withErrors('Google Captcha je neispravna.')
                 ->withInput();
@@ -43,16 +45,10 @@ class SupportQuestionsController extends Controller
 
         Mail::to('prodaja@veraluxpromet.hr')->send(new SupportQuestion($request->all()));
 
-        return back()->with('success', "Vaš upit je uspješno poslan.");
+        return back()->with('success', 'Vaš upit je uspješno poslan.');
     }
 
-    /**
-     * Robot - captcha check.
-     *
-     * @param  Request  $request
-     * @return boolean
-     */
-    public function captchaCheck(Request $request)
+    public function captchaCheck(Request $request): bool
     {
         $response = $request->input('g-recaptcha-response');
         $remoteIp = $request->ip();
@@ -60,10 +56,11 @@ class SupportQuestionsController extends Controller
 
         $recaptcha = new ReCaptcha($secret);
         $resp = $recaptcha->verify($response, $remoteIp);
+
         if ($resp->isSuccess()) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 }

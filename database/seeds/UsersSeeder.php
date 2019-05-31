@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 use App\User;
-use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Hashing\Hasher;
 
 class UsersSeeder extends Seeder
 {
@@ -23,7 +24,7 @@ class UsersSeeder extends Seeder
             'address' => 'Vrankovec 4/H',
             'phone' => '+385 49 236 059 ',
             'verified' => 1,
-            'admin' => 1
+            'admin' => 1,
         ]);
 
         Model::reguard();

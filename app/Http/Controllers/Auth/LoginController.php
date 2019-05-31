@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use App\User;
@@ -37,7 +39,6 @@ class LoginController extends Controller
     /**
      * Handle a login request to the application.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function login(Request $request)
@@ -55,11 +56,11 @@ class LoginController extends Controller
 
         $user = User::where('email', $request->input('email'))->first();
 
-        if ($user !== null && $user->trashed()) {
+        if (null !== $user && $user->trashed()) {
             return back()->with('warning', 'Vaš korisnički račun je deaktiviran. Molimo da se obratite tehničkoj podršci.');
         }
 
-        if ($user !== null && ! $user->isVerified()) {
+        if (null !== $user && ! $user->isVerified()) {
             return back()->with(
                 'warning',
                 'Vaš korisnički račun nije aktiviran. Aktivacijska poveznica bila Vam je poslana na ' .

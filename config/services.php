@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     /*
@@ -36,7 +38,7 @@ return [
     ],
 
     'recaptcha' => [
-        'secret' => env('RE_CAP_SECRET')
+        'secret' => env('RE_CAP_SECRET'),
     ],
 
 ];

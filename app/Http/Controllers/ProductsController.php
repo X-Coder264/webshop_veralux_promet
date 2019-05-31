@@ -1,20 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Manufacturer;
 use App\Product;
 use App\Category;
 use Carbon\Carbon;
+use App\Manufacturer;
 use App\ProductImage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
-use Intervention\Image\Facades\Image;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redirect;
-use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Exception\NotWritableException;
 
@@ -52,7 +54,7 @@ class ProductsController extends Controller
             'parent_subcategory' => 'required|integer',
             'unit' => 'required',
             'images' => 'required',
-            'images.*' => 'image|mimes:jpg,jpeg,png,gif|max:10240'
+            'images.*' => 'image|mimes:jpg,jpeg,png,gif|max:10240',
         ];
 
         $messages = [
@@ -91,14 +93,15 @@ class ProductsController extends Controller
             $name = $item->getClientOriginalName();
 
             $image_file = Image::make($item);
-            $path = public_path() . '/product_images/' . $product->slug .'/';
+            $path = public_path() . '/product_images/' . $product->slug . '/';
             File::makeDirectory($path, $mode = 0775, true, true);
 
             try {
                 $image_file->save($path . $name);
             } catch (NotWritableException $e) {
                 $product->delete();
-                return back()->with(['error' => "Došlo je do pogreške. Molimo pokušajte kasnije."]);
+
+                return back()->with(['error' => 'Došlo je do pogreške. Molimo pokušajte kasnije.']);
             }
 
             $image = new ProductImage();
@@ -107,18 +110,18 @@ class ProductsController extends Controller
             $image->save();
         });
 
-        return back()->with('success', "Proizvod je uspješno dodan.");
+        return back()->with('success', 'Proizvod je uspješno dodan.');
     }
-    
+
     public function show(Product $product)
     {
         $product = $product->load(['manufacturer', 'images']);
 
         $product_is_in_cart = false;
         $products_with_quantity = Cookie::get('cart_product_IDs');
-        if (! is_null($products_with_quantity)) {
+        if (null !== $products_with_quantity) {
             $product_IDs = collect(unserialize($products_with_quantity))->pluck('product_id');
-            if ($product_IDs->search($product->id) !== false) {
+            if (false !== $product_IDs->search($product->id)) {
                 $product_is_in_cart = true;
             } else {
                 $product_is_in_cart = false;
@@ -138,14 +141,14 @@ class ProductsController extends Controller
         $product_images = [];
 
         for ($i = 0; $i < count($product->images); $i++) {
-            $product_images[$i]["name"] = $product->images[$i]->path;
-            $product_images[$i]["size"] = filesize(public_path() .
-                "/product_images/" . $product->slug . "/". $product->images[$i]->path);
-            $product_images[$i]["type"] = mime_content_type(public_path() .
-                "/product_images/" . $product->slug . "/". $product->images[$i]->path);
-            $product_images[$i]["file"] = "/product_images/" . $product->slug . "/". $product->images[$i]->path;
-            $product_images[$i]["data"]["imageID"] = $product->images[$i]->id;
-            $product_images[$i]["data"]["url"] = "/product_images/" . $product->slug . "/". $product->images[$i]->path;
+            $product_images[$i]['name'] = $product->images[$i]->path;
+            $product_images[$i]['size'] = filesize(public_path() .
+                '/product_images/' . $product->slug . '/' . $product->images[$i]->path);
+            $product_images[$i]['type'] = mime_content_type(public_path() .
+                '/product_images/' . $product->slug . '/' . $product->images[$i]->path);
+            $product_images[$i]['file'] = '/product_images/' . $product->slug . '/' . $product->images[$i]->path;
+            $product_images[$i]['data']['imageID'] = $product->images[$i]->id;
+            $product_images[$i]['data']['url'] = '/product_images/' . $product->slug . '/' . $product->images[$i]->path;
         }
 
         $product_images = json_encode($product_images);
@@ -159,12 +162,12 @@ class ProductsController extends Controller
 
     public function deleteProductImage(Request $request, Product $product)
     {
-        $product_image = ProductImage::where('product_id', "=", $product->id)
-                                     ->where('id', "=", $request->input('imageID'))->first();
+        $product_image = ProductImage::where('product_id', '=', $product->id)
+                                     ->where('id', '=', $request->input('imageID'))->first();
         if (File::delete(
-            public_path() . "/product_images/" . $product->slug . "/". $product_image->path
+            public_path() . '/product_images/' . $product->slug . '/' . $product_image->path
         ) && $product_image->delete()) {
-            return "success";
+            return 'success';
         }
     }
 
@@ -188,7 +191,7 @@ class ProductsController extends Controller
             'parent_subcategory' => 'required|integer',
             'unit' => 'required',
             'images' => 'sometimes|required',
-            'images.*' => 'sometimes|image|mimes:jpg,jpeg,png,gif|max:10240'
+            'images.*' => 'sometimes|image|mimes:jpg,jpeg,png,gif|max:10240',
         ];
 
         $messages = [
@@ -214,13 +217,13 @@ class ProductsController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $product_images_count = ProductImage::where('product_id', "=", $product->id)->count();
+        $product_images_count = ProductImage::where('product_id', '=', $product->id)->count();
 
-        if ($product_images_count === 0 && $request->hasFile('images') === false) {
-            return back()->with("error", "Proizvod mora imati barem jednu sliku!");
+        if (0 === $product_images_count && false === $request->hasFile('images')) {
+            return back()->with('error', 'Proizvod mora imati barem jednu sliku!');
         }
 
-        if ($request->has('highlighted') && $request->input('highlighted') == 'on') {
+        if ($request->has('highlighted') && 'on' === $request->input('highlighted')) {
             $data['highlighted'] = true;
         } else {
             $data['highlighted'] = false;
@@ -233,29 +236,29 @@ class ProductsController extends Controller
             $name = $item->getClientOriginalName();
 
             $image_file = Image::make($item);
-            $path = public_path() . '/product_images/' . $product->slug .'/';
+            $path = public_path() . '/product_images/' . $product->slug . '/';
             File::makeDirectory($path, $mode = 0775, true, true);
 
             try {
                 $image_file->save($path . $name);
             } catch (NotWritableException $e) {
                 $product->delete();
-                return back()->with(['error' => "Došlo je do pogreške. Molimo pokušajte kasnije."]);
+
+                return back()->with(['error' => 'Došlo je do pogreške. Molimo pokušajte kasnije.']);
             }
-                $image = new ProductImage();
-                $image->product_id = $product->id;
-                $image->path = $name;
-                $image->save();
+            $image = new ProductImage();
+            $image->product_id = $product->id;
+            $image->path = $name;
+            $image->save();
         });
 
-        return back()->with('success', "Proizvod je uspješno uređen.");
+        return back()->with('success', 'Proizvod je uspješno uređen.');
     }
 
     /**
-     * Delete Confirm
+     * Delete Confirm.
      *
-     * @param   Product $product
-     * @return  \Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function getModalDelete(Product $product)
     {
@@ -264,30 +267,30 @@ class ProductsController extends Controller
         $error = null;
 
         $confirm_route = route('admin.products.destroy', $product);
+
         return view('admin.layouts.modal_confirmation', compact('error', 'type', 'model', 'confirm_route', 'product'));
     }
 
     /**
      * Delete the given product.
      *
-     * @param  Product $product
      * @return Redirect
      */
     public function destroy(Product $product)
     {
         if ($product->delete()) {
-            $path = public_path() . '/product_images/' . $product->slug .'/';
+            $path = public_path() . '/product_images/' . $product->slug . '/';
             File::deleteDirectory($path);
 
             // Prepare the success message
-            $success = "Proizvod je uspješno obrisan.";
+            $success = 'Proizvod je uspješno obrisan.';
 
             // Redirect to the user management page
             return Redirect::route('admin.products.index')->with('success', $success);
         }
 
         // Prepare the error message
-        $error = "Dogodila se pogreška";
+        $error = 'Dogodila se pogreška';
 
         // Redirect to the user page
         return Redirect::route('admin.products.index')->withInput()->with('error', $error);
@@ -300,6 +303,7 @@ class ProductsController extends Controller
             ->orWhere('catalogNumber', 'LIKE', '%' . $searchString . '%')
             ->orderBy('created_at', 'desc')
             ->paginate(12);
+
         return view('products_search', compact('products'));
     }
 
@@ -310,17 +314,20 @@ class ProductsController extends Controller
         return Datatables::of($products)
             ->editColumn('created_at', function (Product $product) {
                 Carbon::setLocale('hr');
-                return $product->created_at->format('d.m.Y. H:i:s') . " (" . $product->created_at->diffForHumans() . ")";
+
+                return $product->created_at->format('d.m.Y. H:i:s') . ' (' . $product->created_at->diffForHumans() . ')';
             })
             ->editColumn('updated_at', function (Product $product) {
                 Carbon::setLocale('hr');
-                return $product->updated_at->format('d.m.Y. H:i:s') . " (" . $product->updated_at->diffForHumans() . ")";
+
+                return $product->updated_at->format('d.m.Y. H:i:s') . ' (' . $product->updated_at->diffForHumans() . ')';
             })
             ->addColumn('actions', function (Product $product) {
-                $actions = '<a href='. route('admin.products.edit', ['product' => $product]) .
+                $actions = '<a href=' . route('admin.products.edit', ['product' => $product]) .
                     '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Uredi proizvod"></i></a>';
-                $actions .= '&nbsp;&nbsp;&nbsp;<a href='. route('admin.products.confirm-delete', $product->slug) .
+                $actions .= '&nbsp;&nbsp;&nbsp;<a href=' . route('admin.products.confirm-delete', $product->slug) .
                     ' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="Obriši proizvod"></i></a>';
+
                 return $actions;
             })->rawColumns(['actions'])->make(true);
     }
@@ -329,6 +336,7 @@ class ProductsController extends Controller
      * Generate the the <select> HTML element for the current categories in the DB.
      *
      * @param int $checkedCategory
+     *
      * @return string
      */
     public function renderCategoriesSelectHTML($checkedCategory = null)
@@ -350,7 +358,7 @@ class ProductsController extends Controller
 
         $list_items = implode('', $list_items);
 
-        if (trim($list_items) == '') {
+        if ('' === trim($list_items)) {
             return '';
         }
 
@@ -360,8 +368,8 @@ class ProductsController extends Controller
     /**
      * Generate the <option> elements for the <select> element for the given (parent) category.
      *
-     * @param  Category $category
      * @param int $checkedCategory
+     *
      * @return string
      */
     public function renderCategorySelectHTML(Category $category, $checkedCategory = null)
@@ -372,26 +380,27 @@ class ProductsController extends Controller
 
         if (count($category->allChildrenCategories)) {
             foreach ($category->allChildrenCategories as $subcategory) {
-                if ($x === 0) {
+                if (0 === $x) {
                     $html .= '<optgroup label="' . $category->name;
                     $x++;
                 }
                 if (count($subcategory->allChildrenCategories)) {
-                    $html .= " - " . $subcategory->name;
+                    $html .= ' - ' . $subcategory->name;
                     $html .= $this->renderCategorySelectHTML($subcategory, $checkedCategory);
                 } else {
-                    if ($subcategory->id == $checkedCategory) {
-                        $html .= '"><option value="'. $subcategory->id . '" selected >' . $subcategory->name . '</option>';
+                    if ($subcategory->id === $checkedCategory) {
+                        $html .= '"><option value="' . $subcategory->id . '" selected >' . $subcategory->name . '</option>';
                     } else {
-                        $html .= '"><option value="'. $subcategory->id . '">' . $subcategory->name . '</option>';
+                        $html .= '"><option value="' . $subcategory->id . '">' . $subcategory->name . '</option>';
                     }
-                    $html .= "</optgroup>";
+                    $html .= '</optgroup>';
                     $x = 0;
                 }
             }
+
             return $html;
         } else {
-            return '<option value="'. $category->id . '">' . $category->name . '</option>';
+            return '<option value="' . $category->id . '">' . $category->name . '</option>';
         }
     }
 }

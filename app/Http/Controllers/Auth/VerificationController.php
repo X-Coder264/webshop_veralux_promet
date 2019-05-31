@@ -1,18 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\RedirectsUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 
 use Jrean\UserVerification\Facades\UserVerification;
 
 class VerificationController extends Controller
 {
-
     use RedirectsUsers;
 
     /**
@@ -43,7 +44,6 @@ class VerificationController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -53,17 +53,16 @@ class VerificationController extends Controller
         ];
 
         $messages = [
-            'email.required' => "E-mail je obavezno polje.",
-            'email.email' => "E-mail mora sadržavati strukturu oblika primjer@mail.com.",
-            'email.max' => "E-mail smije sadržavati maksimalno 255 znakova.",
-            'email.exists' => "Korisnik nije pronađen.",
+            'email.required' => 'E-mail je obavezno polje.',
+            'email.email' => 'E-mail mora sadržavati strukturu oblika primjer@mail.com.',
+            'email.max' => 'E-mail smije sadržavati maksimalno 255 znakova.',
+            'email.exists' => 'Korisnik nije pronađen.',
         ];
 
         return Validator::make($data, $rules, $messages);
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function resend(Request $request)
@@ -75,7 +74,7 @@ class VerificationController extends Controller
         if ($user->isVerified()) {
             return redirect('/login')->with('success', 'Vaš korisnički račun je već aktiviran. Prijavite se u sustav');
         }
-        
+
         UserVerification::generate($user);
         UserVerification::send($user, 'Aktivacija korisničkog računa', 'noreply@veraluxpromet.hr', 'Veralux-Promet d.o.o.');
 

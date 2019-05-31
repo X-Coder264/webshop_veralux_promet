@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 abstract class QueryFilters
 {
@@ -23,8 +25,6 @@ abstract class QueryFilters
 
     /**
      * Create a new QueryFilters instance.
-     *
-     * @param Request $request
      */
     public function __construct(Request $request)
     {
@@ -34,7 +34,6 @@ abstract class QueryFilters
     /**
      * Apply the filters to the builder.
      *
-     * @param  Builder $builder
      * @return \Illuminate\Database\Eloquent\Collection | \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function apply(Builder $builder)
@@ -58,10 +57,10 @@ abstract class QueryFilters
         }
 
         if (isset($this->filters()['numberPerPage']) && is_numeric($this->filters()['numberPerPage']) &&
-            $this->filters()['numberPerPage'] != 0) {
+            0 !== $this->filters()['numberPerPage']) {
             return $this->builder->paginate($this->filters()['numberPerPage']);
         } elseif (isset($this->filters()['numberPerPage']) && is_numeric($this->filters()['numberPerPage']) &&
-            $this->filters()['numberPerPage'] == 0) {
+            0 === $this->filters()['numberPerPage']) {
             return $this->builder->get();
         }
 

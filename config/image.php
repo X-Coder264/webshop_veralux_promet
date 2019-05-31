@@ -1,6 +1,8 @@
 <?php
 
-return array(
+declare(strict_types=1);
+
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -15,6 +17,6 @@ return array(
     |
     */
 
-    'driver' => 'gd'
+    'driver' => 'gd',
 
-);
+];

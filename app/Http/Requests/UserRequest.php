@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -32,7 +34,7 @@ class UserRequest extends FormRequest
                     'name' => 'required|min:3',
                     'email' => 'required|email|unique:users,email',
                     'password' => 'required|min:6',
-                    'password_confirm' => 'required|same:password'
+                    'password_confirm' => 'required|same:password',
                 ];
             case 'PUT':
             case 'PATCH':

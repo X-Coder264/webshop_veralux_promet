@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Product;
@@ -29,11 +31,12 @@ class CategoryController extends Controller
         }
 
         if (empty($filters->filters())) {
-            $products = Product::with("mainImage")->orderBy('created_at', 'desc')->paginate(12);
+            $products = Product::with('mainImage')->orderBy('created_at', 'desc')->paginate(12);
         } else {
             $products = Product::filter($filters);
         }
         $index = true;
+
         return view('products', ['categories' => $categoriesHTML, 'products' => $products, 'index' => $index]);
     }
 
@@ -54,9 +57,7 @@ class CategoryController extends Controller
                     $category_with_products = $category->load('products');
                     $products = $category_with_products->products;
 
-                    $products = $products->sortByDesc('created_at');
-
-                    return $products;
+                    return $products->sortByDesc('created_at');
                 }
             );
 
@@ -72,14 +73,14 @@ class CategoryController extends Controller
 
             //Create our paginator
             $paginatedProducts = new LengthAwarePaginator($currentProducts, $number_of_products, $perPage);
-            $paginatedProducts->setPath(route("ProductCategory", $category->slug));
+            $paginatedProducts->setPath(route('ProductCategory', $category->slug));
 
             return view(
                 'products',
                 [
                 'categories' => $categoriesHTML,
                 'products' => $paginatedProducts,
-                'category' => $category
+                'category' => $category,
                 ]
             );
         } else {
@@ -93,6 +94,7 @@ class CategoryController extends Controller
     public function create()
     {
         $selectHTML = $this->renderCategoriesSelectHTML();
+
         return view('admin.categories.create', compact('selectHTML'));
     }
 
@@ -101,21 +103,23 @@ class CategoryController extends Controller
         if ($request->has('main_category')) {
             Category::create(['name' => $request->input('main_category'), 'category_parent_id' => 0]);
             flushCategoriesCache();
-            return back()->with('success', "Kategorija je uspješno dodana.");
+
+            return back()->with('success', 'Kategorija je uspješno dodana.');
         }
 
         if ($request->has('parent_category') && $request->has('subcategory')) {
             Category::create(
                 [
                     'name' => $request->input('subcategory'),
-                    'category_parent_id' => $request->input('parent_category')
+                    'category_parent_id' => $request->input('parent_category'),
                 ]
             );
             flushCategoriesCache();
-            return back()->with('success', "Podkategorija je uspješno dodana.");
+
+            return back()->with('success', 'Podkategorija je uspješno dodana.');
         }
 
-        return back()->with('error', "Kategorija nije uspješno dodana. Molimo pokušajte kasnije.");
+        return back()->with('error', 'Kategorija nije uspješno dodana. Molimo pokušajte kasnije.');
     }
 
     public function delete(Request $request)
@@ -126,13 +130,14 @@ class CategoryController extends Controller
         if (! $this->products) {
             if ($category->delete()) {
                 flushCategoriesCache();
-                return "success";
+
+                return 'success';
             }
         } else {
-            return "Ova kategorija ili neka njezina podkategorija ima u sebi proizvod(e).";
+            return 'Ova kategorija ili neka njezina podkategorija ima u sebi proizvod(e).';
         }
     }
-    
+
     public function getDeleteView()
     {
         $categories = Category::where('category_parent_id', '=', 0)->get();
@@ -140,6 +145,7 @@ class CategoryController extends Controller
         for ($i = 0, $count = $categories->count(); $i < $count; $i++) {
             $html .= $this->generateHTMLButtons($categories[$i]);
         }
+
         return view('admin.categories.delete', compact('categories', 'html'));
     }
 
@@ -147,8 +153,8 @@ class CategoryController extends Controller
     {
         static $j = 0;
         $html = '';
-        if ($category->category_parent_id === 0) {
-            if ($j === 1) {
+        if (0 === $category->category_parent_id) {
+            if (1 === $j) {
                 $html .= '<br>';
             }
             $html .= '<button class="btn btn-danger category_button" type="submit" name="category" value="' . $category->id . '">Obriši kategoriju - ' . $category->name . '</button><br>';
@@ -164,13 +170,11 @@ class CategoryController extends Controller
 
     /**
      * Checks whether a given category or any of its subcategories has any product.
-     *
-     * @param Category $category
      */
     public function checkForProducts(Category $category)
     {
-        if ($category->products->count() === 0) {
-            if ($category->childrenCategories->count() !== 0) {
+        if (0 === $category->products->count()) {
+            if (0 !== $category->childrenCategories->count()) {
                 foreach ($category->childrenCategories as $subcategory) {
                     $this->checkForProducts($subcategory);
                 }
@@ -204,7 +208,7 @@ class CategoryController extends Controller
 
         $list_items = implode('', $list_items);
 
-        if (trim($list_items) == '') {
+        if ('' === trim($list_items)) {
             return '';
         }
 
@@ -214,7 +218,6 @@ class CategoryController extends Controller
     /**
      * Generate the <option> elements for the <select> element for the given (parent) category.
      *
-     * @param  Category $category
      * @return string
      */
     public function renderCategorySelectHTML(Category $category)
@@ -247,7 +250,8 @@ class CategoryController extends Controller
     /**
      * Generate the category navigation HTML.
      *
-     * @param  int $category_parent_id
+     * @param int $category_parent_id
+     *
      * @return string
      */
     public function categoryList($category_parent_id = 0)
@@ -275,7 +279,7 @@ class CategoryController extends Controller
                 $list_items[] = '<a href="#">';
             } else {
                 $route = route('ProductCategory', $category->slug, false);
-                $list_items[] = '<a '.setActive(substr($route, 1)).' href="'. $route . '">';
+                $list_items[] = '<a ' . setActive(substr($route, 1)) . ' href="' . $route . '">';
             }
 
             $list_items[] = $category->name;
@@ -286,14 +290,13 @@ class CategoryController extends Controller
 
             // zatvori li
             $list_items[] = '</li>';
-
         }
 
         // pretvori u string
         $list_items = implode('', $list_items);
 
         // ako je prazno vrati prazan string
-        if (trim($list_items) == '') {
+        if ('' === trim($list_items)) {
             return '';
         }
 

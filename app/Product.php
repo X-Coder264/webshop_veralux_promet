@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Product extends Model
@@ -21,7 +23,7 @@ class Product extends Model
     {
         return [
             'slug' => [
-                'source' => ['manufacturer.name', 'name']
+                'source' => ['manufacturer.name', 'name'],
             ],
         ];
     }
@@ -42,7 +44,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'parent_subcategory', 'name', 'manufacturer_id', 'catalogNumber', 'EAN', 'description', 'unit', 'highlighted'
+        'parent_subcategory', 'name', 'manufacturer_id', 'catalogNumber', 'EAN', 'description', 'unit', 'highlighted',
     ];
 
     /**
@@ -59,7 +61,7 @@ class Product extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_parent_id');

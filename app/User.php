@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
@@ -23,8 +25,8 @@ class User extends Authenticatable
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
     }
 
@@ -44,7 +46,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'city', 'address', 'postal', 'phone', 'company', 'company_id'
+        'name', 'email', 'password', 'city', 'address', 'postal', 'phone', 'company', 'company_id',
     ];
 
     /**
@@ -71,7 +73,8 @@ class User extends Authenticatable
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return void
      */
     public function sendPasswordResetNotification($token)

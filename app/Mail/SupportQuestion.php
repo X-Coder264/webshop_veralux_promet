@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SupportQuestion extends Mailable
 {
@@ -15,8 +16,6 @@ class SupportQuestion extends Mailable
 
     /**
      * Create a new message instance.
-     *
-     * @param array $data
      */
     public function __construct(array $data)
     {

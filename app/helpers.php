@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 
@@ -11,7 +13,7 @@ function setActive($path)
     }
 }
 
-function deleteRedisKeysPattern($pattern = "")
+function deleteRedisKeysPattern($pattern = '')
 {
     $redis = Cache::getRedis();
     $cursor = 0;
@@ -20,11 +22,11 @@ function deleteRedisKeysPattern($pattern = "")
         $cursor = $data[0];
 
         foreach ($data[1] as $key) {
-            if (strpos($key, $pattern) !== false) {
+            if (false !== strpos($key, $pattern)) {
                 $redis->del($key);
             }
         }
-        if ($cursor == 0) {
+        if (0 === $cursor) {
             break;
         }
     }

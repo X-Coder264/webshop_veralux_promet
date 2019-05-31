@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications;
 
 use Illuminate\Notifications\Notification;
@@ -22,7 +24,6 @@ class ResetPasswordNotification extends Notification
     /**
      * Get the notification's channels.
      *
-     * @param  mixed  $notifiable
      * @return array|string
      */
     public function via($notifiable)
@@ -33,12 +34,11 @@ class ResetPasswordNotification extends Notification
     /**
      * Build the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->view(
+        return (new MailMessage())->view(
             'emails.reset_password',
             ['token' => $this->token]
         );

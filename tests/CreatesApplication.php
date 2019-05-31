@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
@@ -13,7 +15,7 @@ trait CreatesApplication
      */
     public function createApplication()
     {
-        $app = require __DIR__.'/../vendor/autoload.php';
+        $app = require __DIR__ . '/../vendor/autoload.php';
 
         $app->make(Kernel::class)->bootstrap();
 

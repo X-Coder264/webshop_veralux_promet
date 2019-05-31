@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use App\Order;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Cache;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -18,14 +20,14 @@ class ComposerServiceProvider extends ServiceProvider
     {
         view()->composer('partials.navigation', function ($view) {
             $visitor = Cookie::get('unique_id');
-            if (is_null($visitor)) {
+            if (null === $visitor) {
                 $number_of_products_in_cart = 0;
             } else {
                 if (Cache::has($visitor . '.number_of_products_in_cart')) {
                     $number_of_products_in_cart = Cache::get($visitor . '.number_of_products_in_cart');
                 } else {
                     $productIDs = Cookie::get('cart_product_IDs');
-                    if (! is_null($productIDs)) {
+                    if (null !== $productIDs) {
                         $array = unserialize($productIDs);
                         $number_of_products_in_cart = count($array);
                     } else {
@@ -57,6 +59,5 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 }

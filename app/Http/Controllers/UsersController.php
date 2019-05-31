@@ -1,17 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\User;
 use App\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
-use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
@@ -33,32 +35,34 @@ class UsersController extends Controller
         return Datatables::of($users)
             ->editColumn('created_at', function (User $user) {
                 Carbon::setLocale('hr');
+
                 return $user->created_at->diffForHumans();
             })->addColumn('activated', function (User $user) {
                 if ($user->verified) {
-                    return "Aktiviran";
+                    return 'Aktiviran';
                 } else {
-                    return "Nije aktiviran";
+                    return 'Nije aktiviran';
                 }
             })->addColumn('actions', function (User $user) {
-                $actions = "";
+                $actions = '';
                 if (! $user->trashed()) {
-                    $actions .= '<a href='. route('admin.users.show', $user->slug) .
+                    $actions .= '<a href=' . route('admin.users.show', $user->slug) .
                         '><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="Pregled korisnika"></i></a>
-                                &nbsp;&nbsp;&nbsp;<a href='.
+                                &nbsp;&nbsp;&nbsp;<a href=' .
                         route('admin.users.edit', $user->slug) .
                         '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="Uredi korisnika"></i></a>';
                 }
 
-                if (Auth::user()->id != $user->id) {
+                if (Auth::user()->id !== $user->id) {
                     if (! $user->trashed()) {
-                        $actions .= '&nbsp;&nbsp;&nbsp;<a href='. route('admin.confirm-delete/user', $user->slug) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="Izbriši korisnika"></i></a>';
+                        $actions .= '&nbsp;&nbsp;&nbsp;<a href=' . route('admin.confirm-delete/user', $user->slug) . ' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="Izbriši korisnika"></i></a>';
                     } else {
-                        $actions .= '<a href='.
+                        $actions .= '<a href=' .
                             route('admin.restore/user', $user->id) .
                             ' <i class="livicon" data-name="refresh" data-size="18" data-loop="true" data-c="#f36254" data-hc="#f36254" title="Aktiviraj korisnika"></i></a>';
                     }
                 }
+
                 return $actions;
             })->rawColumns(['actions'])->make(true);
     }
@@ -75,7 +79,7 @@ class UsersController extends Controller
 
     /**
      * Store a new user in the DB.
-     * @param  UserRequest $request
+     *
      * @return Redirect
      */
     public function store(UserRequest $request)
@@ -94,17 +98,16 @@ class UsersController extends Controller
 
         if (! $user->save()) {
             // Redirect to the user creation page
-            return Redirect::back()->withInput()->with('error', "Pogreška.");
+            return Redirect::back()->withInput()->with('error', 'Pogreška.');
         }
 
         // Redirect to the home page with success menu
-        return Redirect::route('admin.users.index')->with('success', "Korisnik je uspješno stvoren.");
+        return Redirect::route('admin.users.index')->with('success', 'Korisnik je uspješno stvoren.');
     }
 
     /**
      * Display specified user profile.
      *
-     * @param  User $user
      * @return \Illuminate\View\View
      */
     public function show(User $user)
@@ -115,7 +118,8 @@ class UsersController extends Controller
     /**
      * Return user orders.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function showOrders($id)
@@ -125,9 +129,10 @@ class UsersController extends Controller
         return Datatables::of($orders)
             ->editColumn('created_at', function (Order $order) {
                 Carbon::setLocale('hr');
-                return $order->created_at->format('d.m.Y. H:i:s') . " (" . $order->created_at->diffForHumans() . ")";
+
+                return $order->created_at->format('d.m.Y. H:i:s') . ' (' . $order->created_at->diffForHumans() . ')';
             })->addColumn('options', function (Order $order) {
-                return '<a href='. route('admin.user.order.show', ['order' => $order]) .
+                return '<a href=' . route('admin.user.order.show', ['order' => $order]) .
                     '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Pregledaj narudžbu"></i></a>';
             })->rawColumns(['options'])->make(true);
     }
@@ -135,20 +140,20 @@ class UsersController extends Controller
     /**
      * User update form.
      *
-     * @param  string $user
+     * @param string $user
+     *
      * @return \Illuminate\View\View
      */
     public function edit($user = null)
     {
         $user = User::withTrashed()->whereSlug($user)->first();
+
         return view('admin/users/edit', ['user' => $user]);
     }
 
     /**
      * Update user data in the DB.
      *
-     * @param  User $user
-     * @param UserRequest $request
      * @return Redirect
      */
     public function update(User $user, UserRequest $request)
@@ -161,11 +166,11 @@ class UsersController extends Controller
             'phone',
             'city',
             'address',
-            'postal'
+            'postal',
         ]);
 
         // check if the request is coming from the Admin CP route (if someone wants to add an admin)
-        $check = $request->session()->previousUrl() == route('admin.users.edit', $user->slug);
+        $check = $request->session()->previousUrl() === route('admin.users.edit', $user->slug);
 
         // check if the user was updated
         if ($user->update($data)) {
@@ -174,21 +179,21 @@ class UsersController extends Controller
                 $user->admin = true;
             } elseif (Auth::user()->id === $user->id && $check) {
                 $user->admin = true;
-            } elseif ($user->id !== 1) {
+            } elseif (1 !== $user->id) {
                 $user->admin = false;
             }
 
             $user->save();
 
             // Prepare the success message
-            $success = "Promjene su uspješno spremljene.";
+            $success = 'Promjene su uspješno spremljene.';
 
             // Redirect back
             return back()->with('success', $success);
         }
 
         // Prepare the error message
-        $error = "Dogodila se pogreška";
+        $error = 'Dogodila se pogreška';
 
         // Redirect back
         return back()->withInput()->with('error', $error);
@@ -208,12 +213,10 @@ class UsersController extends Controller
         return view('admin/deleted_users', compact('users'));
     }
 
-
     /**
-     * Delete Confirm
+     * Delete Confirm.
      *
-     * @param   User $user
-     * @return  \Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function getModalDelete(User $user)
     {
@@ -230,13 +233,13 @@ class UsersController extends Controller
         }
 
         $confirm_route = route('admin.delete/user', $user);
+
         return view('admin.layouts.modal_confirmation', compact('error', 'type', 'model', 'confirm_route', 'user'));
     }
 
     /**
      * Delete the given user.
      *
-     * @param  User $user
      * @return Redirect
      */
     public function destroy(User $user)
@@ -244,7 +247,7 @@ class UsersController extends Controller
         // Check if we are not trying to delete ourselves
         if ($user->id === Auth::user()->id) {
             // Prepare the error message
-            $error = "Ne možeš obrisati samog sebe";
+            $error = 'Ne možeš obrisati samog sebe';
 
             // Redirect to the user management page
             return Redirect::route('admin.users.index')->with('error', $error);
@@ -254,7 +257,7 @@ class UsersController extends Controller
         $user->delete();
 
         // Prepare the success message
-        $success = "Korisnik je uspješno obrisan.";
+        $success = 'Korisnik je uspješno obrisan.';
 
         // Redirect to the user management page
         return Redirect::route('admin.users.index')->with('success', $success);
@@ -263,7 +266,8 @@ class UsersController extends Controller
     /**
      * Restore a deleted user.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Redirect
      */
     public function getRestore($id = null)
@@ -274,14 +278,14 @@ class UsersController extends Controller
         // check if the user was restored
         if ($user->restore()) {
             // Prepare the success message
-            $success = "Korisnik je vraćen.";
+            $success = 'Korisnik je vraćen.';
 
             // Redirect to the user management page
             return Redirect::route('admin.users.index')->with('success', $success);
         }
 
         // Prepare the error message
-        $error = "Dogodila se pogreška";
+        $error = 'Dogodila se pogreška';
 
         // Redirect to the user page
         return Redirect::route('admin.users.index')->withInput()->with('error', $error);
@@ -293,18 +297,18 @@ class UsersController extends Controller
             $password = $request->input('password');
             $user->password = Hash::make($password, ['rounds' => 15]);
             if ($user->save()) {
-                return "success";
+                return 'success';
             }
         } else {
             $validator = Validator::make($request->all(), [
                 'old_password' => 'required|min:6',
-                'password' => 'required|min:6|confirmed'
+                'password' => 'required|min:6|confirmed',
             ], [
-                'old_password.required' => "Stara lozinka je obavezno polje.",
-                'old_password.min' => "Stara lozinka mora sadržavati minimalno 6 znakova.",
-                'password.required' => "Lozinka je obavezno polje.",
-                'password.min' => "Lozinka mora sadržavati minimalno 6 znakova.",
-                'password.confirmed' => "Lozinke se ne podudaraju.",
+                'old_password.required' => 'Stara lozinka je obavezno polje.',
+                'old_password.min' => 'Stara lozinka mora sadržavati minimalno 6 znakova.',
+                'password.required' => 'Lozinka je obavezno polje.',
+                'password.min' => 'Lozinka mora sadržavati minimalno 6 znakova.',
+                'password.confirmed' => 'Lozinke se ne podudaraju.',
             ]);
 
             if ($validator->fails()) {
@@ -317,14 +321,17 @@ class UsersController extends Controller
                 $password = $request->input('password');
                 $user->password = Hash::make($password, ['rounds' => 15]);
                 if ($user->save()) {
-                    $success = "Lozinka je uspješno izmjenjena.";
+                    $success = 'Lozinka je uspješno izmjenjena.';
+
                     return back()->with('success', $success);
                 } else {
-                    $error = "Dogodila se pogreška, lozinka nije izmjenjena.";
+                    $error = 'Dogodila se pogreška, lozinka nije izmjenjena.';
+
                     return back()->with('error', $error);
                 }
             } else {
-                $error = "Vaša trenutna lozinka se ne podudara s našim zapisom.";
+                $error = 'Vaša trenutna lozinka se ne podudara s našim zapisom.';
+
                 return back()->with('error', $error);
             }
         }

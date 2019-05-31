@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\User;
@@ -7,18 +9,18 @@ use App\Order;
 use App\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
-use Yajra\DataTables\DataTables;
 
 class OrderController extends Controller
 {
-
     public function index()
     {
         $orders = Order::with('orderProducts')->where('user_id', '=', Auth::user()->id)->get();
+
         return view('user_order_list', compact('orders'));
     }
 
@@ -29,6 +31,7 @@ class OrderController extends Controller
                 // soft deleted products are displayed in the users order history too
                 $query->withTrashed();
             }]);
+
             return view('user_order', compact('order'));
         } else {
             return view('errors.404');
@@ -40,16 +43,16 @@ class OrderController extends Controller
         $user = Auth::user();
 
         $products_with_quantity = unserialize(Cookie::get('cart_product_IDs'));
-        if ($products_with_quantity !== false) {
+        if (false !== $products_with_quantity) {
             $product_IDs = collect($products_with_quantity)->pluck('product_id');
             $product_ids_ordered = implode(',', $product_IDs->toArray());
             $products = Product::whereIn('id', $product_IDs)->orderByRaw(
                 DB::raw("FIELD(id, $product_ids_ordered)")
             )->get();
             $count = count($products_with_quantity);
-            if ($products->count() !== 0) {
+            if (0 !== $products->count()) {
                 for ($i = 0, $x = 0; $i < $count; $i++) {
-                    if ($products[$x]->id == $products_with_quantity[$i]['product_id']) {
+                    if ($products[$x]->id === $products_with_quantity[$i]['product_id']) {
                         $products[$x]->quantity = $products_with_quantity[$i]['quantity'];
                         $x++;
                     }
@@ -67,7 +70,7 @@ class OrderController extends Controller
         $products->each(function ($item, $key) use (&$order) {
             $order->orderProducts()->create([
                 'product_id' => $item->id,
-                'quantity' => $item->quantity
+                'quantity' => $item->quantity,
             ]);
         });
 
@@ -86,12 +89,12 @@ class OrderController extends Controller
         return Datatables::of($orders)
             ->editColumn('created_at', function (Order $order) {
                 Carbon::setLocale('hr');
-                return $order->created_at->format('d.m.Y. H:i:s') . " (" . $order->created_at->diffForHumans() . ")";
+
+                return $order->created_at->format('d.m.Y. H:i:s') . ' (' . $order->created_at->diffForHumans() . ')';
             })
             ->addColumn('actions', function (Order $order) {
-                $actions = '<a href='. route('admin.user.order.show', ['order' => $order]) .
+                return '<a href=' . route('admin.user.order.show', ['order' => $order]) .
                     '><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428bca" title="Pregledaj narudžbu"></i></a>';
-                return $actions;
             })->rawColumns(['actions'])->make(true);
     }
 
