@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
@@ -64,7 +65,7 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_parent_id');
     }
 
-    public function mainImage()
+    public function mainImage(): HasOne
     {
         return $this->hasOne(ProductImage::class)->orderBy('id', 'asc');
     }
