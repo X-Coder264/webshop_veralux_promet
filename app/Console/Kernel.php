@@ -20,8 +20,6 @@ class Kernel extends ConsoleKernel
 
     /**
      * Define the application's command schedule.
-     *
-     * @return void
      */
     protected function schedule(Schedule $schedule)
     {
@@ -31,8 +29,6 @@ class Kernel extends ConsoleKernel
 
     /**
      * Register the Closure based commands for the application.
-     *
-     * @return void
      */
     protected function commands()
     {

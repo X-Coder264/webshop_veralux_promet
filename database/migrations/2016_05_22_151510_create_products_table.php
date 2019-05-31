@@ -10,8 +10,6 @@ class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -27,7 +25,8 @@ class CreateProductsTable extends Migration
             $table->integer('manufacturer_id')->unsigned()->index();
             $table->foreign('manufacturer_id')->references('id')->on('product_manufacturers')->onUpdate('cascade')->onDelete('cascade');
             $table->string('catalogNumber')->unique();
-            $table->string('EAN')->unique();
+            $table->integer('price')->unsigned()->nullable();
+            $table->integer('discount_price')->unsigned()->nullable();
             $table->text('description');
             $table->enum('unit', ['kom', 'm', 'kg']);
             $table->boolean('highlighted')->default(false);
@@ -39,8 +38,6 @@ class CreateProductsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

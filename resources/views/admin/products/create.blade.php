@@ -94,10 +94,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="EAN" class="control-label">EAN:</label>
-                            <input id="EAN" name="EAN" type="text"
-                                   placeholder="EAN" class="form-control required"
-                                   value="{!! old('EAN') !!}" required>
+                            <label for="price" class="control-label">Cijena:</label>
+                            <input id="price" name="price" type="number"
+                                   placeholder="Cijena" class="form-control required"
+                                   value="{!! old('price') !!}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="discount_price" class="control-label">Cijena na popustu:</label>
+                            <input id="discount_price" name="discount_price" type="number"
+                                   placeholder="Cijena na popustu" class="form-control required"
+                                   value="{!! old('discount_price') !!}" required>
                         </div>
 
                         <div class="form-group">

@@ -44,7 +44,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'parent_subcategory', 'name', 'manufacturer_id', 'catalogNumber', 'EAN', 'description', 'unit', 'highlighted',
+        'parent_subcategory', 'name', 'manufacturer_id', 'catalogNumber', 'price', 'discount_price', 'description', 'unit', 'highlighted',
     ];
 
     /**
@@ -61,6 +61,24 @@ class Product extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function getPriceAttribute($price): ?string
+    {
+        if (null === $price) {
+            return null;
+        }
+
+        return number_format($price / 100, 2) . ' HRK';
+    }
+
+    public function getDiscountPriceAttribute($price): ?string
+    {
+        if (null === $price) {
+            return null;
+        }
+
+        return number_format($price / 100, 2) . ' HRK';
+    }
 
     public function category()
     {

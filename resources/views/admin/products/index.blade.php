@@ -36,7 +36,8 @@
                                 <th>Proizvođač</th>
                                 <th>Naziv proizvoda</th>
                                 <th>Kataloški broj</th>
-                                <th>EAN</th>
+                                <th>Cijena</th>
+                                <th>Cijena na popustu</th>
                                 <th>Stvoren</th>
                                 <th>Zadnja izmjena</th>
                                 <th>Opcije</th>
@@ -83,7 +84,8 @@
                     { data: 'manufacturer.name', name: 'manufacturer.name'},
                     { data: 'name', name: 'name'},
                     { data: 'catalogNumber', name: 'catalogNumber'},
-                    { data: 'EAN', name: 'EAN'},
+                    { data: 'price', name: 'price'},
+                    { data: 'discount_price', name: 'discount_price'},
                     { data: 'created_at', name: 'created_at', searchable: false},
                     { data: 'updated_at', name: 'updated_at', searchable: false},
                     { data: 'actions', name: 'actions', orderable: false, searchable: false }

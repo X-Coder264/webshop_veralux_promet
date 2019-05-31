@@ -103,7 +103,7 @@ class RegisterController extends Controller
     /**
      * Robot - captcha check.
      *
-     * @return boolean
+     * @return bool
      */
     public function captchaCheck(Request $request)
     {

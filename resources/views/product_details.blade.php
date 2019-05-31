@@ -28,8 +28,13 @@
         <div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-5">
             <h3 class="product-title">{{ $product->name }}</h3>
             <h3 class="product-code">Proizvođač: {{ $product->manufacturer->name }}</h3>
-            <h3 class="product-code">EAN: {{ $product->EAN }}</h3>
-            <h3 class="product-code">Kataloško broj: {{ $product->catalogNumber }}</h3>
+            @if(null !== $product->price)
+                <h3 class="product-code">Cijena: {{ $product->price }}</h3>
+            @endif
+            @if(null !== $product->discount_price)
+                <h3 class="product-code">Cijena na popustu: {{ $product->discount_price }}</h3>
+            @endif
+            <h3 class="product-code">Kataloški broj: {{ $product->catalogNumber }}</h3>
             @if($product_is_in_cart === false)
             <form method="POST" action="{{ route('cart.store', $product->slug) }}">
             <div class="productFilter productFilterLook2">
