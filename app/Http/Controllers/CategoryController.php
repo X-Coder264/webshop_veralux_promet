@@ -52,7 +52,7 @@ class CategoryController extends Controller
         if (empty($filters->filters())) {
             $products = Cache::remember(
                 'category.' . $category->slug . '.paginatedProducts',
-                15,
+                15 * 60,
                 function () use ($category) {
                     $category_with_products = $category->load('products');
                     $products = $category_with_products->products;
