@@ -42,7 +42,7 @@ class OrderController extends Controller
     {
         $user = Auth::user();
 
-        $products_with_quantity = unserialize(Cookie::get('cart_product_IDs'));
+        $products_with_quantity = unserialize(Cookie::get('cart_product_IDs') ?? '');
         if (false !== $products_with_quantity) {
             $product_IDs = collect($products_with_quantity)->pluck('product_id');
             $product_ids_ordered = implode(',', $product_IDs->toArray());

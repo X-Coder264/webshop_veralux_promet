@@ -18,7 +18,7 @@ class CartController extends Controller
     {
         // show the cart and make sure that the products added to the cookie still exists in the DB
         // if they were deleted in the meantime, update and return the updated cookie
-        $products_with_quantity = unserialize(Cookie::get('cart_product_IDs'));
+        $products_with_quantity = unserialize(Cookie::get('cart_product_IDs') ?? '');
         $DatabaseDeletedProduct = false;
         if (false !== $products_with_quantity) {
             $product_IDs = collect($products_with_quantity)->pluck('product_id');
@@ -120,7 +120,7 @@ class CartController extends Controller
             return response()->json(['status' => 'error', 'errors' => $validator->getMessageBag()->toArray()]);
         }
 
-        $products = unserialize(Cookie::get('cart_product_IDs'));
+        $products = unserialize(Cookie::get('cart_product_IDs') ?? '');
         for ($i = 0; $i < count($products); $i++) {
             $products[$i]['quantity'] = $quantities[$i];
         }
@@ -130,7 +130,7 @@ class CartController extends Controller
 
     public function destroy(Request $request)
     {
-        $products_with_quantity = collect(unserialize(Cookie::get('cart_product_IDs')));
+        $products_with_quantity = collect(unserialize(Cookie::get('cart_product_IDs') ?? ''));
         $products = $products_with_quantity->pluck('product_id');
         if (false !== ($key = $products->search($request->input('product_id')))) {
             unset($products_with_quantity[$key]);
