@@ -26,7 +26,7 @@ function deleteRedisKeysPattern($pattern = '')
                 $redis->del($key);
             }
         }
-        if (0 === $cursor) {
+        if ('0' === (string) $cursor) {
             break;
         }
     }
