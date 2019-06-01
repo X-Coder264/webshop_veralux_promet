@@ -57,10 +57,10 @@ abstract class QueryFilters
         }
 
         if (isset($this->filters()['numberPerPage']) && is_numeric($this->filters()['numberPerPage']) &&
-            0 !== $this->filters()['numberPerPage']) {
+            '0' !== $this->filters()['numberPerPage']) {
             return $this->builder->paginate($this->filters()['numberPerPage']);
         } elseif (isset($this->filters()['numberPerPage']) && is_numeric($this->filters()['numberPerPage']) &&
-            0 === $this->filters()['numberPerPage']) {
+            '0' === $this->filters()['numberPerPage']) {
             return $this->builder->get();
         }
 
