@@ -6,14 +6,14 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                                     {{--/.productFilter--}}
-                                    @if($count = $products->count())
+                                    @if($count = $products->total())
                                         <div class="row categoryProduct xsResponse clearfix">
                                             <h2>Pronađeno: {{$count}} proizvoda</h2>
                                             @foreach($products as $product)
                                                 <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6 cursor-pointer" onclick="window.location='{{route('product.show', $product->slug)}}';">
                                                     <div class="product">
                                                         <div class="image">
-                                                            <a href="/trgovina/proizvod/{{ $product->slug }}">
+                                                            <a href="{{ route('product.show', $product) }}">
                                                                 @if(null !== $product->mainImage)
                                                                     <img src="/product_images/{{ $product->slug }}/{{ $product->mainImage->path }}" alt="img" class="img-responsive">
                                                                 @endif
@@ -35,11 +35,9 @@
                                         </div>
                                     @endif
                                     {{--/.categoryProduct || product content end--}}
-                                    @if(! isset($_GET['numberPerPage']) || (isset($_GET['numberPerPage']) && $_GET['numberPerPage'] != 0))
-                                        <div class="w100 categoryFooter">
-                                            {{ $products->appends($_GET)->links() }}
-                                        </div>
-                @endif
+                                <div class="w100 categoryFooter">
+                                    {{ $products->appends(Request::query())->links() }}
+                                </div>
                 {{--/.categoryFooter--}}
             </div>
             {{--/right column end--}}
