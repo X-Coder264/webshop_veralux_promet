@@ -158,7 +158,7 @@ class UsersController extends Controller
      */
     public function update(User $user, UserRequest $request)
     {
-        $data = $request->intersect([
+        $data = $request->only([
             'name',
             'email',
             'company',
