@@ -184,10 +184,10 @@
             </div>
             @endif
             {{--/.categoryProduct || product content end--}}
-            @if(!isset($_GET['numberPerPage']) || (isset($_GET['numberPerPage']) && $_GET['numberPerPage'] != 0))
-            <div class="w100 categoryFooter">
-                {{ $products->appends($_GET)->links() }}
-            </div>
+            @if((null !== Request::query('numberPerPage') && Request::query('numberPerPage') !== '0') || null === Request::query('numberPerPage'))
+                <div class="w100 categoryFooter">
+                    {{ $products->appends($_GET)->links() }}
+                </div>
             @endif
             {{--/.categoryFooter--}}
         </div>
