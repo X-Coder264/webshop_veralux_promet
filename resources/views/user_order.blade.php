@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="order-box-content">
                                     <div class="clear">
-                                        <textarea class="form-control" rows="5" id="remark" disabled>{{$order->remark}}</textarea>
+                                        <textarea style="resize:vertical;" class="form-control" rows="4" id="remark" disabled>{{$order->remark}}</textarea>
                                     </div>
                                 </div>
                             </div>
