@@ -49,7 +49,6 @@
                                                     </div>
                                                 </td>
                                                 <td><a> X {{$orderProduct->quantity}} </a></td>
-
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -58,6 +57,20 @@
                             </div>
                         </div>
                     </div>
+                    @if(!empty($oreder->remark))
+                        <div class="col-sm-12 clearfix">
+                            <div class="order-box">
+                                <div class="order-box-header">
+                                    Napomena
+                                </div>
+                                <div class="order-box-content">
+                                    <div class="clear">
+                                        <textarea class="form-control" rows="5" id="remark" disabled>{{$oreder->remark}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-lg-12 clearfix">
                     <ul class="pager">

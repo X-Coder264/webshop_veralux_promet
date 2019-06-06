@@ -77,7 +77,7 @@
                     <div class="w100 costDetails">
                         <div class="table-block" id="order-detail-content"><button class="btn btn-primary btn-lg btn-block"
                                                                               title="checkout"
-                                                                              style="margin-bottom:20px">Naruči &nbsp; <i class="fa fa-arrow-right"></i> </button>
+                                                                              style="margin-bottom:20px">Zatraži ponudu &nbsp; <i class="fa fa-arrow-right"></i> </button>
                         </div>
                     </div>
                 </div>
