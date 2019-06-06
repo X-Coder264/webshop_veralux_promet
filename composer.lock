@@ -881,16 +881,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.19",
+            "version": "v5.8.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "47bb1471b727a0c1497143dccf46aacf73c0ce6b"
+                "reference": "c78796cc1159c8dc63c45a2011ddc4af17059cb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/47bb1471b727a0c1497143dccf46aacf73c0ce6b",
-                "reference": "47bb1471b727a0c1497143dccf46aacf73c0ce6b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c78796cc1159c8dc63c45a2011ddc4af17059cb4",
+                "reference": "c78796cc1159c8dc63c45a2011ddc4af17059cb4",
                 "shasum": ""
             },
             "require": {
@@ -1024,7 +1024,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-05-28T13:19:37+00:00"
+            "time": "2019-06-05T00:13:05+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1321,16 +1321,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.19.0",
+            "version": "2.19.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "c3545b39197d314205226ac3c33cb4db99aa54ab"
+                "reference": "5cf102d1476fdf92f1f991bd1a1a0d93c65755ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/c3545b39197d314205226ac3c33cb4db99aa54ab",
-                "reference": "c3545b39197d314205226ac3c33cb4db99aa54ab",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5cf102d1476fdf92f1f991bd1a1a0d93c65755ca",
+                "reference": "5cf102d1476fdf92f1f991bd1a1a0d93c65755ca",
                 "shasum": ""
             },
             "require": {
@@ -1377,7 +1377,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-05-30T10:15:05+00:00"
+            "time": "2019-06-04T20:07:46+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -3613,16 +3613,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v9.3.0",
+            "version": "v9.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "62f14b28ed15bb2c419489ff196fed3884ff8613"
+                "reference": "fe397a9e3c2164df8eba83352cc51a2ccc380758"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/62f14b28ed15bb2c419489ff196fed3884ff8613",
-                "reference": "62f14b28ed15bb2c419489ff196fed3884ff8613",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/fe397a9e3c2164df8eba83352cc51a2ccc380758",
+                "reference": "fe397a9e3c2164df8eba83352cc51a2ccc380758",
                 "shasum": ""
             },
             "require": {
@@ -3680,7 +3680,7 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2019-05-21T05:15:44+00:00"
+            "time": "2019-06-06T08:12:54+00:00"
         }
     ],
     "packages-dev": [
@@ -3984,16 +3984,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.15.0",
+            "version": "v2.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "adfab51ae979ee8b0fcbc55aa231ec2786cb1f91"
+                "reference": "20064511ab796593a3990669eff5f5b535001f7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/adfab51ae979ee8b0fcbc55aa231ec2786cb1f91",
-                "reference": "adfab51ae979ee8b0fcbc55aa231ec2786cb1f91",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/20064511ab796593a3990669eff5f5b535001f7c",
+                "reference": "20064511ab796593a3990669eff5f5b535001f7c",
                 "shasum": ""
             },
             "require": {
@@ -4025,7 +4025,7 @@
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.1",
                 "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1",
                 "phpunitgoodpractices/traits": "^1.8",
-                "symfony/phpunit-bridge": "^4.0"
+                "symfony/phpunit-bridge": "^4.3"
             },
             "suggest": {
                 "ext-mbstring": "For handling non-UTF8 characters in cache signature.",
@@ -4037,11 +4037,6 @@
                 "php-cs-fixer"
             ],
             "type": "application",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.15-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "PhpCsFixer\\": "src/"
@@ -4073,7 +4068,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2019-05-06T07:13:51+00:00"
+            "time": "2019-06-01T10:32:12+00:00"
         },
         {
             "name": "fzaninotto/faker",
