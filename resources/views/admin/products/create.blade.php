@@ -96,15 +96,15 @@
                         <div class="form-group">
                             <label for="price" class="control-label">Cijena:</label>
                             <input id="price" name="price" type="number"
-                                   placeholder="Cijena" class="form-control required"
-                                   value="{!! old('price') !!}" required>
+                                   placeholder="Cijena" class="form-control"
+                                   value="{!! old('price') !!}">
                         </div>
 
                         <div class="form-group">
                             <label for="discount_price" class="control-label">Cijena na popustu:</label>
                             <input id="discount_price" name="discount_price" type="number"
-                                   placeholder="Cijena na popustu" class="form-control required"
-                                   value="{!! old('discount_price') !!}" required>
+                                   placeholder="Cijena na popustu" class="form-control"
+                                   value="{!! old('discount_price') !!}">
                         </div>
 
                         <div class="form-group">
