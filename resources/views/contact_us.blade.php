@@ -82,13 +82,13 @@
                                     <br>
                                     Voditelj veleprodaje
                                     <br>
-                                    <strong>
+                                    {{--<strong>
                                         Broj mobitela
                                     </strong>
                                     : <a href="tel:385993713007">
                                         +385 99 3713 007
                                     </a>
-                                    <br>
+                                    <br>--}}
                                     <strong>
                                         Broj telefona
                                     </strong>
