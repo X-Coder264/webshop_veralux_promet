@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                    @if(!empty($oreder->remark))
+                    @if(!empty($order->remark))
                         <div class="col-sm-12 clearfix">
                             <div class="order-box">
                                 <div class="order-box-header">
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="order-box-content">
                                     <div class="clear">
-                                        <textarea class="form-control" rows="5" id="remark" disabled>{{$oreder->remark}}</textarea>
+                                        <textarea class="form-control" rows="5" id="remark" disabled>{{$order->remark}}</textarea>
                                     </div>
                                 </div>
                             </div>
