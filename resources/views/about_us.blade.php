@@ -8,7 +8,20 @@
                 <div class="text-center">
                     <img style="margin-bottom:10px;" height="150" alt="Veralux-Promet d.o.o." src="/images/veralux-promet.svg">
                 </div><br>
-                <p style="text-align:justify;">Tvrtka Veralux-Promet d.o.o. je obiteljska tvrtka osnovana 2017. godine koja se bavi veleprodajom i maloprodajom rasvjete, kabela, te ostalog elektroinstalacijskog materijala, poslovanje i tradiciju je preuzela od izvorne tvrtke Veran d.o.o. osnovane 1994. godine. Naš cilj i misija su ispuniti želje i potrebe naših partnera i klijenata kroz prepoznatljivu kvalitetu proizvoda renomiranih proizvođača, osiguravajući na taj način podršku kroz sve faze projekta kojim se naši partneri i klijenti bave. Naš program i ponuda se konstantno osvježavaju s ciljem pružanja najboljih rješenja iz područja elektroinstalacije te svjetlotehnike. Otvoreni smo prema svim oblicima poslovne suradnje, od opremanja obiteljskih kuća, do suradnje na složenijim projektima, ponude rasvjete prema svjetlotehničkim projektima itd. Za sve upite, prijedloge i savjete stojimo na raspolaganju, te se nadamo uspješnoj poslovnoj suradnji.</p>
+                <p style="text-align:justify;">Tvrtak Veralux-promet d.o.o. osnovana je 2017. godine te je u potpunosti preuzela poslovanje i
+tradiciju tvrtke Veran d.o.o. osnovane 1994. godine. Naša djelatnost obuhvaća maloprodaju,
+veleprodaju te internet trgovinu elektroinstalacijskih materijala, rasvjetnih tijela,
+gromobranskog pribora, telefonskog i mrežnog pribora, utičnica, prekidača, cijevi, kutija i
+portafona.</p>
+<p style="text-align:justify;">Već se 25. godina trudimo opremiti Vaše domove i poslovne prostore kvalitetnim
+elektromaterijalom renomiranih svjetskih proizvođača po najpovoljnijim cijenama. Naš cilj i
+misija su ispuniti želje i potrebe naših partnera i klijenata osiguravajući podršku kroz sve faze
+projekta kojim se bave. Naš program i ponuda se konstantno osvježavaju s ciljem pružanja
+najboljih rješenja iz područja elektroinstalacije te svjetlotehnike. Obiteljska smo tvrtka te se
+posebno ponosimo ugodnom atmosferom te kvalitetnom i brzom uslugom. Otvoreni smo za sve
+oblike suradnje, od opremanja obiteljskih domova do suradnje na složenijim projektima. Za sve
+upite, prijedloge i savjete stojimo na raspolaganju, te se nadamo uspješnoj i dugovječnoj
+poslovnoj suradnji.</p>
                 <blockquote><footer>VERALUX-PROMET d.o.o.</footer></blockquote>
                 <hr>
                 <p>
