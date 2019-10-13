@@ -75,10 +75,41 @@
                             </div>
                             <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
                                 <h3 class="block-title-5">
-                                    Filip Veran
+                                    Milivoj Veran
                                 </h3>
                                 <p>
                                     Direktor
+                                    <br>
+                                    Voditelj maloprodaje
+                                    <br>
+                                    <strong>
+                                        Broj mobitela
+                                    </strong>
+                                    : <a href="tel:38598713007">
+                                        +385 98 713 007
+                                    </a>
+                                    <br>
+                                    <strong>
+                                        Broj telefona
+                                    </strong>
+                                    : <a href="tel:38549236059">
+                                        +385 49 236 059
+                                    </a>
+                                    <br>
+                                    <strong>
+                                        E-mail adresa
+                                    </strong>
+                                    : <a style="direction: rtl; unicode-bidi: bidi-override;" href="mailto:milivoj.veran@veraluxpromet.hr">
+                                        rh.temorpxularev@narev.jovilim
+                                    </a>
+                                </p>
+                                <hr class="hidden-xs">
+                                <div style="clear:both"></div>
+                                <h3 class="block-title-5">
+                                    Filip Veran
+                                </h3>
+                                <p>
+                                    Prokurist
                                     <br>
                                     Voditelj veleprodaje
                                     <br>
@@ -101,35 +132,6 @@
                                     </strong>
                                     : <a style="direction: rtl; unicode-bidi: bidi-override;" href="mailto:filip.veran@veraluxpromet.hr">
                                         rh.temorpxularev@narev.pilif
-                                    </a>
-                                </p>
-                                <hr class="hidden-xs">
-                                <div style="clear:both"></div>
-                                <h3 class="block-title-5">
-                                    Milivoj Veran
-                                </h3>
-                                <p>
-                                    Voditelj maloprodaje
-                                    <br>
-                                    <strong>
-                                        Broj mobitela
-                                    </strong>
-                                    : <a href="tel:38598713007">
-                                        +385 98 713 007
-                                    </a>
-                                    <br>
-                                    <strong>
-                                        Broj telefona
-                                    </strong>
-                                    : <a href="tel:38549236059">
-                                        +385 49 236 059
-                                    </a>
-                                    <br>
-                                    <strong>
-                                        E-mail adresa
-                                    </strong>
-                                    : <a style="direction: rtl; unicode-bidi: bidi-override;" href="mailto:milivoj.veran@veraluxpromet.hr">
-                                        rh.temorpxularev@narev.jovilim
                                     </a>
                                 </p>
                             </div>
