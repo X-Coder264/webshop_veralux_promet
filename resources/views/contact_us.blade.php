@@ -19,7 +19,7 @@
                         <p class="lead text-center">
                             <strong>Radno vrijeme:</strong>
                             <br>
-                            Pon-pet: 10:00 - 13:00
+                            Pon-pet: 10:00 - 17:00
                             <br>
                             Pon-pet: 15:00 - 19:00
                             <br>
@@ -80,8 +80,6 @@
                                 <p>
                                     Direktor
                                     <br>
-                                    Voditelj maloprodaje
-                                    <br>
                                     <strong>
                                         Broj mobitela
                                     </strong>
@@ -110,8 +108,6 @@
                                 </h3>
                                 <p>
                                     Prokurist
-                                    <br>
-                                    Voditelj veleprodaje
                                     <br>
                                     {{--<strong>
                                         Broj mobitela
